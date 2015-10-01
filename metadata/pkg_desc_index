@@ -10,6 +10,7 @@ dev-libs/libressl 2.2.3 2.3.0: Free version of the SSL/TLS protocol forked from 
 dev-libs/openssl 9999: This is a fake ebuild to support libressl
 dev-lua/luasec 0.5: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-python/cryptography 0.6.1 0.9.3: Library providing cryptographic recipes and primitives
+dev-python/m2crypto 0.22.3-r4: M2Crypto: A Python crypto and SSL toolkit
 net-dns/ldns-utils 1.6.12-r1 1.6.17-r1: Set of utilities to simplify various dns(sec) tasks
 net-irc/znc 1.4-r1: An advanced IRC Bouncer
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
