@@ -6,7 +6,7 @@ dev-db/mysql 5.6.26-r1: A fast, multi-threaded, multi-user SQL database server
 dev-lang/php 5.3.29 5.4.38 5.5.22: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/python 3.3.5-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/ruby 1.9.3_p551-r1 2.0.0_p645 2.0.0_p647 2.1.6-r1 2.1.7 2.2.2-r1 2.2.3: An object-oriented scripting language
-dev-libs/libressl 2.2.3 2.3.0: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.2.4 2.3.0: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/openssl 9999: This is a fake ebuild to support libressl
 dev-lua/luasec 0.5: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-python/cryptography 0.6.1 0.9.3: Library providing cryptographic recipes and primitives
