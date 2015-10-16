@@ -8,9 +8,10 @@ dev-lang/python 3.3.5-r1: An interpreted, interactive, object-oriented programmi
 dev-lang/ruby 1.9.3_p551-r1 2.0.0_p645 2.0.0_p647 2.1.6-r1 2.1.7 2.2.2-r1 2.2.3: An object-oriented scripting language
 dev-libs/libressl 2.2.4 2.3.0: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/openssl 9999: This is a fake ebuild to support libressl
-dev-lua/luasec 0.5: Lua binding for OpenSSL library to provide TLS/SSL communication
+dev-lua/luasec 0.5 0.5-r1: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-python/cryptography 0.6.1 0.9.3: Library providing cryptographic recipes and primitives
-dev-python/m2crypto 0.22.3-r4: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2crypto 0.22.3-r4 0.22.3-r5: M2Crypto: A Python crypto and SSL toolkit
 net-dns/ldns-utils 1.6.12-r1 1.6.17-r1: Set of utilities to simplify various dns(sec) tasks
 net-irc/znc 1.4-r1: An advanced IRC Bouncer
+net-wireless/wpa_supplicant 2.5: IEEE 802.1X/WPA supplicant for secure wireless transfers
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
