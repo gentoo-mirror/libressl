@@ -5,7 +5,7 @@ app-misc/c_rehash 1.7: c_rehash script from OpenSSL
 dev-db/mysql 5.6.26-r1: A fast, multi-threaded, multi-user SQL database server
 dev-lang/php 5.3.29 5.4.38 5.5.22: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/python 3.3.5-r1: An interpreted, interactive, object-oriented programming language
-dev-lang/ruby 1.9.3_p551-r1 2.0.0_p645 2.0.0_p647 2.1.6-r1 2.1.7 2.2.2-r1 2.2.3: An object-oriented scripting language
+dev-lang/ruby 1.9.3_p551-r1 2.0.0_p647-r1 2.1.7 2.1.7-r1 2.2.3-r2: An object-oriented scripting language
 dev-libs/libressl 2.2.4 2.3.0-r1: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/openssl 9999: This is a fake ebuild to support libressl
 dev-lua/luasec 0.5 0.5-r1: Lua binding for OpenSSL library to provide TLS/SSL communication
@@ -13,5 +13,10 @@ dev-python/cryptography 0.6.1 0.9.3: Library providing cryptographic recipes and
 dev-python/m2crypto 0.22.3-r4 0.22.3-r5: M2Crypto: A Python crypto and SSL toolkit
 net-dns/ldns-utils 1.6.12-r1 1.6.17-r1: Set of utilities to simplify various dns(sec) tasks
 net-irc/znc 1.4-r1: An advanced IRC Bouncer
-net-wireless/wpa_supplicant 2.5: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-libs/nodejs 5.6.0-r1: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-misc/socat 1.7.3.1: Multipurpose relay (SOcket CAT)
+net-misc/stunnel 5.24: TLS/SSL - Port Wrapper
+net-wireless/wpa_supplicant 2.5-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
+www-client/links 2.8-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
+www-servers/apache 2.2.31: The Apache Web Server
