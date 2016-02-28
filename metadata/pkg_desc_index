@@ -6,7 +6,7 @@ dev-java/icedtea 6.1.13.9 7.2.6.4: A harness to build OpenJDK using Free Softwar
 dev-lang/php 5.3.29 5.4.38 5.5.22: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/python 3.3.5-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/ruby 2.0.0_p648 2.1.8 2.2.4: An object-oriented scripting language
-dev-libs/boost 1.56.0-r2 1.57.0-r1: Boost Libraries for C++
+dev-libs/boost 1.56.0-r2 1.57.0-r1 1.58.0-r1: Boost Libraries for C++
 dev-libs/openssl 9999: This is a fake ebuild to support libressl
 dev-lua/luasec 0.5 0.5-r1: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-perl/Crypt-SSLeay 0.720.0-r2: OpenSSL support for LWP
