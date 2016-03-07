@@ -10,7 +10,6 @@ dev-libs/boost 1.56.0-r2 1.57.0-r1 1.58.0-r1: Boost Libraries for C++
 dev-libs/openssl 9999: This is a fake ebuild to support libressl
 dev-lua/luasec 0.5 0.5-r1: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-perl/Crypt-SSLeay 0.720.0-r2: OpenSSL support for LWP
-dev-python/cryptography 0.6.1 0.9.3: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.22.3-r4 0.23.0: M2Crypto: A Python crypto and SSL toolkit
 dev-qt/qtcore 4.8.6 4.8.7: Cross-platform application development framework
 dev-qt/qtnetwork 5.5.1: Network abstraction library for the Qt5 framework
