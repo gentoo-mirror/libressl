@@ -77,6 +77,11 @@ dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy
 dev-qt/qtnetwork:networkmanager - Enable net-misc/networkmanager-based bearer plugin
 mail-filter/spamassassin:bayes - Require a database (MySQL, SQLite, Postgres, or BerkDB) backend to enable the Bayesian filtering database.
 mail-filter/spamassassin:qmail - Build qmail functionality and docs
+mail-mta/postfix:dovecot-sasl - Enable net-mail/dovecot protocol version 1 (server only) SASL implementation
+mail-mta/postfix:eai - Add support for SMTPUTF8
+mail-mta/postfix:ldap-bind - Add support for binding to LDAP backend using dev-libs/cyrus-sasl
+mail-mta/postfix:lmdb - Add support for using dev-db/lmdb for lookup tables
+mail-mta/postfix:memcached - Add support for using net-misc/memcached for lookup tables
 net-dns/ldns-utils:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-dns/ldns-utils:ecdsa - Enable ECDSA support
 net-dns/ldns-utils:gost - Enable GOST support
