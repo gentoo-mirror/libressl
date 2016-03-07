@@ -14,7 +14,6 @@ dev-qt/qtcore 4.8.6 4.8.7: Cross-platform application development framework
 dev-qt/qtnetwork 5.5.1: Network abstraction library for the Qt5 framework
 mail-filter/imapfilter 2.5.7-r2: An IMAP mail filtering utility
 mail-filter/spamassassin 3.4.1-r2: An extensible mail filter which can identify and tag spam
-mail-mta/postfix 3.1.0 3.2_pre20160224: A fast and secure drop-in replacement for sendmail
 net-dns/ldns-utils 1.6.12-r1 1.6.17-r1: Set of utilities to simplify various dns(sec) tasks
 net-irc/znc 1.6.1-r2: An advanced IRC Bouncer
 net-libs/nodejs 5.6.0-r1: A JavaScript runtime built on Chrome's V8 JavaScript engine
