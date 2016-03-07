@@ -63,11 +63,6 @@ dev-libs/boost:doc - Install the full API documentation documentation. This take
 dev-libs/boost:nls - Build libboost_locale. This library requires compatible C library interfaces, which might not be provided by uClibc or other embedded libraries.
 dev-libs/boost:threads - Build multi-thread-compatible libraries instead of single-threaded only.
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
-dev-libs/openssl:asm - Support assembly hand optimized crypto functions (i.e. faster run time)
-dev-libs/openssl:bindist - Disable EC algorithms (as they seem to be patented) -- note: changes the ABI
-dev-libs/openssl:rfc3779 - Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)
-dev-libs/openssl:sctp - Support for Stream Control Transmission Protocol
-dev-libs/openssl:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
 dev-qt/qtcore:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtcore:glib - Enable dev-libs/glib eventloop support
 dev-qt/qtcore:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4.
