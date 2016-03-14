@@ -2,7 +2,7 @@ app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/johntheripper 1.7.9-r10: fast password cracker
 app-crypt/qca 2.1.1: Qt Cryptographic Architecture (QCA)
 app-crypt/signify 9999: OpenBSD tool to signs and verify signatures on files. Portable version.
-dev-cpp/commoncpp2 1.8.1-r2: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
+dev-cpp/commoncpp2 1.8.1-r2: C++ framework offering portable system programming
 dev-java/icedtea 6.1.13.9-r2 7.2.6.4-r1: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-lang/php 5.4.38 5.5.22: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/python 3.3.5-r1: An interpreted, interactive, object-oriented programming language
