@@ -5,10 +5,8 @@ app-crypt/signify 9999: OpenBSD tool to signs and verify signatures on files. Po
 dev-cpp/commoncpp2 1.8.1-r2: C++ framework offering portable system programming
 dev-java/icedtea 6.1.13.9-r2: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-lang/php 5.4.38 5.5.22: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
-dev-lang/python 3.3.5-r1: An interpreted, interactive, object-oriented programming language
-dev-lang/ruby 2.0.0_p648 2.1.8 2.2.4: An object-oriented scripting language
+dev-lang/ruby 2.0.0_p648 2.1.8: An object-oriented scripting language
 dev-libs/boost 1.56.0-r2 1.57.0-r1 1.58.0-r1: Boost Libraries for C++
-dev-lua/luasec 0.5 0.5-r1: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-python/m2crypto 0.22.3-r4 0.23.0: M2Crypto: A Python crypto and SSL toolkit
 dev-qt/qtcore 4.8.6 4.8.7: Cross-platform application development framework
 dev-qt/qtnetwork 5.5.1: Network abstraction library for the Qt5 framework
@@ -16,8 +14,7 @@ dev-util/android-tools 0_p20130218 5.1.1_p13: Android platform tools (adb, fastb
 mail-filter/imapfilter 2.5.7-r2: An IMAP mail filtering utility
 mail-filter/spamassassin 3.4.1-r2: An extensible mail filter which can identify and tag spam
 net-dns/ldns-utils 1.6.12-r1 1.6.17-r1: Set of utilities to simplify various dns(sec) tasks
-net-ftp/lftp 4.6.5: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
-net-irc/znc 1.6.1-r2: An advanced IRC Bouncer
+net-ftp/lftp 4.6.5 4.7.0: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-libs/nodejs 5.9.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-mail/courier-imap 4.16.2-r1: An IMAP daemon designed specifically for maildirs
 net-mail/fetchmail 6.3.26: the legendary remote-mail retrieval and forwarding utility
