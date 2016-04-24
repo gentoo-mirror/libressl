@@ -72,6 +72,9 @@ mail-filter/spamassassin:qmail - Build qmail functionality and docs
 net-dns/ldns-utils:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-dns/ldns-utils:ecdsa - Enable ECDSA support
 net-dns/ldns-utils:gost - Enable GOST support
+net-dns/unbound:dnstap - Enable dnstap support
+net-dns/unbound:ecdsa - Enable ECDSA support
+net-dns/unbound:gost - Enable GOST support
 net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies script and its run-time dependencies
 net-ftp/lftp:openssl - Use dev-libs/openssl for SSL connections
 net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
