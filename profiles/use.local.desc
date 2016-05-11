@@ -84,7 +84,6 @@ net-mail/courier-imap:trashquota - include deleted messages, and the Trash folde
 net-mail/fetchmail:hesiod - Enable support for hesiod
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
-net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
 www-servers/apache:apache2_modules_access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions.
 www-servers/apache:apache2_modules_authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).

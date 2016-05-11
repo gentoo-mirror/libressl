@@ -21,7 +21,6 @@ net-libs/nodejs 5.9.1: A JavaScript runtime built on Chrome's V8 JavaScript engi
 net-mail/courier-imap 4.16.2-r1: An IMAP daemon designed specifically for maildirs
 net-mail/fetchmail 6.3.26: the legendary remote-mail retrieval and forwarding utility
 net-misc/socat 1.7.3.1-r1: Multipurpose relay (SOcket CAT)
-net-misc/stunnel 5.24: TLS/SSL - Port Wrapper
 www-client/links 2.8-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-servers/apache 2.2.31: The Apache Web Server
