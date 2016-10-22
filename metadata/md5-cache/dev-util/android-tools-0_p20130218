@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/
 SLOT=0
 SRC_URI=https://launchpad.net/ubuntu/+archive/primary/+files/android-tools_4.2.2+git20130218.orig.tar.xz https://launchpad.net/ubuntu/+archive/primary/+files/android-tools_4.2.2+git20130218-3ubuntu36.debian.tar.gz https://github.com/android/platform_system_core/commit/e89e09dd2b9b42184973e3ade291186a2737bced.patch -> android-tools-e89e09dd2b9b42184973e3ade291186a2737bced.patch
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=5072ef51ea5ba3bff1a2847dd02319c0
