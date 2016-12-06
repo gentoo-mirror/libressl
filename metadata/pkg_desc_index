@@ -11,7 +11,7 @@ dev-qt/qtcore 4.8.6-r2: Cross-platform application development framework
 dev-qt/qtnetwork 5.5.1 5.6.1 5.6.2 5.7.0: Network abstraction library for the Qt5 framework
 dev-util/android-tools 0_p20130218: Android platform tools (adb and fastboot)
 mail-filter/imapfilter 2.5.7-r2: An IMAP mail filtering utility
-media-video/ffmpeg 3.2.1: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.2.2: Complete solution to record, convert and stream audio and video. Includes libavcodec
 net-dns/ldns-utils 1.6.12-r1 1.6.17-r1: Set of utilities to simplify various dns(sec) tasks
 net-dns/unbound 1.5.7: A validating, recursive and caching DNS resolver
 net-libs/nodejs 5.9.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
