@@ -120,6 +120,8 @@ net-wireless/wpa_supplicant:tdls - Add support for Tunneled Direct Link Setup (8
 net-wireless/wpa_supplicant:uncommon-eap-types - Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE
 net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
+www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
+www-client/lynx:ssl - Enable HTTPS support.
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
 www-servers/apache:apache2_modules_access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions.
 www-servers/apache:apache2_modules_authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).

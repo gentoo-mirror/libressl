@@ -20,5 +20,6 @@ net-mail/fetchmail 6.3.26-r2: the legendary remote-mail retrieval and forwarding
 net-misc/socat 1.7.3.1-r1: Multipurpose relay (SOcket CAT)
 net-misc/tlsdate 0.0.13-r1: Update local time over HTTPS
 net-wireless/wpa_supplicant 2.6: IEEE 802.1X/WPA supplicant for secure wireless transfers
+www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-servers/apache 2.2.31: The Apache Web Server
