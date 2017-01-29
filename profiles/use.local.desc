@@ -2,32 +2,6 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-crypt/johntheripper:cuda - Use nvidia cuda toolkit for speeding up cracking on capable devices
-app-crypt/johntheripper:mozilla - Support mozilla password cracking
-app-crypt/johntheripper:opencl - Enable opencl support for speeding up cracking on capable devices
-app-crypt/qca:botan - Enable botan plugin
-app-crypt/qca:gcrypt - Enable gcrypt plugin
-app-crypt/qca:gpg - Enable GnuPG plugin
-app-crypt/qca:logger - Enable logger plugin
-app-crypt/qca:nss - Enable NSS plugin
-app-crypt/qca:openssl - Enable OpenSSL plugin
-app-crypt/qca:pkcs11 - Enable PKCS#11 plugin
-app-crypt/qca:sasl - Enable SASL plugin
-app-crypt/qca:softstore - Enable softstore plugin
-dev-java/icedtea:cacao - Use the CACAO virtual machine rather than HotSpot.
-dev-java/icedtea:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
-dev-java/icedtea:infinality - Enable better font rendering using fontconfig.
-dev-java/icedtea:jamvm - Use the JamVM virtual machine rather than HotSpot.
-dev-java/icedtea:jbootstrap - If possible, recompile the final IcedTea executables with itself.
-dev-java/icedtea:nsplugin - Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.
-dev-java/icedtea:nss - Enable NSS security provider support.
-dev-java/icedtea:pax_kernel - Apply patch needed for pax enabled kernels.
-dev-java/icedtea:sctp - Build the SCTP NIO channel implementation against lksctp
-dev-java/icedtea:smartcard - Build the PCSC driver against pcsc-lite
-dev-java/icedtea:sunec - Build the SunEC provider against system NSS
-dev-java/icedtea:systemtap - Enable SystemTap probes in HotSpot.
-dev-java/icedtea:webstart - Enable Web Start support (via NetX).
-dev-java/icedtea:zero - Enable Zero assembler port (usually for non-HotSpot architectures)
 dev-lang/ruby:jemalloc - Use dev-libs/jemalloc for memory allocation.
 dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
 dev-lang/ruby:readline - Use the sys-libs/readline library to provide the readline extension, used for instance by the irb tool. This flag is meaningful only if the libedit USE flag is disabled. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality).
@@ -109,38 +83,5 @@ net-mail/courier-imap:trashquota - include deleted messages, and the Trash folde
 net-mail/fetchmail:hesiod - Enable support for hesiod
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
-net-wireless/wpa_supplicant:ap - Add support for access point mode
-net-wireless/wpa_supplicant:eap-sim - Add support for EAP-SIM authentication algorithm
-net-wireless/wpa_supplicant:fasteap - Add support for FAST-EAP authentication algorithm
-net-wireless/wpa_supplicant:hs2-0 - Add support for 802.11u and Passpoint for HotSpot 2.0
-net-wireless/wpa_supplicant:p2p - Add support for Wi-Fi Direct mode
-net-wireless/wpa_supplicant:ps3 - Add support for ps3 hypervisor driven gelic wifi
-net-wireless/wpa_supplicant:smartcard - Add support for smartcards
-net-wireless/wpa_supplicant:tdls - Add support for Tunneled Direct Link Setup (802.11z)
-net-wireless/wpa_supplicant:uncommon-eap-types - Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE
-net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm
-net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
-www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
-www-servers/apache:apache2_modules_access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions.
-www-servers/apache:apache2_modules_authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).
-www-servers/apache:apache2_modules_authz_core - Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user.
-www-servers/apache:apache2_modules_authz_dbd - Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership.
-www-servers/apache:apache2_modules_cache_disk - Disk based storage module for the HTTP caching filter (similar to mem_cache in previous versions).
-www-servers/apache:apache2_modules_http2 - Enable http2/alpn module
-www-servers/apache:apache2_modules_lbmethod_bybusyness - Pending request counting load balancer scheduler algorithm for proxy_balancer.
-www-servers/apache:apache2_modules_lbmethod_byrequests - Request counting load balancer scheduler algorithm for proxy_balancer.
-www-servers/apache:apache2_modules_lbmethod_bytraffic - Weighted traffic counting load balancer scheduler algorithm for proxy_balancer.
-www-servers/apache:apache2_modules_lbmethod_heartbeat - Heartbeat traffic counting load balancer scheduler algorithm for proxy_balancer.
-www-servers/apache:apache2_modules_macro - Macros for the Apache config file.
-www-servers/apache:apache2_modules_proxy_fcgi - FCGI support module for mod_proxy.
-www-servers/apache:apache2_modules_proxy_html - Module to rewrite links in html pages behind a reverse proxy
-www-servers/apache:apache2_modules_proxy_wstunnel - Provides support for the tunnelling of web socket connections to a backend websockets server.
-www-servers/apache:apache2_modules_ratelimit - Ratelimit module for transfer rate management
-www-servers/apache:apache2_modules_remoteip - Remotip module for logging
-www-servers/apache:apache2_modules_slotmem_shm - Slot-based shared memory provider.
-www-servers/apache:apache2_modules_socache_shmcb - A shared object cache provider using a high-performance cyclic buffer inside a shared memory segment.
-www-servers/apache:apache2_modules_unixd - Basic (required) security for Unix-family platforms.
-www-servers/apache:static - Link in apache2 modules statically rather then plugins
-www-servers/apache:suexec - Install suexec with apache
