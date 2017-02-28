@@ -3,6 +3,7 @@ app-crypt/signify 9999: OpenBSD tool to signs and verify signatures on files. Po
 dev-cpp/commoncpp2 1.8.1-r2: C++ framework offering portable system programming
 dev-lang/ruby 2.1.9: An object-oriented scripting language
 dev-libs/boost 1.56.0-r1 1.58.0-r1 1.62.0-r2: Boost Libraries for C++
+dev-libs/libgit2 0.24.6 0.25.1-r1: A linkable library for Git
 dev-python/cryptography 1.7.1: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.22.3-r4: M2Crypto: A Python crypto and SSL toolkit
 dev-qt/qtcore 4.8.6-r2: Cross-platform application development framework
