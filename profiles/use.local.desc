@@ -97,5 +97,10 @@ net-misc/openconnect:java - Build JNI bindings using jni.h
 net-misc/openconnect:libproxy - Enable proxy support
 net-misc/openconnect:lz4 - Enable support for lz4 compression
 net-misc/openconnect:stoken - Enable stoken support
+net-wireless/hostapd:crda - Add CRDA support
+net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
+net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
+net-wireless/hostapd:sqlite - Adding sqlite support
+net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
