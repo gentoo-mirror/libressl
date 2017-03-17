@@ -93,6 +93,11 @@ net-misc/openconnect:java - Build JNI bindings using jni.h
 net-misc/openconnect:libproxy - Enable proxy support
 net-misc/openconnect:lz4 - Enable support for lz4 compression
 net-misc/openconnect:stoken - Enable stoken support
+net-vpn/openconnect:gssapi - Build GSSAPI support
+net-vpn/openconnect:java - Build JNI bindings using jni.h
+net-vpn/openconnect:libproxy - Enable proxy support
+net-vpn/openconnect:lz4 - Enable support for lz4 compression
+net-vpn/openconnect:stoken - Enable stoken support
 net-wireless/hostapd:crda - Add CRDA support
 net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
