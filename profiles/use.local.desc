@@ -86,13 +86,6 @@ net-mail/courier-imap:trashquota - include deleted messages, and the Trash folde
 net-mail/fetchmail:hesiod - Enable support for hesiod
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
-net-misc/freerdp:client - Build client binaries
-net-misc/freerdp:server - Build server binaries
-net-misc/openconnect:gssapi - Build GSSAPI support
-net-misc/openconnect:java - Build JNI bindings using jni.h
-net-misc/openconnect:libproxy - Enable proxy support
-net-misc/openconnect:lz4 - Enable support for lz4 compression
-net-misc/openconnect:stoken - Enable stoken support
 net-vpn/openconnect:gssapi - Build GSSAPI support
 net-vpn/openconnect:java - Build JNI bindings using jni.h
 net-vpn/openconnect:libproxy - Enable proxy support
