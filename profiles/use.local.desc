@@ -2,6 +2,10 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+app-admin/sudo:gcrypt - Use SHA2 from dev-libs/libgcrypt instead of sudo's internal SHA2.
+app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password.
+app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2.
+app-admin/sudo:sendmail - Allow sudo to send emails with sendmail.
 app-arch/libarchive:bzip2 - Allow accessing bzip2-compressed archives through libbz2 (which comes with app-arch/bzip2). This only affects libarchive's native support: bsdtar will keep using bunzip2 as a filter if that's not built-in.
 app-arch/libarchive:e2fsprogs - Use file flags from sys-fs/e2fsprogs headers instead of virtual/os-headers headers
 app-arch/libarchive:lz4 - Enable support for LZ4 compression using app-arch/lz4
