@@ -10,7 +10,7 @@ dev-libs/libgit2 0.24.6 0.25.1: A linkable library for Git
 dev-python/cryptography 1.7.1 1.8.1: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.22.3-r4: M2Crypto: A Python crypto and SSL toolkit
 dev-qt/qtcore 4.8.6-r2: Cross-platform application development framework
-dev-qt/qtnetwork 5.6.1 5.6.2 5.7.1: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.6.2 5.7.1: Network abstraction library for the Qt5 framework
 mail-filter/imapfilter 2.5.7-r1: An IMAP mail filtering utility
 media-video/ffmpeg 3.2.4 3.3 3.3.1: Complete solution to record, convert and stream audio and video. Includes libavcodec
 net-dns/ldns-utils 1.6.12-r1 1.6.17-r1: Set of utilities to simplify various dns(sec) tasks
@@ -22,5 +22,6 @@ net-misc/openssh 7.5_p1-r1: Port of OpenBSD's free SSH release
 net-misc/socat 1.7.3.1: Multipurpose relay (SOcket CAT)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-vpn/openconnect 7.08: Free client for Cisco AnyConnect SSL VPN software
+net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
 www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
