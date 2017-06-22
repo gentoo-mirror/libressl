@@ -22,6 +22,7 @@ net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and 
 net-misc/openssh 7.5_p1-r1 7.5_p1-r2: Port of OpenBSD's free SSH release
 net-misc/socat 1.7.3.1: Multipurpose relay (SOcket CAT)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
+net-nds/openldap 2.4.45: LDAP suite of application and development tools
 net-vpn/openconnect 7.08: Free client for Cisco AnyConnect SSL VPN software
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon

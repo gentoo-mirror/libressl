@@ -103,6 +103,13 @@ net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
 net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
+net-nds/openldap:experimental - Enable experimental backend options
+net-nds/openldap:kinit - Enable support for kerberos init
+net-nds/openldap:minimal - Build libraries & userspace tools only. Does not install any server code.
+net-nds/openldap:odbc - Enable ODBC and SQL backend options
+net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
+net-nds/openldap:pbkdf2 - Enable support for pbkdf2 passwords
+net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
 net-vpn/openconnect:gssapi - Build GSSAPI support
 net-vpn/openconnect:java - Build JNI bindings using jni.h
 net-vpn/openconnect:libproxy - Enable proxy support
