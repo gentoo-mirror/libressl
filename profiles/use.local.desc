@@ -6,11 +6,6 @@ app-admin/sudo:gcrypt - Use SHA2 from dev-libs/libgcrypt instead of sudo's inter
 app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password.
 app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2.
 app-admin/sudo:sendmail - Allow sudo to send emails with sendmail.
-app-arch/libarchive:bzip2 - Allow accessing bzip2-compressed archives through libbz2 (which comes with app-arch/bzip2). This only affects libarchive's native support: bsdtar will keep using bunzip2 as a filter if that's not built-in.
-app-arch/libarchive:e2fsprogs - Use file flags from sys-fs/e2fsprogs headers instead of virtual/os-headers headers
-app-arch/libarchive:lz4 - Enable support for LZ4 compression using app-arch/lz4
-app-arch/libarchive:nettle - Use dev-libs/nettle as crypto backend
-app-arch/libarchive:zlib - Allow accessing gzip-compressed archives through sys-libs/zlib. This only affects libarchive's native support: bsdtar will keep using gunzip as a filter if that's not built-in. It's also needed for supporting extraction of ZIP files.
 app-crypt/rhash:openssl - Add support for hashes from dev-libs/openssl
 dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
 dev-lang/ruby:readline - Use the sys-libs/readline library to provide the readline extension, used for instance by the irb tool. This flag is meaningful only if the libedit USE flag is disabled. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality).
@@ -84,9 +79,6 @@ media-video/ffmpeg:zvbi - Enables media-libs/zvbi based teletext decoder.
 net-dns/ldns-utils:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-dns/ldns-utils:ecdsa - Enable ECDSA support
 net-dns/ldns-utils:gost - Enable GOST support
-net-dns/unbound:dnstap - Enable dnstap support
-net-dns/unbound:ecdsa - Enable ECDSA support
-net-dns/unbound:gost - Enable GOST support
 net-libs/nodejs:bundled-ssl - Use bundled version of OpenSSL (hack)
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
@@ -103,13 +95,6 @@ net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
 net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
-net-nds/openldap:experimental - Enable experimental backend options
-net-nds/openldap:kinit - Enable support for kerberos init
-net-nds/openldap:minimal - Build libraries & userspace tools only. Does not install any server code.
-net-nds/openldap:odbc - Enable ODBC and SQL backend options
-net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
-net-nds/openldap:pbkdf2 - Enable support for pbkdf2 passwords
-net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
 net-vpn/openconnect:gssapi - Build GSSAPI support
 net-vpn/openconnect:java - Build JNI bindings using jni.h
 net-vpn/openconnect:libproxy - Enable proxy support
