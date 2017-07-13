@@ -23,4 +23,4 @@ net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-vpn/openconnect 7.08: Free client for Cisco AnyConnect SSL VPN software
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
-www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
+www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser with ssl support
