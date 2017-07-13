@@ -6,6 +6,7 @@ dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for 
 dev-db/sqlcipher 3.4.1: Full Database Encryption for SQLite
 dev-lang/ruby 2.1.9 2.1.10: An object-oriented scripting language
 dev-libs/boost 1.62.0-r1 1.63.0: Boost Libraries for C++
+dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libgit2 0.24.6 0.25.1: A linkable library for Git
 dev-python/cryptography 1.7.1 1.8.1: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.22.3-r4: M2Crypto: A Python crypto and SSL toolkit
