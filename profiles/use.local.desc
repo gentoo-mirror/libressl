@@ -80,6 +80,8 @@ media-video/ffmpeg:zvbi - Enables media-libs/zvbi based teletext decoder.
 net-dns/ldns-utils:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-dns/ldns-utils:ecdsa - Enable ECDSA support
 net-dns/ldns-utils:gost - Enable GOST support
+net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies script and its run-time dependencies
+net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
 net-libs/nodejs:bundled-ssl - Use bundled version of OpenSSL (hack)
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
