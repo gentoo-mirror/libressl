@@ -7,7 +7,7 @@ dev-libs/boost 1.62.0-r1 1.63.0: Boost Libraries for C++
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libgit2 0.24.6 0.25.1: A linkable library for Git
 dev-python/cryptography 1.7.1 1.8.1: Library providing cryptographic recipes and primitives
-dev-python/m2crypto 0.26.4: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2crypto 0.26.4 0.27.0: M2Crypto: A Python crypto and SSL toolkit
 dev-qt/qtnetwork 5.7.1 5.9.2: Network abstraction library for the Qt5 framework
 dev-util/cargo 0.22.0: The Rust's package manager
 mail-filter/imapfilter 2.5.7-r1: An IMAP mail filtering utility
