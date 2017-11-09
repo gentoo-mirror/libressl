@@ -17,7 +17,7 @@ net-ftp/lftp 4.8.0: A sophisticated ftp/sftp/http/https/torrent client and file 
 net-libs/nodejs 4.6.1 6.9.4 7.10.0 8.1.0 8.1.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-mail/courier-imap 4.16.2-r1: An IMAP daemon designed specifically for maildirs
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
-net-misc/aria2 1.32.0 1.33.0: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.32.0 1.33.0 1.33.1: A download utility with segmented downloading with BitTorrent support
 net-misc/openssh 7.5_p1-r1 7.5_p1-r2 7.6_p1-r1: Port of OpenBSD's free SSH release
 net-misc/socat 1.7.3.1: Multipurpose relay (SOcket CAT)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
