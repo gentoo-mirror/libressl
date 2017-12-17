@@ -6,7 +6,6 @@ app-admin/sudo:gcrypt - Use SHA2 from dev-libs/libgcrypt instead of sudo's inter
 app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password.
 app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2.
 app-admin/sudo:sendmail - Allow sudo to send emails with sendmail.
-app-crypt/rhash:openssl - Add support for hashes from dev-libs/openssl
 dev-libs/boost:context - Build and install the Boost.Context (and Boost.Fiber) library and all other Boost libraries that depend on it
 dev-libs/boost:debug - Build and install only the debug version of the Boost libraries. Only enable this flag if you're developing against boost.
 dev-libs/boost:doc - Install the full API documentation documentation. This takes over 200MB of extra disk space.
@@ -75,8 +74,6 @@ media-video/ffmpeg:zvbi - Enables media-libs/zvbi based teletext decoder.
 net-dns/ldns-utils:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-dns/ldns-utils:ecdsa - Enable ECDSA support
 net-dns/ldns-utils:gost - Enable GOST support
-net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies script and its run-time dependencies
-net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
 net-libs/nodejs:bundled-ssl - Use bundled version of OpenSSL (hack)
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
@@ -85,14 +82,6 @@ net-mail/courier-imap:trashquota - include deleted messages, and the Trash folde
 net-mail/fetchmail:hesiod - Enable support for hesiod
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
-net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
-net-misc/aria2:jemalloc - Use dev-libs/jemalloc to replace the malloc() implementation with a possibly faster one
-net-misc/aria2:libuv - Use dev-libs/libuv backend.
-net-misc/aria2:libxml2 - Use dev-libs/libxml2 for XML parsing (preferred) instead of dev-libs/expat.
-net-misc/aria2:metalink - Enable support for metalink.
-net-misc/aria2:nettle - Use dev-libs/nettle and dev-libs/gmp for bittorrent/metalink crypto instead of dev-libs/libgcrypt (when dev-libs/openssl is not being used).
-net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality.
-net-misc/aria2:ssh - Enable SFTP support.
 net-misc/openssh:X509 - Adds support for X.509 certificate authentication
 net-misc/openssh:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
 net-misc/openssh:hpn - Enable high performance ssh
@@ -101,11 +90,6 @@ net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
 net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
-net-vpn/openconnect:gssapi - Build GSSAPI support
-net-vpn/openconnect:java - Build JNI bindings using jni.h
-net-vpn/openconnect:libproxy - Enable proxy support
-net-vpn/openconnect:lz4 - Enable support for lz4 compression
-net-vpn/openconnect:stoken - Enable stoken support
 net-wireless/aircrack-ng:airdrop-ng - Build airdrop-ng
 net-wireless/aircrack-ng:airgraph-ng - Build airgraph-ng
 net-wireless/aircrack-ng:experimental - Build the "experimental" tools which may randomly fail to run properly
