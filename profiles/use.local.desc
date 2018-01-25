@@ -71,9 +71,6 @@ media-video/ffmpeg:x265 - Enables HEVC encoding with media-libs/x265.
 media-video/ffmpeg:zeromq - Enables net-libs/zeromq support with the zmq/azmq filters.
 media-video/ffmpeg:zimg - Enables media-libs/zimg based scale filter.
 media-video/ffmpeg:zvbi - Enables media-libs/zvbi based teletext decoder.
-net-dns/ldns-utils:dane - Enable DNS-based Authentication of Named Entities (DANE) support
-net-dns/ldns-utils:ecdsa - Enable ECDSA support
-net-dns/ldns-utils:gost - Enable GOST support
 net-libs/nodejs:bundled-ssl - Use bundled version of OpenSSL (hack)
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
