@@ -91,6 +91,11 @@ net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
 net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
+net-vpn/openconnect:gssapi - Build GSSAPI support
+net-vpn/openconnect:java - Build JNI bindings using jni.h
+net-vpn/openconnect:libproxy - Enable proxy support
+net-vpn/openconnect:lz4 - Enable support for lz4 compression
+net-vpn/openconnect:stoken - Enable stoken support
 net-wireless/aircrack-ng:airdrop-ng - Build airdrop-ng
 net-wireless/aircrack-ng:airgraph-ng - Build airgraph-ng
 net-wireless/aircrack-ng:experimental - Build the "experimental" tools which may randomly fail to run properly
