@@ -7,6 +7,9 @@ app-admin/sudo:offensive - Let sudo print insults when the user types the wrong 
 app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2
 app-admin/sudo:sendmail - Allow sudo to send emails with sendmail
 app-crypt/rhash:openssl - Add support for hashes from dev-libs/openssl
+dev-lang/python:threads - Enable threading support. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
+dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-byte Unicode characters. Switching of this USE flag changes ABI of Python and requires reinstallation of many Python modules. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
+dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
 dev-libs/boost:context - Build and install the Boost.Context (and Boost.Fiber) library and all other Boost libraries that depend on it
 dev-libs/boost:debug - Build and install only the debug version of the Boost libraries. Only enable this flag if you're developing against boost.
 dev-libs/boost:doc - Install the full API documentation documentation. This takes over 200MB of extra disk space.
@@ -83,6 +86,12 @@ net-mail/courier-imap:trashquota - include deleted messages, and the Trash folde
 net-mail/fetchmail:hesiod - Enable support for hesiod
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
+net-misc/curl:brotli - Enable brotli compression support
+net-misc/curl:http2 - Enabled HTTP/2.0 support
+net-misc/curl:metalink - Enable metalink support
+net-misc/curl:rtmp - Enable RTMP Streaming Media support
+net-misc/curl:ssh - Enabled SSH urls in curl using libssh2
+net-misc/curl:ssl - Enable crypto engine support (via openssl if USE='-gnutls -nss')
 net-misc/openssh:X509 - Adds support for X.509 certificate authentication
 net-misc/openssh:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
 net-misc/openssh:hpn - Enable high performance ssh
