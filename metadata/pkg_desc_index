@@ -5,7 +5,7 @@ dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for 
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-libs/boost 1.62.0-r1: Boost Libraries for C++
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
-dev-libs/libgit2 0.24.6: A linkable library for Git
+dev-libs/xmlsec 1.2.25-r1: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-python/cryptography 1.7.1 2.1.4: Library providing cryptographic recipes and primitives
 media-video/ffmpeg 3.2.6 3.3.4 3.3.5 3.3.6: Complete solution to record, convert and stream audio and video. Includes libavcodec
 net-libs/nodejs 4.6.1 6.9.4 6.11.5: A JavaScript runtime built on Chrome's V8 JavaScript engine

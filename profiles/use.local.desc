@@ -17,9 +17,10 @@ dev-libs/boost:nls - Build libboost_locale. This library requires compatible C l
 dev-libs/boost:threads - Build multi-thread-compatible libraries instead of single-threaded only.
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
 dev-libs/libevent:debug - Support runtime debug mode and malloc hooks (for programmers)
-dev-libs/libgit2:gssapi - Enable GSSAPI support for SPNEGO auth
-dev-libs/libgit2:ssh - Enable SSH transport support
-dev-libs/libgit2:trace - Enable tracing support
+dev-libs/xmlsec:gcrypt - Install xmlsec-gcrypt library
+dev-libs/xmlsec:gnutls - Install xmlsec-gnutls library
+dev-libs/xmlsec:nss - Install xmlsec-nss library
+dev-libs/xmlsec:openssl - Install xmlsec-openssl library
 media-video/ffmpeg:amr - Enables Adaptive Multi-Rate Audio support
 media-video/ffmpeg:amrenc - Enables Adaptive Multi-Rate Audio encoding support with media-libs/vo-amrwbenc.
 media-video/ffmpeg:appkit - Enables Apple AppKit framework
