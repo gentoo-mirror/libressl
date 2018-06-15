@@ -14,7 +14,7 @@ net-mail/courier-imap 4.16.2-r1: An IMAP daemon designed specifically for maildi
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
 net-misc/aria2 1.33.1: A download utility with segmented downloading with BitTorrent support
 net-misc/curl 7.59.0: A Client that groks URLs
-net-misc/openssh 7.5_p1-r4: Port of OpenBSD's free SSH release
+net-misc/openssh 7.5_p1-r4 7.7_p1-r4: Port of OpenBSD's free SSH release
 net-misc/socat 1.7.3.1: Multipurpose relay (SOcket CAT)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-vpn/openconnect 7.08: Free client for Cisco AnyConnect SSL VPN software
