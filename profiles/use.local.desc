@@ -76,6 +76,7 @@ media-video/ffmpeg:zeromq - Enables net-libs/zeromq support with the zmq/azmq fi
 media-video/ffmpeg:zimg - Enables media-libs/zimg based scale filter.
 media-video/ffmpeg:zvbi - Enables media-libs/zvbi based teletext decoder.
 net-libs/nodejs:bundled-ssl - Use bundled version of OpenSSL (hack)
+net-libs/nodejs:inspector - Enable V8 inspector
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
 net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
