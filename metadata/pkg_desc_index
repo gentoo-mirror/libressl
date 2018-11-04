@@ -16,7 +16,6 @@ net-misc/aria2 1.33.1: A download utility with segmented downloading with BitTor
 net-misc/curl 7.59.0: A Client that groks URLs
 net-misc/openssh 7.5_p1-r4 7.7_p1-r5 7.7_p1-r6: Port of OpenBSD's free SSH release
 net-misc/socat 1.7.3.1: Multipurpose relay (SOcket CAT)
-net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-vpn/openconnect 7.08: Free client for Cisco AnyConnect SSL VPN software
 net-wireless/aircrack-ng 1.2_rc1-r1: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
