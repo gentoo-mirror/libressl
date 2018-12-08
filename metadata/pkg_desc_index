@@ -7,7 +7,7 @@ dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactiv
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/xmlsec 1.2.25-r1: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-util/cargo 0.30.0: The Rust's package manager
-media-video/ffmpeg 3.2.6 3.3.4 3.3.5 3.3.6: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.2.6 3.3.4 3.3.6: Complete solution to record, convert and stream audio and video. Includes libavcodec
 net-libs/nodejs 4.6.1 6.9.4 6.11.5: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-mail/courier-imap 4.16.2-r1: An IMAP daemon designed specifically for maildirs
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
