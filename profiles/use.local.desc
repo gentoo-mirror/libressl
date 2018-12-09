@@ -2,20 +2,9 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-admin/sudo:gcrypt - Use SHA2 from dev-libs/libgcrypt instead of sudo's internal SHA2
-app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password
-app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2
-app-admin/sudo:sendmail - Allow sudo to send emails with sendmail
-app-admin/sudo:sssd - Add System Security Services Daemon support
-app-crypt/rhash:openssl - Add support for hashes from dev-libs/openssl
 dev-lang/python:threads - Enable threading support. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
-dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-byte Unicode characters. Switching of this USE flag changes ABI of Python and requires reinstallation of many Python modules. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
 dev-libs/libevent:debug - Support runtime debug mode and malloc hooks (for programmers)
-dev-libs/xmlsec:gcrypt - Install xmlsec-gcrypt library
-dev-libs/xmlsec:gnutls - Install xmlsec-gnutls library
-dev-libs/xmlsec:nss - Install xmlsec-nss library
-dev-libs/xmlsec:openssl - Install xmlsec-openssl library
 media-video/ffmpeg:amr - Enables Adaptive Multi-Rate Audio support
 media-video/ffmpeg:amrenc - Enables Adaptive Multi-Rate Audio encoding support with media-libs/vo-amrwbenc.
 media-video/ffmpeg:appkit - Enables Apple AppKit framework
@@ -73,23 +62,8 @@ net-libs/nodejs:inspector - Enable V8 inspector
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
 net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
-net-mail/courier-imap:trashquota - include deleted messages, and the Trash folder, in the estimated quota usage for maildirs
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
-net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
-net-misc/aria2:jemalloc - Use dev-libs/jemalloc to replace the malloc() implementation with a possibly faster one
-net-misc/aria2:libuv - Use dev-libs/libuv backend.
-net-misc/aria2:libxml2 - Use dev-libs/libxml2 for XML parsing (preferred) instead of dev-libs/expat.
-net-misc/aria2:metalink - Enable support for metalink.
-net-misc/aria2:nettle - Use dev-libs/nettle and dev-libs/gmp for bittorrent/metalink crypto instead of dev-libs/libgcrypt (when dev-libs/openssl is not being used).
-net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality.
-net-misc/aria2:ssh - Enable SFTP support.
-net-misc/curl:brotli - Enable brotli compression support
-net-misc/curl:http2 - Enabled HTTP/2.0 support
-net-misc/curl:metalink - Enable metalink support
-net-misc/curl:rtmp - Enable RTMP Streaming Media support
-net-misc/curl:ssh - Enabled SSH urls in curl using libssh2
-net-misc/curl:ssl - Enable crypto engine support (via openssl if USE='-gnutls -nss')
 net-misc/openssh:X509 - Adds support for X.509 certificate authentication
 net-misc/openssh:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
 net-misc/openssh:hpn - Enable high performance ssh
