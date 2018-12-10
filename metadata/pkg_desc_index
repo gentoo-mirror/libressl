@@ -1,3 +1,4 @@
+app-text/mupdf 1.13.0 1.14.0-r2: a lightweight PDF viewer and toolkit written in portable C
 dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for system-related services
 dev-lang/python 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
