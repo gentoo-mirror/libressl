@@ -1,9 +1,7 @@
 dev-util/cargo 0.30.0: The Rust's package manager
-media-video/ffmpeg 3.2.6 3.3.4 3.3.6: Complete solution to record, convert and stream audio and video. Includes libavcodec
 net-libs/nodejs 4.6.1 6.9.4 6.11.5: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
 net-misc/openssh 7.5_p1-r4 7.7_p1-r5 7.7_p1-r6: Port of OpenBSD's free SSH release
 net-vpn/openconnect 7.08: Free client for Cisco AnyConnect SSL VPN software
 net-wireless/aircrack-ng 1.2_rc1-r1: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
-www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
