@@ -1,5 +1,5 @@
 dev-util/cargo 0.30.0: The Rust's package manager
-net-libs/nodejs 4.6.1 6.9.4 6.11.5: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 6.11.5: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
 net-vpn/openconnect 7.08: Free client for Cisco AnyConnect SSL VPN software
 net-wireless/aircrack-ng 1.2_rc1-r1: WLAN tools for breaking 802.11 WEP/WPA keys
