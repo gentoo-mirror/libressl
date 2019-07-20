@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,15 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 fi
 
-IUSE="bindist connman libproxy libressl networkmanager +ssl"
+IUSE="bindist connman libproxy libressl networkmanager sctp +ssl"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
-	>=sys-libs/zlib-1.2.5
+	sys-libs/zlib:=
 	connman? ( ~dev-qt/qtdbus-${PV} )
 	libproxy? ( net-libs/libproxy )
 	networkmanager? ( ~dev-qt/qtdbus-${PV} )
+	sctp? ( kernel_linux? ( net-misc/lksctp-tools ) )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0=[bindist=] )
 		libressl? ( dev-libs/libressl:0= )
@@ -29,13 +30,18 @@ RDEPEND="${DEPEND}
 	networkmanager? ( net-misc/networkmanager )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.12.1-libressl.patch
+	"${FILESDIR}"/${PN}-5.12.4-libressl.patch
+)
+
 QT5_TARGET_SUBDIRS=(
 	src/network
 	src/plugins/bearer/generic
 )
 
 QT5_GENTOO_CONFIG=(
-	libproxy
+	libproxy:libproxy:
 	ssl::SSL
 	ssl::OPENSSL
 	ssl:openssl-linked:LINKED_OPENSSL
@@ -50,20 +56,12 @@ pkg_setup() {
 	use networkmanager && QT5_TARGET_SUBDIRS+=(src/plugins/bearer/networkmanager)
 }
 
-src_prepare() {
-	has_version '>=dev-libs/libressl-2.8.0' && \
-		eapply "${FILESDIR}/${P}-libressl-2.8.patch"
-
-	has_version '<dev-libs/libressl-2.8.0' && \
-		eapply "${FILESDIR}/${P}-libressl-2.6.patch"
-
-	qt5-build_src_prepare
-}
-
 src_configure() {
 	local myconf=(
-		$(use connman || use networkmanager && echo -dbus-linked)
+		$(usex connman -dbus-linked '')
 		$(qt_use libproxy)
+		$(usex networkmanager -dbus-linked '')
+		$(qt_use sctp)
 		$(usex ssl -openssl-linked '')
 	)
 	qt5-build_src_configure
