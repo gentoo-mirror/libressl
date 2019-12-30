@@ -23,6 +23,7 @@ dev-util/electron:tcmalloc - Use bundled tcmalloc instead of system malloc
 net-libs/nodejs:bundled-ssl - Use bundled version of OpenSSL (hack)
 net-libs/nodejs:inspector - Enable V8 inspector
 net-libs/nodejs:npm - Enable NPM package manager
+net-libs/nodejs:pax_kernel - Enable building under a PaX enabled kernel
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
 net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
 net-mail/fetchmail:socks - Enable support for socks proxy
