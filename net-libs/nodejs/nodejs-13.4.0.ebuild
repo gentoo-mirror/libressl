@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="bundled-ssl cpu_flags_x86_sse2 debug doc icu inspector libressl +npm +snapshot +ssl systemtap test"
+IUSE="bundled-ssl cpu_flags_x86_sse2 debug doc icu inspector libressl +npm pax_kernel +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	bundled-ssl? ( ssl )
 	inspector? ( icu ssl )
@@ -24,7 +24,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.33.1:=
+	>=dev-libs/libuv-1.34.0:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
@@ -37,6 +37,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
+	pax_kernel? ( sys-apps/elfix )
 "
 DEPEND="
 	${RDEPEND}
@@ -44,6 +45,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 )
+RESTRICT="test"
 S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
@@ -62,9 +64,6 @@ src_prepare() {
 	# fix compilation on Darwin
 	# https://code.google.com/p/gyp/issues/detail?id=260
 	sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
-
-	# make sure we use python2.* while using gyp
-	sed -i -e "s/python/${EPYTHON}/" deps/npm/node_modules/node-gyp/gyp/gyp || die
 
 	# less verbose install output (stating the same as portage, basically)
 	sed -i -e "/print/d" tools/install.py || die
@@ -91,6 +90,9 @@ src_prepare() {
 		sed -i -e "s|out/Release/|out/Debug/|g" tools/install.py || die
 		BUILDTYPE=Debug
 	fi
+
+	# We need to disable mprotect on two files when it builds Bug 694100.
+	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.2.0-paxmarking.patch )
 
 	default
 }
@@ -122,7 +124,7 @@ src_configure() {
 	GYP_DEFINES="linux_use_gold_flags=0
 		linux_use_bundled_binutils=0
 		linux_use_bundled_gold=0" \
-	"${PYTHON}" configure \
+	"${EPYTHON}" configure.py \
 		--prefix="${EPREFIX}"/usr \
 		--dest-cpu=${myarch} \
 		$(use_with systemtap dtrace) \
@@ -130,8 +132,6 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C out mksnapshot
-	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
 }
 
@@ -195,7 +195,7 @@ src_install() {
 
 src_test() {
 	out/${BUILDTYPE}/cctest || die
-	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
 }
 
 pkg_postinst() {
