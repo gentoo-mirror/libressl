@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads"
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_REQ_USE="threads(+)"
 inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x64-macos"
 IUSE="bundled-ssl cpu_flags_x86_sse2 debug doc icu inspector libressl +npm +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	bundled-ssl? ( ssl )
@@ -24,7 +24,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.31.0:=
+	>=dev-libs/libuv-1.33.1:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/http-parser-2.9.0:=
 	>=net-libs/nghttp2-1.39.2
@@ -34,16 +34,19 @@ RDEPEND="
 		!bundled-ssl? ( >=dev-libs/openssl-1.1.1:0= )
 	)
 "
-DEPEND="
-	${RDEPEND}
+BDEPEND="
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
+"
+DEPEND="
+	${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
+RESTRICT="test"
 S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
@@ -62,9 +65,6 @@ src_prepare() {
 	# fix compilation on Darwin
 	# https://code.google.com/p/gyp/issues/detail?id=260
 	sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
-
-	# make sure we use python2.* while using gyp
-	sed -i -e "s/python/${EPYTHON}/" deps/npm/node_modules/node-gyp/gyp/gyp || die
 
 	# less verbose install output (stating the same as portage, basically)
 	sed -i -e "/print/d" tools/install.py || die
@@ -99,7 +99,10 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf=(
-		--shared-cares --shared-http-parser --shared-libuv --shared-nghttp2
+		--shared-cares
+		--shared-http-parser
+		--shared-libuv
+		--shared-nghttp2
 		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
@@ -123,7 +126,7 @@ src_configure() {
 	GYP_DEFINES="linux_use_gold_flags=0
 		linux_use_bundled_binutils=0
 		linux_use_bundled_gold=0" \
-	"${PYTHON}" configure \
+	"${EPYTHON}" configure.py \
 		--prefix="${EPREFIX}"/usr \
 		--dest-cpu=${myarch} \
 		$(use_with systemtap dtrace) \
@@ -150,11 +153,6 @@ src_install() {
 	done
 
 	if use doc; then
-		# Patch docs to make them offline readable
-		for i in `grep -rl 'fonts.googleapis.com' "${S}"/out/doc/api/*`; do
-			sed -i '/fonts.googleapis.com/ d' $i;
-		done
-		# Install docs
 		docinto html
 		dodoc -r "${S}"/doc/*
 	fi
