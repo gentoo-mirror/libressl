@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="bundled-ssl cpu_flags_x86_sse2 debug doc icu inspector libressl +npm pax_kernel +snapshot +ssl systemtap test"
+IUSE="bundled-ssl cpu_flags_x86_sse2 debug doc icu inspector libressl +npm +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	bundled-ssl? ( ssl )
 	inspector? ( icu ssl )
@@ -24,8 +24,9 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.34.0:=
+	>=dev-libs/libuv-1.33.1:=
 	>=net-dns/c-ares-1.15.0
+	>=net-libs/http-parser-2.9.3:=
 	>=net-libs/nghttp2-1.40.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
@@ -37,13 +38,13 @@ BDEPEND="
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
-	pax_kernel? ( sys-apps/elfix )
 "
 DEPEND="
 	${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
 RESTRICT="test"
 S="${WORKDIR}/node-v${PV}"
@@ -91,9 +92,6 @@ src_prepare() {
 		BUILDTYPE=Debug
 	fi
 
-	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.2.0-paxmarking.patch )
-
 	default
 }
 
@@ -101,13 +99,17 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf=(
-		--shared-cares --shared-libuv --shared-nghttp2 --shared-zlib
+		--shared-cares
+		--shared-http-parser
+		--shared-libuv
+		--shared-nghttp2
+		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
-	use snapshot && myconf+=( --with-snapshot )
+	use snapshot || myconf+=( --without-node-snapshot )
 	use ssl && ( use bundled-ssl || myconf+=( --shared-openssl --openssl-use-def-ca-store ) ) || myconf+=( --without-ssl )
 
 	local myarch=""
@@ -132,6 +134,8 @@ src_configure() {
 }
 
 src_compile() {
+	emake -C out mksnapshot
+	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
 }
 
@@ -195,7 +199,7 @@ src_install() {
 
 src_test() {
 	out/${BUILDTYPE}/cctest || die
-	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
 }
 
 pkg_postinst() {
