@@ -1,4 +1,4 @@
-app-crypt/qca 2.2.1: Qt Cryptographic Architecture (QCA)
+app-crypt/qca 2.2.1 2.3.0: Qt Cryptographic Architecture (QCA)
 dev-qt/qtnetwork 5.12.3 5.12.5 5.13.2 5.14.0 5.14.1: Network abstraction library for the Qt5 framework
 dev-util/electron 2.0.10: Cross platform application development framework based on web technologies
 net-libs/nodejs 10.19.0 12.14.0 12.16.0 12.16.1 13.8.0 13.9.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
