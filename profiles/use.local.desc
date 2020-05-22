@@ -15,18 +15,6 @@ dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
 dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
 dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
 dev-qt/qtnetwork:networkmanager - Enable net-misc/networkmanager-based bearer plugin
-dev-util/electron:gconf - Use gnome-base/gconf
-dev-util/electron:lto - Build with link time optimization enabled
-dev-util/electron:pic - Disable optimized assembly code that is not PIC friendly
-dev-util/electron:proprietary-codecs - Enable proprietary codecs like H.264, MP3
-dev-util/electron:system-ffmpeg - Use system ffmpeg instead of the bundled one
-dev-util/electron:tcmalloc - Use bundled tcmalloc instead of system malloc
-net-libs/nodejs:bundled-ssl - Use bundled version of OpenSSL (hack)
-net-libs/nodejs:inspector - Enable V8 inspector
-net-libs/nodejs:npm - Enable NPM package manager
-net-libs/nodejs:pax_kernel - Enable building under a PaX enabled kernel
-net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
-net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
 net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
