@@ -15,8 +15,6 @@ dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
 dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
 dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
 dev-qt/qtnetwork:networkmanager - Enable net-misc/networkmanager-based bearer plugin
-net-mail/fetchmail:socks - Enable support for socks proxy
-net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
 net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
 net-misc/aria2:libuv - Use dev-libs/libuv backend.
 net-misc/aria2:libxml2 - Use dev-libs/libxml2 for XML parsing (preferred) instead of dev-libs/expat.
@@ -24,11 +22,6 @@ net-misc/aria2:metalink - Enable support for metalink.
 net-misc/aria2:nettle - Use dev-libs/nettle and dev-libs/gmp for bittorrent/metalink crypto instead of dev-libs/libgcrypt (when dev-libs/openssl is not being used).
 net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality.
 net-misc/aria2:ssh - Enable SFTP support.
-net-vpn/openconnect:gssapi - Build GSSAPI support
-net-vpn/openconnect:java - Build JNI bindings using jni.h
-net-vpn/openconnect:libproxy - Enable proxy support
-net-vpn/openconnect:lz4 - Enable support for lz4 compression
-net-vpn/openconnect:stoken - Enable stoken support
 net-wireless/aircrack-ng:airdrop-ng - Build airdrop-ng
 net-wireless/aircrack-ng:airgraph-ng - Build airgraph-ng
 net-wireless/aircrack-ng:experimental - Build the "experimental" tools which may randomly fail to run properly
