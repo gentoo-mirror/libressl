@@ -1,5 +1,5 @@
 app-crypt/qca 2.2.1 2.3.0: Qt Cryptographic Architecture (QCA)
-dev-qt/qtnetwork 5.14.1 5.14.2 5.15.0: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.14.2 5.15.0: Network abstraction library for the Qt5 framework
 net-misc/aria2 1.34.0-r1: A download utility with segmented downloading with BitTorrent support
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/hostapd 2.6: IEEE 802.11 wireless LAN Host AP daemon
