@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake qmake-utils
+inherit kde.org cmake qmake-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="https://userbase.kde.org/QCA"
@@ -11,9 +11,9 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="botan debug doc examples gcrypt gpg libressl logger nss pkcs11 sasl softstore +ssl test"
+
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -26,13 +26,13 @@ RDEPEND="
 	gpg? ( app-crypt/gnupg )
 	nss? ( dev-libs/nss )
 	pkcs11? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( >=dev-libs/openssl-1.1 )
+		libressl? ( dev-libs/libressl:0= )
 		dev-libs/pkcs11-helper
 	)
 	sasl? ( dev-libs/cyrus-sasl:2 )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1:0= )
+		!libressl? ( >=dev-libs/openssl-1.1:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 "
@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-disable-pgp-test.patch"
-	"${FILESDIR}/${PN}-2.2.0-libressl.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 qca_plugin_use() {
