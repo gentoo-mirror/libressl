@@ -2,6 +2,23 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+app-admin/conserver:freeipmi - Compile in FreeIPMI support via sys-libs/freeipmi
+app-arch/libarchive:blake2 - Enable Blake2 hash support via app-crypt/libb2.
+app-arch/libarchive:bzip2 - Allow accessing bzip2-compressed archives through libbz2 (which comes with app-arch/bzip2). This only affects libarchive's native support: bsdtar will keep using bunzip2 as a filter if that's not built-in.
+app-arch/libarchive:e2fsprogs - Use file flags from sys-fs/e2fsprogs headers instead of virtual/os-headers headers
+app-arch/libarchive:nettle - Use dev-libs/nettle as crypto backend
+app-arch/libarchive:zlib - Allow accessing gzip-compressed archives through sys-libs/zlib. This only affects libarchive's native support: bsdtar will keep using gunzip as a filter if that's not built-in. It's also needed for supporting extraction of ZIP files.
+app-backup/bacula:bacula-clientonly - Disable DB support, and just build a client
+app-backup/bacula:bacula-nodir - Disable building of director
+app-backup/bacula:bacula-nosd - Disable building of storage daemon
+app-backup/bacula:batch-insert - Enable batch insert into data base
+app-backup/bacula:logwatch - Install support files for logwatch
+app-benchmarks/httperf:idleconn - Build with the idleconn program
+app-crypt/mit-krb5:doc - Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos
+app-crypt/mit-krb5:keyutils - Enable for the keyring ccache using keyutils
+app-crypt/mit-krb5:lmdb - Add support for using dev-db/lmdb for lookup tables
+app-crypt/mit-krb5:openldap - Enable support for ldap as a database backend
+app-crypt/mit-krb5:pkinit - Enable pkinit support for the initial ticket
 app-crypt/qca:botan - Enable botan plugin
 app-crypt/qca:gcrypt - Enable gcrypt plugin
 app-crypt/qca:gpg - Enable GnuPG plugin
@@ -10,11 +27,66 @@ app-crypt/qca:nss - Enable NSS plugin
 app-crypt/qca:pkcs11 - Enable PKCS#11 plugin
 app-crypt/qca:sasl - Enable SASL plugin
 app-crypt/qca:softstore - Enable softstore plugin
+app-crypt/tpm-tools:pkcs11 - Build Token data management utilities based on OpenCryptoki's (dev-libs/opencryptoki) PKCS#11 implementation.
+app-crypt/tpm2-tools:fapi - Enable feature API tools
+dev-db/mysql-connector-c++:gcov - Build coverage support
+dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
+dev-lang/rust:clippy - Install clippy, Rust code linter
+dev-lang/rust:miri - Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly)
+dev-lang/rust:nightly - Enable nightly (UNSTABLE) features
+dev-lang/rust:parallel-compiler - Build a multi-threaded rustc
+dev-lang/rust:rls - Install rls, Rust Language Server (used with IDEs supporting RLS protocol)
+dev-lang/rust:rustfmt - Install rustfmt, Rust code formatter
+dev-lang/rust:system-bootstrap - Bootstrap using installed rust compiler
+dev-lang/rust:system-llvm - Use the system LLVM install
+dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
+dev-libs/softhsm:gost - Enable gost algorithm
+dev-libs/softhsm:migration-tool - Build db migration tool
 dev-qt/qtnetwork:bindist - Disable EC support via dev-libs/openssl
 dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
 dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
 dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
 dev-qt/qtnetwork:networkmanager - Enable net-misc/networkmanager-based bearer plugin
+dev-util/cargo-audit:fix - Add support for 'fix' subcommand (experimental)
+mail-filter/opendkim:ldap - Enable openldap as a dataset facilitator or keys, determining domains to sign for, and any other dataset that opendkim supports.
+mail-filter/opendkim:lmdb - Add support for using dev-db/lmdb
+mail-filter/opendkim:lua - Enables control over signature verification, filtering and policy to be controlled by user defined lua scripts.
+mail-filter/opendkim:memcached - Add support for using dev-libs/libmemcached
+mail-filter/opendkim:opendbx - Use opendbx backend to facilitate dataset driven OpenDKIM configuration options like stats, bodylengthdb, etc. against a wide variety of database types
+mail-filter/opendkim:poll - Use poll() instead of select() for the provided asynchronous resolver library.
+mail-filter/opendkim:querycache - Add support for query caching (requires 'berkdb' flag)
+mail-filter/opendkim:sasl - Used to authenticate to a LDAP server in various ways if required.
+mail-filter/opendkim:stats - Add support for statistics (requires 'opendbx' flag)
+mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DNS queries.
+mail-mta/postfix:dovecot-sasl - Enable net-mail/dovecot protocol version 1 (server only) SASL implementation
+mail-mta/postfix:eai - Add support for SMTPUTF8
+mail-mta/postfix:ldap-bind - Add support for binding to LDAP backend using dev-libs/cyrus-sasl
+mail-mta/postfix:lmdb - Add support for using dev-db/lmdb for lookup tables
+mail-mta/postfix:memcached - Add support for using net-misc/memcached for lookup tables
+net-analyzer/ettercap:plugins - Install ettercap plugins (et_*.so)
+net-dialup/freeradius:memcached - Include dev-libs/libmemcached in caching drivers
+net-dialup/freeradius:mongodb - Include support for MongoDB database
+net-dialup/freeradius:pcap - Build the RADIUS sniffer which requires net-libs/libpcap.
+net-dialup/freeradius:redis - Include support for Redis database
+net-dialup/freeradius:rest - Include support for sending and receiving HTTP requests
+net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies script and its run-time dependencies
+net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
+net-libs/pjproject:amr - Inlcude AMR codec in the build
+net-libs/pjproject:epoll - Use /dev/epoll ioqueue on Linux (experimental)
+net-libs/pjproject:g711 - Include G.711 codecs in the build
+net-libs/pjproject:g722 - Include G.722 codec in the build
+net-libs/pjproject:g7221 - Include G.722.1 codec in the build
+net-libs/pjproject:g729 - Include G.729 codec via net-libs/bcg729
+net-libs/pjproject:ilbc - Include iLBC codec in the build
+net-libs/pjproject:l16 - Include Linear/L16 codec family in the build
+net-libs/pjproject:libyuv - Include libyuv in the build
+net-libs/pjproject:openh264 - Include Open H.264 support in the build
+net-libs/pjproject:resample - Include resampling implementations in the build
+net-libs/pjproject:silk - Include SILK support in the build
+net-libs/pjproject:v4l2 - Include Video4Linux v2 support in the build
+net-libs/pjproject:vpx - Include VP8 and VP9 codec support in the build
+net-libs/pjproject:webrtc - Enable WebRTC support
+net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible functional interface. This USE flag is only needed with GCC earlier than version 4.1, or with other compilares not providing said interface.
 net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
 net-misc/aria2:libuv - Use dev-libs/libuv backend.
 net-misc/aria2:libxml2 - Use dev-libs/libxml2 for XML parsing (preferred) instead of dev-libs/expat.
@@ -22,20 +94,60 @@ net-misc/aria2:metalink - Enable support for metalink.
 net-misc/aria2:nettle - Use dev-libs/nettle and dev-libs/gmp for bittorrent/metalink crypto instead of dev-libs/libgcrypt (when dev-libs/openssl is not being used).
 net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality.
 net-misc/aria2:ssh - Enable SFTP support.
+net-misc/ntp:openntpd - Allow ntp to be installed alongside openntpd
+net-misc/ntp:parse-clocks - Add support for PARSE clocks
+net-misc/ntp:samba - Provide support for Samba's signing daemon (needed for Active Directory domain controllers)
+net-misc/openssh:X509 - Adds support for X.509 certificate authentication
+net-misc/openssh:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
+net-misc/openssh:hpn - Enable high performance ssh
+net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
+net-misc/openssh:livecd - Enable root password logins for live-cd environment.
+net-misc/openssh:scp - Enable scp command with known security problems. See bug 733802
+net-misc/openssh:security-key - Include builtin U2F/FIDO support
+net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
+net-misc/openssh:xmss - Enable XMSS post-quantum authentication algorithm
+net-misc/rdesktop:kerberos - Enable CredSPP support + Kerberos authentication
+net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
+net-misc/rdesktop:xrandr - Enable XRandR window extension support
+net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
+net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
+net-nds/openldap:experimental - Enable experimental backend options
+net-nds/openldap:kinit - Enable support for kerberos init
+net-nds/openldap:minimal - Build libraries & userspace tools only. Does not install any server code
+net-nds/openldap:odbc - Enable ODBC and SQL backend options
+net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
+net-nds/openldap:pbkdf2 - Enable support for pbkdf2 passwords
+net-nds/openldap:sha2 - Enable support for pw-sha2 password hashes
+net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
+net-voip/telepathy-gabble:jingle - Enable voice calls for jabber
+net-voip/telepathy-gabble:plugins - Enable plugin loader
 net-wireless/aircrack-ng:airdrop-ng - Build airdrop-ng
 net-wireless/aircrack-ng:airgraph-ng - Build airgraph-ng
 net-wireless/aircrack-ng:experimental - Build the "experimental" tools which may randomly fail to run properly
 net-wireless/aircrack-ng:netlink - Use netlink for channel control instead of WEXT
 net-wireless/aircrack-ng:unstable - Build the "unstable" tools which may randomly fail to run properly
+net-wireless/crda:gcrypt - Use libgcrypt instead of openssl for key checking
 net-wireless/hostapd:crda - Add CRDA support
+net-wireless/hostapd:internal-tls - Use internal TLSv1 implementation instead of depending on OpenSSL, LibreSSL or GnuTLS
 net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
 net-wireless/hostapd:sqlite - Adding sqlite support
+net-wireless/hostapd:suiteb - Adding support for NSA Suite B Cryptography
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
+sys-boot/vboot-utils:libzip - Use dev-libs/libzip.
 sys-cluster/keepalived:json - compile with signal to dump configuration and stats as JSON.
+www-servers/apache:static - Link in apache2 modules statically rather then plugins
+www-servers/apache:suexec - Install suexec with apache
+www-servers/apache:suexec-caps - Install suexec with capabilities instead of SUID
+www-servers/apache:suexec-syslog - Log suexec to syslog instead of to a separate file
+www-servers/h2o:libh2o - Build and install libh2o
+www-servers/h2o:mruby - Enable support for mruby
 x11-apps/igt-gpu-tools:X - Enable intel-gpu-overlay xlib/cairo backend
 x11-apps/igt-gpu-tools:chamelium - Enables support for building Chamelium tests
 x11-apps/igt-gpu-tools:man - Build and install man pages
 x11-apps/igt-gpu-tools:overlay - Build the intel-gpu-overlay utility
 x11-apps/igt-gpu-tools:valgrind - Support valgrind annotations
 x11-apps/igt-gpu-tools:xv - Enable intel-gpu-overlay xv backend
+x11-misc/x11vnc:xdamage - Enable support for the Xdamage library
+x11-misc/x11vnc:xfixes - Enable support for the Xfixes library
+x11-misc/x11vnc:xrandr - Enable support for the X xrandr extension
