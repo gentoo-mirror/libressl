@@ -128,6 +128,24 @@ net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
 net-wireless/hostapd:sqlite - Adding sqlite support
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
+net-wireless/wpa_supplicant:ap - Add support for access point mode
+net-wireless/wpa_supplicant:broadcom-sta - Flag to help users disable features not supported by broadcom-sta driver
+net-wireless/wpa_supplicant:eap-sim - Add support for EAP-SIM authentication algorithm
+net-wireless/wpa_supplicant:eapol-test - Build and install eapol_test binary
+net-wireless/wpa_supplicant:fasteap - Add support for FAST-EAP authentication algorithm
+net-wireless/wpa_supplicant:fils - Add support for Fast Initial Link Setup (802.11ai)
+net-wireless/wpa_supplicant:hs2-0 - Add support for 802.11u and Passpoint for HotSpot 2.0
+net-wireless/wpa_supplicant:macsec - Add support for wired macsec
+net-wireless/wpa_supplicant:mbo - Add support Multiband Operation
+net-wireless/wpa_supplicant:mesh - Add support for mesh mode
+net-wireless/wpa_supplicant:p2p - Add support for Wi-Fi Direct mode
+net-wireless/wpa_supplicant:privsep - Enable wpa_priv privledge separation binary
+net-wireless/wpa_supplicant:ps3 - Add support for ps3 hypervisor driven gelic wifi
+net-wireless/wpa_supplicant:smartcard - Add support for smartcards
+net-wireless/wpa_supplicant:tdls - Add support for Tunneled Direct Link Setup (802.11z)
+net-wireless/wpa_supplicant:uncommon-eap-types - Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE
+net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm
+net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
 sys-cluster/keepalived:json - compile with signal to dump configuration and stats as JSON.
 www-servers/apache:static - Link in apache2 modules statically rather then plugins
 www-servers/apache:suexec - Install suexec with apache

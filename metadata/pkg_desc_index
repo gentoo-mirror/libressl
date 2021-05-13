@@ -48,6 +48,7 @@ net-news/newsboat 2.20.1: An RSS/Atom feed reader for text terminals
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
 net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/hostapd 2.6 2.9-r3: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/wpa_supplicant 2.9-r2: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
 sys-boot/vboot-utils 72_p20181229-r1: Chrome OS verified boot tools
 sys-cluster/keepalived 1.4.0-r1: A strong & robust keepalive facility to the Linux Virtual Server project
