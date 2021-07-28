@@ -30,6 +30,8 @@ app-crypt/qca:softstore - Enable softstore plugin
 app-crypt/tpm-tools:pkcs11 - Build Token data management utilities based on OpenCryptoki's (dev-libs/opencryptoki) PKCS#11 implementation.
 app-crypt/tpm2-tools:fapi - Enable feature API tools
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
+dev-lang/python:bluetooth - Build Bluetooth protocol support in socket module
+dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
 dev-lang/rust:clippy - Install clippy, Rust code linter
 dev-lang/rust:miri - Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly)
 dev-lang/rust:nightly - Enable nightly (UNSTABLE) features
