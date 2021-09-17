@@ -11,6 +11,6 @@ PDEPEND=app-misc/ca-certificates
 REQUIRED_USE=test? ( static-libs )
 RESTRICT=!test? ( test )
 SLOT=0/48
-SRC_URI=https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.4.tar.gz
+SRC_URI=https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.4.0.tar.gz
 _eclasses_=multibuild	05a584848db4901c97fcd94ae7cc3a97	multilib	4b66d835ec72e021e359bb81eacfe988	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	multilib-build	19ec165e9adcaa4c132b9e3fe3e7f556	multilib-minimal	be5919734a8448dddd49c2b26db45091	libtool	241a8f577b9781a42a7421e53448a44e
 _md5_=92503fa2f4a169d0a688a35e0bda435e

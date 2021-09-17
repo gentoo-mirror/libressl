@@ -17,7 +17,7 @@ dev-db/sqlcipher 3.4.2: Full Database Encryption for SQLite
 dev-lang/python 3.9.6_p1: An interpreted, interactive, object-oriented programming language
 dev-lang/rust 1.52.1 1.53.0 1.54.0: Systems programming language from Mozilla
 dev-libs/libp11 0.4.11: Abstraction layer to simplify PKCS#11 API
-dev-libs/libressl 3.2.6 3.3.4: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 3.2.6 3.4.0: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
 dev-libs/libstrophe 0.9.2: A simple, lightweight C library for writing XMPP clients
 dev-libs/mongo-c-driver 1.12.0: Client library written in C for MongoDB
