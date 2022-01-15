@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing \
-	multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
+	multilib multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -19,7 +19,7 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
@@ -41,7 +41,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="clippy cpu_flags_x86_sse2 debug doc miri nightly parallel-compiler rls rustfmt system-bootstrap system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="clippy cpu_flags_x86_sse2 debug doc miri nightly parallel-compiler rls rustfmt rust-src system-bootstrap system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
 
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling more than one slot
@@ -49,7 +49,7 @@ IUSE="clippy cpu_flags_x86_sse2 debug doc miri nightly parallel-compiler rls rus
 
 # How to use it:
 # List all the working slots in LLVM_VALID_SLOTS, newest first.
-LLVM_VALID_SLOTS=( 12 )
+LLVM_VALID_SLOTS=( 13 )
 LLVM_MAX_SLOT="${LLVM_VALID_SLOTS[0]}"
 
 # splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
@@ -74,12 +74,14 @@ LLVM_DEPEND+=" )
 # for example 1.47.x, requires at least 1.46.x, 1.47.x is ok,
 # but it fails to bootstrap with 1.48.x
 # https://github.com/rust-lang/rust/blob/${PV}/src/stage0.txt
+RUST_DEP_PREV="$(ver_cut 1).$(($(ver_cut 2) - 1))*"
+RUST_DEP_CURR="$(ver_cut 1).$(ver_cut 2)*"
 BOOTSTRAP_DEPEND="||
 	(
-		=dev-lang/rust-$(ver_cut 1).$(($(ver_cut 2) - 1))*
-		=dev-lang/rust-bin-$(ver_cut 1).$(($(ver_cut 2) - 1))*
-		=dev-lang/rust-$(ver_cut 1).$(ver_cut 2)*
-		=dev-lang/rust-bin-$(ver_cut 1).$(ver_cut 2)*
+		=dev-lang/rust-"${RUST_DEP_PREV}"
+		=dev-lang/rust-bin-"${RUST_DEP_PREV}"
+		=dev-lang/rust-"${RUST_DEP_CURR}"
+		=dev-lang/rust-bin-"${RUST_DEP_CURR}"
 	)
 "
 
@@ -95,7 +97,7 @@ BDEPEND="${PYTHON_DEPS}
 		dev-util/ninja
 	)
 	test? ( sys-devel/gdb )
-	verify-sig? ( app-crypt/openpgp-keys-rust )
+	verify-sig? ( sec-keys/openpgp-keys-rust )
 "
 
 DEPEND="
@@ -117,12 +119,13 @@ RDEPEND="${DEPEND}
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 	miri? ( nightly )
 	parallel-compiler? ( nightly )
+	rls? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
 	wasm? ( llvm_targets_WebAssembly )
 	x86? ( cpu_flags_x86_sse2 )
 "
 
-# we don't use cmake.eclass, but can get a warnings
+# we don't use cmake.eclass, but can get a warning
 CMAKE_WARN_UNUSED_CLI=no
 
 QA_FLAGS_IGNORED="
@@ -138,6 +141,9 @@ QA_SONAME="
 	usr/lib/${PN}/${PV}/lib/rustlib/.*/lib/lib.*.so
 "
 
+QA_PRESTRIPPED="
+	usr/lib/rust/${PV}/lib/rustlib/.*/bin/rust-llvm-dwp
+"
 # An rmeta file is custom binary format that contains the metadata for the crate.
 # rmeta files do not support linking, since they do not contain compiled object files.
 # so we can safely silence the warning for this QA check.
@@ -149,10 +155,9 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
-	"${FILESDIR}"/1.47.0-libressl.patch
-	"${FILESDIR}"/1.47.0-ignore-broken-and-non-applicable-tests.patch
+	"${FILESDIR}"/1.55.0-libressl.patch
+	"${FILESDIR}"/1.55.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.49.0-gentoo-musl-target-specs.patch
-	"${FILESDIR}"/1.51.0-slow-doc-install.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
@@ -186,7 +191,7 @@ bootstrap_rust_version_check() {
 }
 
 pre_build_checks() {
-	local M=8192
+	local M=4096
 	# multiply requirements by 1.5 if we are doing x86-multilib
 	if use amd64; then
 		M=$(( $(usex abi_x86_32 15 10) * ${M} / 10 ))
@@ -264,7 +269,7 @@ src_configure() {
 		if use system-llvm; then
 			# un-hardcode rust-lld linker for this target
 			# https://bugs.gentoo.org/715348
-			sed -i '/linker:/ s/rust-lld/wasm-ld/' compiler/rustc_target/src/spec/wasm32_base.rs || die
+			sed -i '/linker:/ s/rust-lld/wasm-ld/' compiler/rustc_target/src/spec/wasm_base.rs || die
 		fi
 	fi
 	rust_targets="${rust_targets#,}"
@@ -277,10 +282,13 @@ src_configure() {
 		tools="\"miri\",$tools"
 	fi
 	if use rls; then
-		tools="\"rls\",\"analysis\",\"src\",$tools"
+		tools="\"rls\",\"analysis\",$tools"
 	fi
 	if use rustfmt; then
 		tools="\"rustfmt\",$tools"
+	fi
+	if use rust-src; then
+		tools="\"src\",$tools"
 	fi
 
 	local rust_stage0_root
@@ -297,6 +305,7 @@ src_configure() {
 	rust_target="$(rust_abi)"
 
 	cat <<- _EOF_ > "${S}"/config.toml
+		changelog-seen = 2
 		[llvm]
 		download-ci-llvm = false
 		optimize = $(toml_usex !debug)
@@ -307,6 +316,9 @@ src_configure() {
 		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
 		[build]
+		build-stage = 2
+		test-stage = 2
+		doc-stage = 2
 		build = "${rust_target}"
 		host = ["${rust_target}"]
 		target = [${rust_targets}]
@@ -378,10 +390,11 @@ src_configure() {
 
 		cat <<- _EOF_ >> "${S}"/config.toml
 			[target.${rust_target}]
-			cc = "$(tc-getBUILD_CC)"
-			cxx = "$(tc-getBUILD_CXX)"
-			linker = "$(tc-getCC)"
 			ar = "$(tc-getAR)"
+			cc = "$(tc-getCC)"
+			cxx = "$(tc-getCXX)"
+			linker = "$(tc-getCC)"
+			ranlib = "$(tc-getRANLIB)"
 		_EOF_
 		# librustc_target/spec/linux_musl_base.rs sets base.crt_static_default = true;
 		if use elibc_musl; then
@@ -444,10 +457,11 @@ src_configure() {
 
 		cat <<- _EOF_ >> "${S}"/config.toml
 			[target.${cross_rust_target}]
+			ar = "${cross_toolchain}-ar"
 			cc = "${cross_toolchain}-gcc"
 			cxx = "${cross_toolchain}-g++"
 			linker = "${cross_toolchain}-gcc"
-			ar = "${cross_toolchain}-ar"
+			ranlib = "${cross_toolchain}-ranlib"
 		_EOF_
 		if use system-llvm; then
 			cat <<- _EOF_ >> "${S}"/config.toml
@@ -486,9 +500,10 @@ src_configure() {
 
 	einfo "Rust configured with the following flags:"
 	echo
-	echo "RUSTFLAGS=\"${RUSTFLAGS:-}\""
-	echo "RUSTFLAGS_BOOTSTRAP=\"${RUSTFLAGS_BOOTSTRAP:-}\""
-	echo "RUSTFLAGS_NOT_BOOTSTRAP=\"${RUSTFLAGS_NOT_BOOTSTRAP:-}\""
+	echo RUSTFLAGS="${RUSTFLAGS:-}"
+	echo RUSTFLAGS_BOOTSTRAP="${RUSTFLAGS_BOOTSTRAP:-}"
+	echo RUSTFLAGS_NOT_BOOTSTRAP="${RUSTFLAGS_NOT_BOOTSTRAP:-}"
+	env | grep "CARGO_TARGET_.*_RUSTFLAGS="
 	cat "${S}"/config.env || die
 	echo
 	einfo "config.toml contents:"
@@ -501,7 +516,7 @@ src_compile() {
 	(
 	IFS=$'\n'
 	env $(cat "${S}"/config.env) RUST_BACKTRACE=1\
-		"${EPYTHON}" ./x.py dist -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+		"${EPYTHON}" ./x.py build -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
 	)
 }
 
@@ -565,7 +580,7 @@ src_install() {
 	(
 	IFS=$'\n'
 	env $(cat "${S}"/config.env) DESTDIR="${D}" \
-		"${EPYTHON}" ./x.py install -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+		"${EPYTHON}" ./x.py install	-vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
 	)
 
 	# bug #689562, #689160
