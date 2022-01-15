@@ -14,8 +14,8 @@ dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-re
 dev-db/mysql-connector-c 8.0.22: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 8.0.19 8.0.20 8.0.21 8.0.22: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/sqlcipher 3.4.2: Full Database Encryption for SQLite
-dev-lang/python 3.9.9: An interpreted, interactive, object-oriented programming language
-dev-lang/rust 1.52.1 1.53.0 1.54.0 1.55.0 1.56.1 1.57.0: Systems programming language from Mozilla
+dev-lang/python 3.9.9-r1: An interpreted, interactive, object-oriented programming language
+dev-lang/rust 1.53.0 1.54.0 1.55.0 1.56.1 1.57.0 1.58.0: Systems programming language from Mozilla
 dev-libs/libp11 0.4.11: Abstraction layer to simplify PKCS#11 API
 dev-libs/libressl 3.2.7 3.3.5 3.4.2: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
