@@ -56,7 +56,6 @@ sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
 sys-boot/vboot-utils 72_p20181229-r1: Chrome OS verified boot tools
 sys-cluster/keepalived 1.4.0-r1: A strong & robust keepalive facility to the Linux Virtual Server project
 www-client/w3mmee 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
-www-servers/apache 2.4.46 2.4.46-r1 2.4.46-r4: The Apache Web Server
 www-servers/h2o 2.2.6: H2O - the optimized HTTP/1, HTTP/2 server
 x11-apps/igt-gpu-tools 1.23-r1: Intel GPU userland tools
 x11-misc/qterm 0.7.1 0.7.3: A BBS client based on Qt
