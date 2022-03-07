@@ -149,10 +149,6 @@ net-wireless/wpa_supplicant:uncommon-eap-types - Add support for GPSK, SAKE, GPS
 net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
 sys-cluster/keepalived:json - compile with signal to dump configuration and stats as JSON.
-www-servers/apache:static - Link in apache2 modules statically rather then plugins
-www-servers/apache:suexec - Install suexec with apache
-www-servers/apache:suexec-caps - Install suexec with capabilities instead of SUID
-www-servers/apache:suexec-syslog - Log suexec to syslog instead of to a separate file
 www-servers/h2o:libh2o - Build and install libh2o
 www-servers/h2o:mruby - Enable support for mruby
 x11-apps/igt-gpu-tools:X - Enable intel-gpu-overlay xlib/cairo backend
