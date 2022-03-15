@@ -41,6 +41,12 @@ dev-lang/rust:rustfmt - Install rustfmt, Rust code formatter
 dev-lang/rust:system-bootstrap - Bootstrap using installed rust compiler
 dev-lang/rust:system-llvm - Use the system LLVM install
 dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
+dev-libs/libevent:clock-gettime - Disable use of clock_gettime even if it is available
+dev-libs/libevent:debug - Support for running in debug mode
+dev-libs/libevent:malloc-replacement - Support for replacing the memory management functions
+dev-libs/libevent:mbedtls - Support for net-libs/mbedtls encryption
+dev-libs/libevent:ssl - Support for dev-libs/openssl encryption
+dev-libs/libevent:verbose-debug - Support for verbose debug logging
 dev-libs/libp11:doc - Generate and install API documentation for the package.
 dev-libs/libressl:asm - Enables assembly
 dev-libs/openssl:asm - Enables assembly
