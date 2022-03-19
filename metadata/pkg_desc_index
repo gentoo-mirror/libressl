@@ -50,6 +50,7 @@ net-misc/stunnel 5.50-r1: TLS/SSL - Port Wrapper
 net-nds/openldap 2.4.56: LDAP suite of application and development tools
 net-news/newsboat 2.20.1: An RSS/Atom feed reader for text terminals
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
+net-vpn/tor 0.4.6.7: Anonymizing overlay network for TCP
 net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/hostapd 2.6 2.9-r3: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.9-r5 2.9-r8 2.10-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
