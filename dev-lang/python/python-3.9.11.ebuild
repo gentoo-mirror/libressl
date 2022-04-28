@@ -199,7 +199,15 @@ src_configure() {
 		$(use_enable pgo optimizations)
 	)
 
-	OPT="" econf "${myeconfargs[@]}"
+	# disable implicit optimization/debugging flags
+	local -x OPT=
+	# pass system CFLAGS & LDFLAGS as _NODIST, otherwise they'll get
+	# propagated to sysconfig for built extensions
+	local -x CFLAGS_NODIST=${CFLAGS}
+	local -x LDFLAGS_NODIST=${LDFLAGS}
+	local -x CFLAGS= LDFLAGS=
+
+	econf "${myeconfargs[@]}"
 
 	if grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
 		eerror "configure has detected that the sem_open function is broken."
@@ -216,6 +224,11 @@ src_compile() {
 	# https://bugs.gentoo.org/823728
 	export SETUPTOOLS_USE_DISTUTILS=stdlib
 
+	# Save PYTHONDONTWRITEBYTECODE so that 'has_version' doesn't
+	# end up writing bytecode & violating sandbox.
+	# bug #831897
+	local -x _PYTHONDONTWRITEBYTECODE=${PYTHONDONTWRITEBYTECODE}
+
 	if use pgo ; then
 		# bug 660358
 		local -x COLUMNS=80
@@ -224,7 +237,12 @@ src_compile() {
 		addpredict /usr/lib/python3.9/site-packages
 	fi
 
+	# also need to clear the flags explicitly here or they end up
+	# in _sysconfigdata*
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
+
+	# Restore saved value from above.
+	local -x PYTHONDONTWRITEBYTECODE=${_PYTHONDONTWRITEBYTECODE}
 
 	# Work around bug 329499. See also bug 413751 and 457194.
 	if has_version dev-libs/libffi[pax-kernel]; then
@@ -243,6 +261,12 @@ src_test() {
 
 	# Skip failing tests.
 	local skipped_tests="gdb"
+
+	if use sparc ; then
+		# bug #788022
+		skipped_tests+=" multiprocessing_fork"
+		skipped_tests+=" multiprocessing_forkserver"
+	fi
 
 	for test in ${skipped_tests}; do
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
@@ -283,11 +307,6 @@ src_install() {
 
 	# Remove static library
 	rm "${ED}"/usr/$(get_libdir)/libpython*.a || die
-
-	sed \
-		-e "s/\(CONFIGURE_LDFLAGS=\).*/\1/" \
-		-e "s/\(PY_LDFLAGS=\).*/\1/" \
-		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
 
 	# Fix collisions between different slots of Python.
 	rm "${ED}/usr/$(get_libdir)/libpython3.so" || die
