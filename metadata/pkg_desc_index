@@ -14,7 +14,7 @@ dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-re
 dev-db/mysql-connector-c 8.0.22: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 8.0.19 8.0.20 8.0.21 8.0.22: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/sqlcipher 3.4.2: Full Database Encryption for SQLite
-dev-lang/python 3.9.11: An interpreted, interactive, object-oriented programming language
+dev-lang/python 3.9.11 3.9.12 3.10.3 3.10.4: An interpreted, interactive, object-oriented programming language
 dev-lang/rust 1.58.1 1.59.0 1.60.0: Systems programming language from Mozilla
 dev-libs/libevent 2.1.12: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libp11 0.4.11: Abstraction layer to simplify PKCS#11 API
@@ -25,9 +25,9 @@ dev-libs/mongo-c-driver 1.12.0: Client library written in C for MongoDB
 dev-libs/openssl 2.9.2 3.1.3: dummy package for dev-libs/libressl
 dev-libs/softhsm 2.5.0: A software PKCS#11 implementation
 dev-perl/Net-SSLeay 1.900.0: Perl extension for using OpenSSL
-dev-python/cryptography 3.4.7-r2 36.0.2: Library providing cryptographic recipes and primitives
+dev-python/cryptography 3.4.7-r3: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.37.1 0.38.0: A Python crypto and SSL toolkit
-dev-qt/qtnetwork 5.15.2-r11 5.15.2-r13 5.15.2-r14 5.15.3: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.3: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.13.1: Audit Cargo.lock for security vulnerabilities
 mail-filter/imapfilter 2.6.16 2.6.16-r100 2.7.5: An IMAP mail filtering utility
 mail-filter/opendkim 2.10.3-r17 2.10.3-r19 2.10.3-r26: A milter providing DKIM signing and verification
