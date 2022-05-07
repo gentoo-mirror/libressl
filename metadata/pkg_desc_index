@@ -15,6 +15,7 @@ dev-db/mysql-connector-c 8.0.22: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 8.0.19 8.0.20 8.0.21 8.0.22: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/sqlcipher 3.4.2: Full Database Encryption for SQLite
 dev-lang/python 3.9.11 3.9.12 3.10.3 3.10.4: An interpreted, interactive, object-oriented programming language
+dev-lang/ruby 2.7.6: An object-oriented scripting language
 dev-lang/rust 1.58.1 1.59.0 1.60.0: Systems programming language from Mozilla
 dev-libs/libevent 2.1.12: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libp11 0.4.11: Abstraction layer to simplify PKCS#11 API
@@ -34,9 +35,10 @@ mail-filter/opendkim 2.10.3-r17 2.10.3-r19 2.10.3-r26: A milter providing DKIM s
 mail-mta/postfix 3.5.8: A fast and secure drop-in replacement for sendmail
 net-analyzer/ettercap 0.8.3.1: A suite for man in the middle attacks
 net-analyzer/flow-tools 0.68.5.1-r11 0.68.6-r1: library and programs to process reports from NetFlow data
-net-dialup/freeradius 3.0.20-r1: Highly configurable free RADIUS server
+net-dialup/freeradius 3.0.25-r2: Highly configurable free RADIUS server
 net-ftp/lftp 4.9.2: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-libs/libnice 0.1.15: An implementation of the Interactice Connectivity Establishment standard (ICE)
+net-libs/libssh2 1.10.0: Library implementing the SSH2 protocol
 net-libs/pjproject 2.7.2-r2: Open source SIP, Media, and NAT Traversal Library
 net-libs/serf 1.3.9-r2: HTTP client library
 net-libs/wvstreams 4.6.1_p14-r1: A network programming library in C++

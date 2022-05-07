@@ -32,6 +32,9 @@ app-crypt/tpm2-tools:fapi - Enable feature API tools
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
 dev-lang/python:bluetooth - Build Bluetooth protocol support in socket module
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
+dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
+dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
+dev-lang/ruby:systemtap - Enable SystemTAP/DTrace tracing
 dev-lang/rust:clippy - Install clippy, Rust code linter
 dev-lang/rust:miri - Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly)
 dev-lang/rust:nightly - Enable nightly (UNSTABLE) features
@@ -82,6 +85,8 @@ net-dialup/freeradius:redis - Include support for Redis database
 net-dialup/freeradius:rest - Include support for sending and receiving HTTP requests
 net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies script and its run-time dependencies
 net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
+net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt instead of dev-libs/openssl
+net-libs/libssh2:mbedtls - Use net-libs/mbedtls instead of dev-libs/openssl
 net-libs/pjproject:amr - Inlcude AMR codec in the build
 net-libs/pjproject:epoll - Use /dev/epoll ioqueue on Linux (experimental)
 net-libs/pjproject:g711 - Include G.711 codecs in the build
