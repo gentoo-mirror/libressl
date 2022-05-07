@@ -1,28 +1,27 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools pam python-single-r1 systemd
 
-MY_P="${PN}-server-${PV}"
+MY_PV=$(ver_rs 1- "_")
 
 DESCRIPTION="Highly configurable free RADIUS server"
-SRC_URI="
-	ftp://ftp.freeradius.org/pub/radius/${MY_P}.tar.gz
-	ftp://ftp.freeradius.org/pub/radius/old/${MY_P}.tar.gz
-"
-HOMEPAGE="http://www.freeradius.org/"
+HOMEPAGE="https://freeradius.org/"
+SRC_URI="https://github.com/FreeRADIUS/freeradius-server/archive/release_${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/freeradius-server-release_${MY_PV}"
 
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE="
 	debug firebird iodbc kerberos ldap memcached mysql mongodb odbc oracle pam
 	pcap postgres python readline redis rest samba sqlite ssl systemd
 "
+
 RESTRICT="test firebird? ( bindist )"
 
 # NOTE: Temporary freeradius doesn't support linking with mariadb client
@@ -37,15 +36,16 @@ RDEPEND="acct-group/radius
 	dev-lang/perl:=
 	sys-libs/gdbm:=
 	sys-libs/talloc
+	virtual/libcrypt:=
 	firebird? ( dev-db/firebird )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	memcached? ( dev-libs/libmemcached )
-	mysql? ( dev-db/mysql-connector-c )
+	mysql? ( dev-db/mysql-connector-c:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.13.0-r1 )
 	odbc? ( dev-db/unixODBC )
-	oracle? ( dev-db/oracle-instantclient-basic )
+	oracle? ( dev-db/oracle-instantclient[sdk] )
 	pam? ( sys-libs/pam )
 	pcap? ( net-libs/libpcap )
 	postgres? ( dev-db/postgresql:= )
@@ -55,20 +55,20 @@ RDEPEND="acct-group/radius
 	rest? ( dev-libs/json-c:= )
 	samba? ( net-fs/samba )
 	sqlite? ( dev-db/sqlite:3 )
-	ssl? ( dev-libs/openssl:0=[-bindist] )
+	ssl? (
+		dev-libs/openssl:0=[-bindist(-)]
+	)
 	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-S="${WORKDIR}/${MY_P}"
+# 721040
+QA_SONAME="usr/lib.*/libfreeradius-.*.so"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.18-libressl.patch
-	"${FILESDIR}"/${P}-systemd-service.patch
-	# Fix rlm_python3 build
-	# Backport from rlm_python changes to rlm_python3
-	"${FILESDIR}"/${P}-py3-fixes.patch
+	"${FILESDIR}"/${PN}-3.0.25-libressl.patch
+	"${FILESDIR}"/${PN}-3.0.20-systemd-service.patch
 )
 
 pkg_setup() {
@@ -130,15 +130,15 @@ src_prepare() {
 		raddb/radiusd.conf.in || die
 
 	# verbosity
-	# build shared libraries using jlibtool --shared
+	# build shared libraries using jlibtool -shared
 	sed -i \
 		-e '/$(LIBTOOL)/s|--quiet ||g' \
-		-e 's:--mode=\(compile\|link\):& --shared:g' \
+		-e 's:--mode=\(compile\|link\):& -shared:g' \
 		Make.inc.in || die
 
 	sed -i \
 		-e 's|--silent ||g' \
-		-e 's:--mode=\(compile\|link\):& --shared:g' \
+		-e 's:--mode=\(compile\|link\):& -shared:g' \
 		scripts/libtool.mk || die
 
 	# crude measure to stop jlibtool from running ranlib and ar
@@ -223,7 +223,9 @@ src_install() {
 		R="${D}" \
 		install
 
-	pamd_mimic_system radiusd auth account password session
+	if use pam; then
+		pamd_mimic_system radiusd auth account password session
+	fi
 
 	# fix #711756
 	fowners -R radius:radius /etc/raddb
@@ -233,8 +235,8 @@ src_install() {
 
 	rm "${ED}/usr/sbin/rc.radiusd" || die
 
-	newinitd "${FILESDIR}/radius.init-r3" radiusd
-	newconfd "${FILESDIR}/radius.conf-r4" radiusd
+	newinitd "${FILESDIR}/radius.init-r4" radiusd
+	newconfd "${FILESDIR}/radius.conf-r6" radiusd
 
 	if ! use systemd ; then
 		# If systemd builtin is not enabled we need use Type=Simple
@@ -246,16 +248,15 @@ src_install() {
 	systemd_dounit "${S}"/debian/freeradius.service
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
-
 }
 
 pkg_config() {
 	if use ssl; then
 		cd "${ROOT}"/etc/raddb/certs || die
 		./bootstrap || die "Error while running ./bootstrap script."
-		fowners root:radius "${ROOT}"/etc/raddb/certs
-		fowners root:radius "${ROOT}"/etc/raddb/certs/ca.pem
-		fowners root:radius "${ROOT}"/etc/raddb/certs/server.{key,crt,pem}
+		chown root:radius "${ROOT}"/etc/raddb/certs || die
+		chown root:radius "${ROOT}"/etc/raddb/certs/ca.pem || die
+		chown root:radius "${ROOT}"/etc/raddb/certs/server.{key,crt,pem} || die
 	fi
 }
 
