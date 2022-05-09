@@ -135,6 +135,7 @@ net-nds/openldap:sha2 - Enable support for pw-sha2 password hashes
 net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
 net-voip/telepathy-gabble:jingle - Enable voice calls for jabber
 net-voip/telepathy-gabble:plugins - Enable plugin loader
+net-vpn/i2pd:i2p-hardening - Compile with hardening on vanilla compilers/linkers
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
@@ -163,6 +164,12 @@ net-wireless/wpa_supplicant:uncommon-eap-types - Add support for GPSK, SAKE, GPS
 net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
 sys-cluster/keepalived:json - compile with signal to dump configuration and stats as JSON.
+www-client/netsurf:bmp - BMP bitmap image support (media-libs/libnsbmp)
+www-client/netsurf:gtk - Build GTK3 GUI
+www-client/netsurf:gtk2 - Build GTK2 GUI
+www-client/netsurf:psl - Use public suffix list via media-libs/libnspsl
+www-client/netsurf:rosprite - RISC OS Sprite bitmap image support (media-libs/librosprite)
+www-client/netsurf:svgtiny - SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
 www-servers/h2o:libh2o - Build and install libh2o
 www-servers/h2o:mruby - Enable support for mruby
 x11-apps/igt-gpu-tools:X - Enable intel-gpu-overlay xlib/cairo backend
