@@ -57,6 +57,7 @@ net-vpn/tor 0.4.6.10: Anonymizing overlay network for TCP
 net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/hostapd 2.6 2.9-r3: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.9-r5 2.9-r8 2.10-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
+sec-keys/openpgp-keys-libressl 20201209: OpenPGP keys used by the libressl project
 sys-auth/pam_p11 0.3.1: PAM module for authenticating against PKCS#11 tokens
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
 sys-boot/vboot-utils 72_p20181229-r1: Chrome OS verified boot tools
