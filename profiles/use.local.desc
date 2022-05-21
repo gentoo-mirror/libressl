@@ -55,7 +55,6 @@ dev-libs/libressl:asm - Enables assembly
 dev-libs/openssl:asm - Enables assembly
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
-dev-qt/qtnetwork:bindist - Disable EC support via dev-libs/openssl
 dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
 dev-qt/qtnetwork:dtls - Support for Datagram Transport Layer Security (can cause build issues with libressl)
 dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
