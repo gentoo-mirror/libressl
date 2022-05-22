@@ -1,56 +1,50 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit multilib-minimal libtool
+inherit autotools multilib-minimal verify-sig
 
 DESCRIPTION="Free version of the SSL/TLS protocol forked from OpenSSL"
 HOMEPAGE="https://www.libressl.org/"
-SRC_URI="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz"
+SRC_URI="
+	https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz
+	verify-sig? ( https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz.asc )
+"
 
 LICENSE="ISC openssl"
 # Reflects ABI of libcrypto.so and libssl.so. Since these can differ,
 # we'll try to use the max of either. However, if either change between
 # versions, we have to change the subslot to trigger rebuild of consumers.
-SLOT="0/48"
+SLOT="0/52"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+asm static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( static-libs )"
 
-DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libressl )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libressl.asc
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.8.3-solaris10.patch
+)
 
 src_prepare() {
-	touch crypto/Makefile.in
+	default
 
-	sed -i \
-		-e '/^[ \t]*CFLAGS=/s#-g ##' \
-		-e '/^[ \t]*CFLAGS=/s#-g"#"#' \
-		-e '/^[ \t]*CFLAGS=/s#-O2 ##' \
-		-e '/^[ \t]*CFLAGS=/s#-O2"#"#' \
-		-e '/^[ \t]*USER_CFLAGS=/s#-O2 ##' \
-		-e '/^[ \t]*USER_CFLAGS=/s#-O2"#"#' \
-		configure || die "fixing CFLAGS failed"
-
-	if ! use test ; then
-	sed -i \
-		-e '/^[ \t]*SUBDIRS =/s#tests##' \
-		Makefile.in || die "Removing tests failed"
-	fi
-
-	eapply "${FILESDIR}"/${PN}-2.8.3-solaris10.patch || die
-
-	eapply_user
-
-	elibtoolize  # for Solaris
+	eautoreconf
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable asm) \
+	local ECONF_SOURCE="${S}"
+	local args=(
+		$(use_enable asm)
 		$(use_enable static-libs static)
+		$(use_enable test tests)
+	)
+	econf "${args[@]}"
 }
 
 multilib_src_test() {
