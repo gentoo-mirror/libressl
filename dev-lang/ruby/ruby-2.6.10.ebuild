@@ -39,49 +39,40 @@ RDEPEND="
 	sys-libs/readline:0=
 	sys-libs/zlib
 	virtual/libcrypt:=
-	>=app-eselect/eselect-ruby-20191222
+	>=app-eselect/eselect-ruby-20181225
 "
 
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/minitest-5.13.0[ruby_targets_ruby27]
-	>=dev-ruby/net-telnet-0.2.0[ruby_targets_ruby27]
-	>=dev-ruby/power_assert-1.1.7[ruby_targets_ruby27]
-	>=dev-ruby/rake-13.0.1[ruby_targets_ruby27]
-	>=dev-ruby/test-unit-3.3.4[ruby_targets_ruby27]
-	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby27]
+	>=dev-ruby/did_you_mean-1.2.1[ruby_targets_ruby26]
+	>=dev-ruby/minitest-5.11.3[ruby_targets_ruby26]
+	>=dev-ruby/net-telnet-0.2.0[ruby_targets_ruby26]
+	>=dev-ruby/power_assert-1.1.3[ruby_targets_ruby26]
+	>=dev-ruby/rake-12.3.2[ruby_targets_ruby26]
+	>=dev-ruby/test-unit-3.2.9[ruby_targets_ruby26]
+	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby26]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby27]
-	>=dev-ruby/bundler-2.1.4[ruby_targets_ruby27]
-	>=dev-ruby/did_you_mean-1.3.1[ruby_targets_ruby27]
-	>=dev-ruby/json-2.0.2[ruby_targets_ruby27]
-	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby27] )
+	virtual/rubygems[ruby_targets_ruby26]
+	>=dev-ruby/bundler-1.17.2[ruby_targets_ruby26]
+	>=dev-ruby/json-2.0.2[ruby_targets_ruby26]
+	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby26] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-2.7-libressl.patch
-	eapply "${FILESDIR}"/2.7/{003,010}*.patch
-
-	if use elibc_musl ; then
-		eapply "${FILESDIR}"/2.7/{900,901}-musl-*.patch
-	fi
-
-	# Reset time on patched gem_prelude.rb to avoid the need for a base
-	# ruby during bootstrapping, bug 787137
-	touch -t 202001010000 gem_prelude.rb || die
+	# 005 does not compile bigdecimal and is questionable because it
+	# compiles ruby in a non-standard way, may be dropped
+	eapply "${FILESDIR}"/2.6/{002,010}*.patch
 
 	einfo "Unbundling gems..."
 	cd "$S"
 	# Remove bundled gems that we will install via PDEPEND, bug
 	# 539700.
 	rm -fr gems/* || die
-	# Don't install CLI tools since they will clash with the gem
-	rm -f bin/{racc,racc2y,y2racc} || die
-	sed -i -e '/executables/ s:^:#:' lib/racc/racc.gemspec || die
 
 	einfo "Removing bundled libraries..."
 	rm -fr ext/fiddle/libffi-3.2.1 || die
@@ -100,11 +91,6 @@ src_prepare() {
 			sed -i \
 				-e "s/ac_cv_prog_ac_ct_AR='libtool/ac_cv_prog_AR='${CHOST}-libtool/" \
 				configure.ac || die
-
-			# disable using security framework (GCC barfs on those headers)
-			sed -i \
-				-e 's/MAC_OS_X_VERSION_MIN_REQUIRED/_DISABLED_/' \
-				random.c || die
 		fi
 	fi
 
