@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit kde.org cmake qmake-utils
+inherit cmake kde.org qmake-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="https://userbase.kde.org/QCA"
@@ -11,16 +11,13 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 sasl softstore +ssl test"
 
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	doc? ( app-doc/doxygen )
-"
 RDEPEND="
-	dev-qt/qtcore:5
+	>=dev-qt/qtcore-5.14:5
 	botan? ( dev-libs/botan:= )
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gpg? ( app-crypt/gnupg )
@@ -30,7 +27,7 @@ RDEPEND="
 		dev-libs/pkcs11-helper
 	)
 	sasl? ( dev-libs/cyrus-sasl:2 )
-	ssl? ( >=dev-libs/openssl-1.1:0= )
+	ssl? ( >=dev-libs/openssl-1.1:= )
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -38,6 +35,7 @@ DEPEND="${RDEPEND}
 		dev-qt/qttest:5
 	)
 "
+BDEPEND="doc? ( app-doc/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-disable-pgp-test.patch"
