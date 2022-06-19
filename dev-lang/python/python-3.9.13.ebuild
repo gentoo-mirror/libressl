@@ -14,16 +14,18 @@ PATCHSET="python-gentoo-patches-${MY_PV}"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
-SRC_URI="https://www.python.org/ftp/python/${PV%_*}/${MY_P}.tar.xz
+SRC_URI="
+	https://www.python.org/ftp/python/${PV%_*}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
 	verify-sig? (
 		https://www.python.org/ftp/python/${PV%_*}/${MY_P}.tar.xz.asc
-	)"
+	)
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="bluetooth build examples gdbm hardened lto +ncurses pgo +readline +sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
@@ -32,7 +34,8 @@ RESTRICT="!test? ( test )"
 # run the bootstrap code on your dev box and include the results in the
 # patchset. See bug 447752.
 
-RDEPEND="app-arch/bzip2:=
+RDEPEND="
+	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	dev-lang/python-exec[python_targets_python3_9(-)]
 	dev-libs/libffi:=
@@ -51,23 +54,31 @@ RDEPEND="app-arch/bzip2:=
 		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
-	xml? ( >=dev-libs/expat-2.1:= )"
+	xml? ( >=dev-libs/expat-2.1:= )
+"
 # bluetooth requires headers from bluez
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
-	test? ( app-arch/xz-utils[extra-filters(+)] )"
+	test? ( app-arch/xz-utils[extra-filters(+)] )
+"
 BDEPEND="
 	virtual/awk
 	virtual/pkgconfig
 	sys-devel/autoconf-archive
 	verify-sig? ( sec-keys/openpgp-keys-python )
-	!sys-devel/gcc[libffi(-)]"
-RDEPEND+=" !build? ( app-misc/mime-types )"
+	!sys-devel/gcc[libffi(-)]
+"
+RDEPEND+="
+	!build? ( app-misc/mime-types )
+"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 
 # large file tests involve a 2.5G file being copied (duplicated)
 CHECKREQS_DISK_BUILD=5500M
+
+QA_PKGCONFIG_VERSION=${PYVER}
 
 pkg_pretend() {
 	use test && check-reqs_pkg_pretend
@@ -134,17 +145,9 @@ src_configure() {
 		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
 	fi
 
-	if [[ "$(gcc-major-version)" -ge 4 ]]; then
-		append-flags -fwrapv
-	fi
+	append-flags -fwrapv
 
 	filter-flags -malign-double
-
-	# https://bugs.gentoo.org/show_bug.cgi?id=50309
-	if is-flagq -O3; then
-		is-flagq -fstack-protector-all && replace-flags -O3 -O2
-		use hardened && replace-flags -O3 -O2
-	fi
 
 	# https://bugs.gentoo.org/700012
 	if is-flagq -flto || is-flagq '-flto=*'; then
@@ -357,8 +360,13 @@ src_install() {
 	local -x EPYTHON=python${PYVER}
 	# if not using a cross-compiler, use the fresh binary
 	if ! tc-is-cross-compiler; then
-		local -x PYTHON=./python
-		local -x LD_LIBRARY_PATH=${LD_LIBRARY_PATH+${LD_LIBRARY_PATH}:}${PWD}
+		cat > python.wrap <<-EOF || die
+			#!/bin/sh
+			export LD_LIBRARY_PATH=\${PWD}\${LD_LIBRARY_PATH+:\${LD_LIBRARY_PATH}}
+			exec ./python "\${@}"
+		EOF
+		chmod +x python.wrap || die
+		local -x PYTHON=./python.wrap
 	else
 		local -x PYTHON=${EPREFIX}/usr/bin/${EPYTHON}
 	fi
