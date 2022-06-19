@@ -32,6 +32,9 @@ app-crypt/tpm2-tools:fapi - Enable feature API tools
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
 dev-lang/python:bluetooth - Build Bluetooth protocol support in socket module
+dev-lang/python:libedit - Link readline extension against dev-libs/libedit instead of sys-libs/readline.
+dev-lang/python:lto - Optimize the build using Link Time Optimization (LTO)
+dev-lang/python:pgo - Optimize the build using Profile Guided Optimization (PGO)
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
 dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
