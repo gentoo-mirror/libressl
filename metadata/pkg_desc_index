@@ -29,7 +29,7 @@ dev-libs/softhsm 2.5.0: A software PKCS#11 implementation
 dev-perl/Net-SSLeay 1.900.0: Perl extension for using OpenSSL
 dev-python/cryptography 3.4.7-r3: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.37.1 0.38.0: A Python crypto and SSL toolkit
-dev-qt/qtnetwork 5.15.3 5.15.4: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.4 5.15.5: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.13.1: Audit Cargo.lock for security vulnerabilities
 mail-filter/imapfilter 2.6.16 2.6.16-r100 2.7.5: An IMAP mail filtering utility
 mail-filter/opendkim 2.10.3-r17 2.10.3-r19 2.10.3-r26: A milter providing DKIM signing and verification
