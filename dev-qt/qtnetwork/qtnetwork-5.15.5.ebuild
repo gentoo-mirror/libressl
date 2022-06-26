@@ -10,11 +10,10 @@ inherit qt5-build
 DESCRIPTION="Network abstraction library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-IUSE="connman dtls gssapi libproxy networkmanager sctp +ssl"
-REQUIRED_USE="!dtls"
+IUSE="connman gssapi libproxy networkmanager sctp +ssl"
 
 DEPEND="
 	=dev-qt/qtcore-${QT5_PV}*:5=
@@ -48,7 +47,7 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.15.2-r14-libressl.patch # Bug 562050, not upstreamable
+	"${FILESDIR}"/${PN}-5.15.5-libressl.patch # Bug 562050, not upstreamable
 )
 
 pkg_setup() {
@@ -63,8 +62,8 @@ src_configure() {
 		$(qt_use libproxy)
 		$(usev networkmanager -dbus-linked)
 		$(qt_use sctp)
-		$(qt_use dtls)
 		$(usev ssl -openssl-linked)
+		-no-dtls # Required for libressl
 	)
 	qt5-build_src_configure
 }
