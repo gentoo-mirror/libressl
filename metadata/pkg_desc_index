@@ -20,7 +20,7 @@ dev-lang/ruby 2.6.10 2.7.6 3.0.4: An object-oriented scripting language
 dev-lang/rust 1.59.0 1.60.0 1.61.0-r1: Systems programming language from Mozilla
 dev-libs/libevent 2.1.12: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libp11 0.4.11-r2: Abstraction layer to simplify PKCS#11 API
-dev-libs/libressl 3.3.6 3.4.3 3.5.2 3.5.3: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 3.5.2 3.5.3: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
 dev-libs/libstrophe 0.9.2: A simple, lightweight C library for writing XMPP clients
 dev-libs/mongo-c-driver 1.12.0: Client library written in C for MongoDB
@@ -55,7 +55,6 @@ net-news/newsboat 2.20.1: An RSS/Atom feed reader for text terminals
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
 net-vpn/i2pd 2.41.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/tor 0.4.6.10 0.4.7.8: Anonymizing overlay network for TCP
-net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/hostapd 2.6 2.9-r3: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.9-r5 2.9-r8 2.10-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20201209: OpenPGP keys used by the libressl project

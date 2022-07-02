@@ -145,7 +145,6 @@ net-vpn/i2pd:i2p-hardening - Compile with hardening on vanilla compilers/linkers
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
-net-wireless/crda:gcrypt - Use libgcrypt instead of openssl for key checking
 net-wireless/hostapd:crda - Add CRDA support
 net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
