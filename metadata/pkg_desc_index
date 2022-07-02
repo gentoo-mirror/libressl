@@ -66,6 +66,5 @@ sys-cluster/keepalived 1.4.0-r1: A strong & robust keepalive facility to the Lin
 www-client/netsurf 3.10-r6: A free, open source web browser
 www-client/w3mmee 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-servers/h2o 2.2.6: H2O - the optimized HTTP/1, HTTP/2 server
-x11-apps/igt-gpu-tools 1.23-r1: Intel GPU userland tools
 x11-misc/qterm 0.7.1 0.7.3: A BBS client based on Qt
 x11-misc/x11vnc 0.9.16-r4: VNC server for real X displays
