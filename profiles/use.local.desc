@@ -2,23 +2,6 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-admin/conserver:freeipmi - Compile in FreeIPMI support via sys-libs/freeipmi
-app-arch/libarchive:blake2 - Enable Blake2 hash support via app-crypt/libb2.
-app-arch/libarchive:bzip2 - Allow accessing bzip2-compressed archives through libbz2 (which comes with app-arch/bzip2). This only affects libarchive's native support: bsdtar will keep using bunzip2 as a filter if that's not built-in.
-app-arch/libarchive:e2fsprogs - Use file flags from sys-fs/e2fsprogs headers instead of virtual/os-headers headers
-app-arch/libarchive:nettle - Use dev-libs/nettle as crypto backend
-app-arch/libarchive:zlib - Allow accessing gzip-compressed archives through sys-libs/zlib. This only affects libarchive's native support: bsdtar will keep using gunzip as a filter if that's not built-in. It's also needed for supporting extraction of ZIP files.
-app-backup/bacula:bacula-clientonly - Disable DB support, and just build a client
-app-backup/bacula:bacula-nodir - Disable building of director
-app-backup/bacula:bacula-nosd - Disable building of storage daemon
-app-backup/bacula:batch-insert - Enable batch insert into data base
-app-backup/bacula:logwatch - Install support files for logwatch
-app-benchmarks/httperf:idleconn - Build with the idleconn program
-app-crypt/mit-krb5:doc - Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos
-app-crypt/mit-krb5:keyutils - Enable for the keyring ccache using keyutils
-app-crypt/mit-krb5:lmdb - Add support for using dev-db/lmdb for lookup tables
-app-crypt/mit-krb5:openldap - Enable support for ldap as a database backend
-app-crypt/mit-krb5:pkinit - Enable pkinit support for the initial ticket
 app-crypt/qca:botan - Enable botan plugin
 app-crypt/qca:gcrypt - Enable gcrypt plugin
 app-crypt/qca:gpg - Enable GnuPG plugin
@@ -106,29 +89,6 @@ net-libs/pjproject:resample - Include resampling implementations in the build
 net-libs/pjproject:silk - Include SILK support in the build
 net-libs/pjproject:v4l2 - Include Video4Linux v2 support in the build
 net-libs/pjproject:webrtc - Enable WebRTC support
-net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible functional interface. This USE flag is only needed with GCC earlier than version 4.1, or with other compilares not providing said interface.
-net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
-net-misc/aria2:libuv - Use dev-libs/libuv backend.
-net-misc/aria2:libxml2 - Use dev-libs/libxml2 for XML parsing (preferred) instead of dev-libs/expat.
-net-misc/aria2:metalink - Enable support for metalink.
-net-misc/aria2:nettle - Use dev-libs/nettle and dev-libs/gmp for bittorrent/metalink crypto instead of dev-libs/libgcrypt (when dev-libs/openssl is not being used).
-net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality.
-net-misc/aria2:ssh - Enable SFTP support.
-net-misc/ntp:openntpd - Allow ntp to be installed alongside openntpd
-net-misc/ntp:parse-clocks - Add support for PARSE clocks
-net-misc/ntp:samba - Provide support for Samba's signing daemon (needed for Active Directory domain controllers)
-net-misc/openssh:X509 - Adds support for X.509 certificate authentication
-net-misc/openssh:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
-net-misc/openssh:hpn - Enable high performance ssh
-net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
-net-misc/openssh:livecd - Enable root password logins for live-cd environment.
-net-misc/openssh:scp - Enable scp command with known security problems. See bug 733802
-net-misc/openssh:security-key - Include builtin U2F/FIDO support
-net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
-net-misc/openssh:xmss - Enable XMSS post-quantum authentication algorithm
-net-misc/rdesktop:kerberos - Enable CredSPP support + Kerberos authentication
-net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
-net-misc/rdesktop:xrandr - Enable XRandR window extension support
 net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
 net-nds/openldap:experimental - Enable experimental backend options
@@ -141,7 +101,6 @@ net-nds/openldap:sha2 - Enable support for pw-sha2 password hashes
 net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
 net-voip/telepathy-gabble:jingle - Enable voice calls for jabber
 net-voip/telepathy-gabble:plugins - Enable plugin loader
-net-vpn/i2pd:i2p-hardening - Compile with hardening on vanilla compilers/linkers
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
@@ -177,12 +136,6 @@ www-client/netsurf:rosprite - RISC OS Sprite bitmap image support (media-libs/li
 www-client/netsurf:svgtiny - SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
 www-servers/h2o:libh2o - Build and install libh2o
 www-servers/h2o:mruby - Enable support for mruby
-x11-apps/igt-gpu-tools:X - Enable intel-gpu-overlay xlib/cairo backend
-x11-apps/igt-gpu-tools:chamelium - Enables support for building Chamelium tests
-x11-apps/igt-gpu-tools:man - Build and install man pages
-x11-apps/igt-gpu-tools:overlay - Build the intel-gpu-overlay utility
-x11-apps/igt-gpu-tools:valgrind - Support valgrind annotations
-x11-apps/igt-gpu-tools:xv - Enable intel-gpu-overlay xv backend
 x11-misc/x11vnc:xdamage - Enable support for the Xdamage library
 x11-misc/x11vnc:xfixes - Enable support for the Xfixes library
 x11-misc/x11vnc:xrandr - Enable support for the X xrandr extension
