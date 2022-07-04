@@ -19,7 +19,7 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
@@ -156,7 +156,10 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
 PATCHES=(
 	"${FILESDIR}"/1.59.0-libressl.patch
 	"${FILESDIR}"/1.55.0-ignore-broken-and-non-applicable-tests.patch
-	"${FILESDIR}"/1.49.0-gentoo-musl-target-specs.patch
+	"${FILESDIR}"/1.61.0-gentoo-musl-target-specs.patch
+	"${FILESDIR}"/1.61.0-llvm_selectInterleaveCount.patch
+	"${FILESDIR}"/1.61.0-llvm_addrspacecast.patch
+	"${FILESDIR}"/1.61.0-miri-cow.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
@@ -257,7 +260,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local rust_target="" rust_targets="" arch_cflags
+	local rust_target="" rust_targets="" arch_cflags use_libcxx="false"
 
 	# Collect rust target names to compile standard libs for all ABIs.
 	for v in $(multilib_get_enabled_abi_pairs); do
@@ -306,6 +309,15 @@ src_configure() {
 
 	rust_target="$(rust_abi)"
 
+	# https://bugs.gentoo.org/732632
+	if tc-is-clang; then
+		local clang_slot="$(clang-major-version)"
+		if { has_version "sys-devel/clang:${clang_slot}[default-libcxx]" || is-flagq -stdlib=libc++; }; then
+			use_libcxx="true"
+		fi
+	fi
+
+	local cm_btype="$(usex debug DEBUG RELEASE)"
 	cat <<- _EOF_ > "${S}"/config.toml
 		changelog-seen = 2
 		[llvm]
@@ -317,6 +329,10 @@ src_configure() {
 		targets = "${LLVM_TARGETS// /;}"
 		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
+		$(if [[ ${use_libcxx} == true ]]; then
+			echo "use-libcxx = true"
+			echo "static-libstdcpp = false"
+		fi)
 		$(case "${rust_target}" in
 			i586-*-linux-*)
 				# https://github.com/rust-lang/rust/issues/93059
@@ -324,7 +340,10 @@ src_configure() {
 				echo 'cxxflags = "-fcf-protection=none"'
 				echo 'ldflags = "-fcf-protection=none"'
 				;;
+			*)
+				;;
 		esac)
+		build-config = { CMAKE_VERBOSE_MAKEFILE = "ON", CMAKE_C_FLAGS_${cm_btype} = "${CFLAGS}", CMAKE_CXX_FLAGS_${cm_btype} = "${CXXFLAGS}", CMAKE_EXE_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_MODULE_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_SHARED_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_STATIC_LINKER_FLAGS_${cm_btype} = "${ARFLAGS}" }
 		[build]
 		build-stage = 2
 		test-stage = 2
@@ -421,9 +440,9 @@ src_configure() {
 	if use wasm; then
 		cat <<- _EOF_ >> "${S}"/config.toml
 			[target.wasm32-unknown-unknown]
+			linker = "$(usex system-llvm lld rust-lld)"
 			# wasm target does not have profiler_builtins https://bugs.gentoo.org/848483
 			profiler = false
-			linker = "$(usex system-llvm lld rust-lld)"
 		_EOF_
 	fi
 
