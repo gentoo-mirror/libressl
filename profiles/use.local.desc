@@ -10,9 +10,11 @@ app-crypt/qca:nss - Enable NSS plugin
 app-crypt/qca:pkcs11 - Enable PKCS#11 plugin
 app-crypt/qca:sasl - Enable SASL plugin
 app-crypt/qca:softstore - Enable softstore plugin
-app-crypt/tpm-tools:pkcs11 - Build Token data management utilities based on OpenCryptoki's (dev-libs/opencryptoki) PKCS#11 implementation.
-app-crypt/tpm2-tools:fapi - Enable feature API tools
+app-crypt/tpm2-tss:fapi - Enable feature API (requires openssl as crypto backend)
+app-crypt/tpm2-tss:mbedtls - Use net-libs/mbedtls as crypto engine
+app-crypt/tpm2-tss:openssl - Use dev-libs/openssl as crypto engine
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
+dev-db/mysql-connector-c++:gcov - Build coverage support
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
 dev-lang/python:bluetooth - Build Bluetooth protocol support in socket module
 dev-lang/python:libedit - Link readline extension against dev-libs/libedit instead of sys-libs/readline.
@@ -103,6 +105,10 @@ net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies scrip
 net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
 net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt instead of dev-libs/openssl
 net-libs/libssh2:mbedtls - Use net-libs/mbedtls instead of dev-libs/openssl
+net-libs/libvncserver:24bpp - Enable 24bpp support
+net-libs/libvncserver:filetransfer - Enable support for TightVNC's file transfer protocol
+net-libs/libvncserver:gcrypt - Use dev-libs/libgcrypt as crypto backend
+net-libs/libvncserver:lzo - Enable LZO support via dev-libs/lzo instead of using internal miniLZO implementation
 net-libs/pjproject:amr - Inlcude AMR codec in the build
 net-libs/pjproject:epoll - Use /dev/epoll ioqueue on Linux (experimental)
 net-libs/pjproject:g711 - Include G.711 codecs in the build
