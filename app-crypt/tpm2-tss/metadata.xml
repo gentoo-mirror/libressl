@@ -8,9 +8,13 @@
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
-	</maintainer>	
+	</maintainer>
+	<use>
+		<flag name="fapi">Enable feature API (requires openssl as crypto backend)</flag>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as crypto engine</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto engine</flag>
+	</use>
 	<upstream>
-		<remote-id type="cpe">cpe:/a:debian:trousers</remote-id>
-		<remote-id type="sourceforge">trousers</remote-id>
+		<remote-id type="github">tpm2-software/tpm2-tss</remote-id>
 	</upstream>
 </pkgmetadata>
