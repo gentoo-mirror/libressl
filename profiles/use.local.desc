@@ -80,16 +80,6 @@ dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
 dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
 dev-qt/qtnetwork:networkmanager - Enable net-misc/networkmanager-based bearer plugin
 dev-util/cargo-audit:fix - Add support for 'fix' subcommand (experimental)
-mail-filter/opendkim:ldap - Enable openldap as a dataset facilitator or keys, determining domains to sign for, and any other dataset that opendkim supports.
-mail-filter/opendkim:lmdb - Add support for using dev-db/lmdb
-mail-filter/opendkim:lua - Enables control over signature verification, filtering and policy to be controlled by user defined lua scripts.
-mail-filter/opendkim:memcached - Add support for using dev-libs/libmemcached
-mail-filter/opendkim:opendbx - Use opendbx backend to facilitate dataset driven OpenDKIM configuration options like stats, bodylengthdb, etc. against a wide variety of database types
-mail-filter/opendkim:poll - Use poll() instead of select() for the provided asynchronous resolver library.
-mail-filter/opendkim:querycache - Add support for query caching (requires 'berkdb' flag)
-mail-filter/opendkim:sasl - Used to authenticate to a LDAP server in various ways if required.
-mail-filter/opendkim:stats - Add support for statistics (requires 'opendbx' flag)
-mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DNS queries.
 mail-mta/postfix:dovecot-sasl - Enable net-mail/dovecot protocol version 1 (server only) SASL implementation
 mail-mta/postfix:eai - Add support for SMTPUTF8
 mail-mta/postfix:ldap-bind - Add support for binding to LDAP backend using dev-libs/cyrus-sasl
@@ -103,6 +93,11 @@ net-dialup/freeradius:redis - Include support for Redis database
 net-dialup/freeradius:rest - Include support for sending and receiving HTTP requests
 net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies script and its run-time dependencies
 net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
+net-libs/ldns:dane - Enable DNS-based Authentication of Named Entities (DANE) support
+net-libs/ldns:ecdsa - Enable ECDSA support
+net-libs/ldns:ed25519 - Enable ED25519 support
+net-libs/ldns:ed448 - Enable ED448 support
+net-libs/ldns:gost - Enable GOST support
 net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt instead of dev-libs/openssl
 net-libs/libssh2:mbedtls - Use net-libs/mbedtls instead of dev-libs/openssl
 net-libs/libvncserver:24bpp - Enable 24bpp support
@@ -114,6 +109,7 @@ net-libs/pjproject:epoll - Use /dev/epoll ioqueue on Linux (experimental)
 net-libs/pjproject:g711 - Include G.711 codecs in the build
 net-libs/pjproject:g722 - Include G.722 codec in the build
 net-libs/pjproject:g7221 - Include G.722.1 codec in the build
+net-libs/pjproject:g729 - Include G.729 codec via net-libs/bcg729
 net-libs/pjproject:ilbc - Include iLBC codec in the build
 net-libs/pjproject:l16 - Include Linear/L16 codec family in the build
 net-libs/pjproject:libyuv - Include libyuv in the build
@@ -121,9 +117,13 @@ net-libs/pjproject:openh264 - Include Open H.264 support in the build
 net-libs/pjproject:resample - Include resampling implementations in the build
 net-libs/pjproject:silk - Include SILK support in the build
 net-libs/pjproject:v4l2 - Include Video4Linux v2 support in the build
+net-libs/pjproject:vpx - Include VP8 and VP9 codec support in the build
 net-libs/pjproject:webrtc - Enable WebRTC support
 net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
+net-nds/openldap:argon2 - Enable password hashing algorithm from app-crypt/argon2
+net-nds/openldap:autoca - Automatic Certificate Authority overlay
+net-nds/openldap:cleartext - Enable use of cleartext passwords
 net-nds/openldap:experimental - Enable experimental backend options
 net-nds/openldap:kinit - Enable support for kerberos init
 net-nds/openldap:minimal - Build libraries & userspace tools only. Does not install any server code
@@ -138,9 +138,9 @@ net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
 net-wireless/hostapd:crda - Add CRDA support
-net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
+net-wireless/hostapd:internal-tls - Use internal TLSv1 implementation instead of depending on OpenSSL or GnuTLS
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
-net-wireless/hostapd:sqlite - Adding sqlite support
+net-wireless/hostapd:suiteb - Adding support for NSA Suite B Cryptography
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
 net-wireless/wpa_supplicant:ap - Add support for access point mode
 net-wireless/wpa_supplicant:broadcom-sta - Flag to help users disable features not supported by broadcom-sta driver
@@ -160,7 +160,9 @@ net-wireless/wpa_supplicant:tdls - Add support for Tunneled Direct Link Setup (8
 net-wireless/wpa_supplicant:uncommon-eap-types - Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE
 net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
+sys-cluster/keepalived:bfd - compile with support for Bidirectional Forwarding Detection (BFD).
 sys-cluster/keepalived:json - compile with signal to dump configuration and stats as JSON.
+sys-cluster/keepalived:regex - compile with support for regex in health checks
 www-client/netsurf:bmp - BMP bitmap image support (media-libs/libnsbmp)
 www-client/netsurf:gtk - Build GTK3 GUI
 www-client/netsurf:gtk2 - Build GTK2 GUI
