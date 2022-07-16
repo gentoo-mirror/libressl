@@ -132,8 +132,6 @@ net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
 net-nds/openldap:pbkdf2 - Enable support for pbkdf2 passwords
 net-nds/openldap:sha2 - Enable support for pw-sha2 password hashes
 net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
-net-voip/telepathy-gabble:jingle - Enable voice calls for jabber
-net-voip/telepathy-gabble:plugins - Enable plugin loader
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
