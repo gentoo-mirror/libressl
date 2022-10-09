@@ -87,6 +87,12 @@ mail-mta/postfix:ldap-bind - Add support for binding to LDAP backend using dev-l
 mail-mta/postfix:lmdb - Add support for using dev-db/lmdb for lookup tables
 mail-mta/postfix:memcached - Add support for using net-misc/memcached for lookup tables
 net-analyzer/ettercap:plugins - Install ettercap plugins (et_*.so)
+net-analyzer/nmap:libssh2 - Enable SSH support through net-libs/libssh2
+net-analyzer/nmap:ncat - Install the ncat utility
+net-analyzer/nmap:nping - Install the nping utility
+net-analyzer/nmap:nse - Include support for the Nmap Scripting Engine (NSE)
+net-analyzer/nmap:symlink - Install symlink to nc
+net-analyzer/nmap:system-lua - Use dev-lang/lua instead of the bundled liblua
 net-dialup/freeradius:memcached - Include dev-libs/libmemcached in caching drivers
 net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:pcap - Build the RADIUS sniffer which requires net-libs/libpcap.
