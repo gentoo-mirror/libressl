@@ -4,7 +4,7 @@
 EAPI=8
 
 # Upstream is moving tags repeatedly, then we use commit hash.
-RELEASE_COMMIT="8b96abf64e6aa19e3beeff6b322bcd6d28120bdd"
+RELEASE_COMMIT="c8a33cc8f39dd67cf9458585ab19d20ef4656fe9"
 
 inherit xdg cmake
 
@@ -27,7 +27,7 @@ RDEPEND="dev-db/sqlite:3
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	net-libs/libsearpc
+	>=net-libs/libsearpc-3.2.0_p1
 	~net-misc/seafile-${PV}
 	sys-libs/zlib
 	virtual/opengl
