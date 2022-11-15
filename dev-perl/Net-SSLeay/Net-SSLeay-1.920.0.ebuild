@@ -4,7 +4,7 @@
 EAPI=8
 
 DIST_AUTHOR=CHRISN
-DIST_VERSION=1.90
+DIST_VERSION=1.92
 DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
@@ -12,15 +12,17 @@ DESCRIPTION="Perl extension for using OpenSSL"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="minimal examples"
 
 RDEPEND="
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	virtual/perl-MIME-Base64
 "
+DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
+	virtual/perl-File-Spec
 	test? (
 		!minimal? (
 			dev-perl/Test-Exception
@@ -33,9 +35,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.88-fix-network-tests.patch"
-	"${FILESDIR}/${PN}-1.88-fix-libdir.patch"
-	"${FILESDIR}/${P}-libressl.patch"
-	"${FILESDIR}/${PN}-1.900.0-libressl-3.5.0.patch"
+	"${FILESDIR}/${PN}-1.920.0-libressl.patch"
 )
 
 PERL_RM_FILES=(
