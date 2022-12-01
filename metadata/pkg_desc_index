@@ -1,4 +1,4 @@
-app-crypt/qca 2.3.4: Qt Cryptographic Architecture (QCA)
+app-crypt/qca 2.3.4 2.3.5: Qt Cryptographic Architecture (QCA)
 app-crypt/tpm2-tss 3.2.0-r3 3.2.0-r4: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/trousers 0.3.15: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-emulation/spice 0.15.0: SPICE server
@@ -18,9 +18,10 @@ dev-libs/softhsm 2.6.1-r2: A software PKCS#11 implementation
 dev-perl/Net-SSLeay 1.900.0 1.920.0: Perl extension for using OpenSSL
 dev-python/cryptography 38.0.1 38.0.2: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.37.1 0.38.0: A Python crypto and SSL toolkit
-dev-qt/qtnetwork 5.15.5: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.5 5.15.7: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.0: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-ebuild 0.5.2: Generates an ebuild for a package using the in-tree eclasses.
+kde-frameworks/kdelibs4support 5.96.0 5.99.0 5.100.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-filter/imapfilter 2.7.5 2.7.5-r1: An IMAP mail filtering utility
 mail-mta/postfix 3.5.8: A fast and secure drop-in replacement for sendmail
 net-analyzer/ettercap 0.8.3.1: A suite for man in the middle attacks
