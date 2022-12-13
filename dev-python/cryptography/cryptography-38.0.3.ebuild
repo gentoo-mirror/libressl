@@ -109,7 +109,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-libressl.patch
+	"${FILESDIR}"/${PN}-38.0.1-libressl.patch
 )
 
 # Files built without CFLAGS/LDFLAGS, acceptable for rust
