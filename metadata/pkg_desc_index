@@ -23,6 +23,7 @@ dev-util/cargo-audit 0.17.0: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-ebuild 0.5.2: Generates an ebuild for a package using the in-tree eclasses.
 kde-frameworks/kdelibs4support 5.96.0 5.99.0 5.100.0 5.101.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-filter/imapfilter 2.7.5 2.7.5-r1: An IMAP mail filtering utility
+mail-mta/opensmtpd 6.8.0_p2-r2: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.5.8: A fast and secure drop-in replacement for sendmail
 net-analyzer/ettercap 0.8.3.1: A suite for man in the middle attacks
 net-analyzer/nmap 7.92-r2 7.93: Network exploration tool and security / port scanner
