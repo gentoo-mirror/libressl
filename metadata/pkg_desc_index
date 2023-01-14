@@ -7,7 +7,7 @@ app-text/mupdf 1.19.1 1.20.0 1.20.3: A lightweight PDF viewer and toolkit writte
 dev-db/mysql-connector-c++ 8.0.27: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-lang/python 2.7.18_p16 3.9.15_p3 3.9.16 3.10.8_p3 3.10.9 3.11.0_p2 3.11.1: An interpreted, interactive, object-oriented programming language
 dev-lang/ruby 2.7.6 3.0.4 3.1.2-r1: An object-oriented scripting language
-dev-lang/rust 1.65.0 1.66.0: Systems programming language from Mozilla
+dev-lang/rust 1.65.0 1.66.1: Systems programming language from Mozilla
 dev-libs/efl 1.26.2: Enlightenment Foundation Libraries all-in-one package
 dev-libs/libevent 2.1.12: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libp11 0.4.11-r2: Abstraction layer to simplify PKCS#11 API
@@ -18,7 +18,7 @@ dev-libs/softhsm 2.6.1-r2: A software PKCS#11 implementation
 dev-perl/Net-SSLeay 1.900.0 1.920.0: Perl extension for using OpenSSL
 dev-python/cryptography 38.0.3: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.37.1 0.38.0: A Python crypto and SSL toolkit
-dev-qt/qtnetwork 5.15.5 5.15.7: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.7 5.15.8-r1: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.0: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-ebuild 0.5.2: Generates an ebuild for a package using the in-tree eclasses.
 kde-frameworks/kdelibs4support 5.96.0 5.99.0 5.100.0 5.101.0: Framework easing the development transition from KDELibs 4 to KF 5
