@@ -76,6 +76,25 @@ dev-libs/libressl:asm - Enables assembly
 dev-libs/openssl:asm - Enables assembly
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
+dev-qt/qtbase:X - Build the XCB platform plugin and enable X11 integration
+dev-qt/qtbase:brotli - Enable support for Brotli decompression
+dev-qt/qtbase:concurrent - Build Qt6Concurrent module
+dev-qt/qtbase:dbus - Build Qt6DBus module
+dev-qt/qtbase:egl - Enable EGL integration
+dev-qt/qtbase:eglfs - Build the EGL Full Screen/Single Surface platform plugin
+dev-qt/qtbase:evdev - Enable support for input devices via evdev
+dev-qt/qtbase:gssapi - Enable support for GSSAPI (virtual/krb5)
+dev-qt/qtbase:gtk - Build the GTK platform theme plugin
+dev-qt/qtbase:gui - Build Qt6Gui module
+dev-qt/qtbase:libinput - Enable support for input devices via dev-libs/libinput
+dev-qt/qtbase:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
+dev-qt/qtbase:network - Build Qt6Network module
+dev-qt/qtbase:sql - Build Qt6Sql module
+dev-qt/qtbase:systemd - Enable native journald logging support
+dev-qt/qtbase:tslib - Enable support for touchscreen devices via x11-libs/tslib
+dev-qt/qtbase:tuio - Build plugin to receive touch events over the TUIO protocol
+dev-qt/qtbase:vulkan - Enable support for Vulkan
+dev-qt/qtbase:widgets - Build Qt6Widgets module
 dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
 dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
 dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
