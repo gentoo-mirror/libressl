@@ -7,7 +7,7 @@ app-text/mupdf 1.19.1 1.20.0 1.20.3: A lightweight PDF viewer and toolkit writte
 dev-db/mysql-connector-c++ 8.0.27: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-lang/python 2.7.18_p16-r1 3.9.16-r1 3.10.9-r1 3.11.1-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/ruby 2.7.6 3.0.4 3.1.2-r1: An object-oriented scripting language
-dev-lang/rust 1.65.0 1.66.1 1.67.0: Systems programming language from Mozilla
+dev-lang/rust 1.65.0 1.66.1 1.67.1: Systems programming language from Mozilla
 dev-libs/efl 1.26.2: Enlightenment Foundation Libraries all-in-one package
 dev-libs/libevent 2.1.12: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libp11 0.4.11-r2: Abstraction layer to simplify PKCS#11 API
