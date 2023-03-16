@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,10 @@ LICENSE="ISC openssl"
 # Reflects ABI of libcrypto.so and libssl.so. Since these can differ,
 # we'll try to use the max of either. However, if either change between
 # versions, we have to change the subslot to trigger rebuild of consumers.
-SLOT="0/52"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+SLOT="0/54"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+asm static-libs test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="test? ( static-libs )"
 
 PDEPEND="app-misc/ca-certificates"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libressl )"
@@ -45,10 +44,6 @@ multilib_src_configure() {
 		$(use_enable test tests)
 	)
 	econf "${args[@]}"
-}
-
-multilib_src_test() {
-	emake check
 }
 
 multilib_src_install_all() {
