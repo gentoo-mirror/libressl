@@ -12,5 +12,5 @@ RDEPEND=>=dev-libs/openssl-1.0.2k:= dbus? ( sys-apps/dbus ) kernel_linux? ( dev-
 REQUIRED_USE=macsec? ( !privsep ) privsep? ( !macsec ) broadcom-sta? ( !fils !mesh !mbo )
 SLOT=0
 SRC_URI=https://w1.fi/releases/wpa_supplicant-2.9.tar.gz https://dev.gentoo.org/~sam/distfiles/net-wireless/wpa_supplicant/wpa_supplicant-2.9-r3-patches.tar.bz2
-_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	multilib	d1408425c7c4a7669b9b17735404b693	linux-info	54fa9b732d29075cfacc3c3091b38747	qmake-utils	59420c906278d16deaaa629f9d115707	readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3	systemd	5f4bb0758df2e483babf68cd517078ca
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	multilib	d1408425c7c4a7669b9b17735404b693	linux-info	c4f1201b96a8a2c1f3b86cc8b2c71c91	qmake-utils	59420c906278d16deaaa629f9d115707	readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3	systemd	5f4bb0758df2e483babf68cd517078ca
 _md5_=afe3583a57164945f9d2fb0c4c0b0c2b
