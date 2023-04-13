@@ -14,6 +14,7 @@ app-crypt/tpm2-tss:fapi - Enable feature API (requires openssl as crypto backend
 app-crypt/tpm2-tss:mbedtls - Use net-libs/mbedtls as crypto engine
 app-crypt/tpm2-tss:openssl - Use dev-libs/openssl as crypto engine
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
+app-text/mupdf:drm - Enable support for Digital rights management (DRM)
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
 dev-lang/python:bluetooth - Build Bluetooth protocol support in socket module
 dev-lang/python:ensurepip - Install the ensurepip module that uses bundled wheels to bootstrap pip and setuptools (if disabled, it will be only possible to use venv `--without-pip`)
@@ -108,10 +109,11 @@ mail-mta/postfix:memcached - Add support for using net-misc/memcached for lookup
 net-analyzer/ettercap:plugins - Install ettercap plugins (et_*.so)
 net-analyzer/nmap:libssh2 - Enable SSH support through net-libs/libssh2
 net-analyzer/nmap:ncat - Install the ncat utility
+net-analyzer/nmap:ndiff - Install the ndiff utility
 net-analyzer/nmap:nping - Install the nping utility
 net-analyzer/nmap:nse - Include support for the Nmap Scripting Engine (NSE)
 net-analyzer/nmap:symlink - Install symlink to nc
-net-analyzer/nmap:system-lua - Use dev-lang/lua instead of the bundled liblua
+net-analyzer/nmap:zenmap - Install the GTK+ based nmap GUI, zenmap
 net-dialup/freeradius:memcached - Include dev-libs/libmemcached in caching drivers
 net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:pcap - Build the RADIUS sniffer which requires net-libs/libpcap.
