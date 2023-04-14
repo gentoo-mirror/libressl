@@ -13,6 +13,7 @@ app-crypt/qca:softstore - Enable softstore plugin
 app-crypt/tpm2-tss:fapi - Enable feature API (requires openssl as crypto backend)
 app-crypt/tpm2-tss:mbedtls - Use net-libs/mbedtls as crypto engine
 app-crypt/tpm2-tss:openssl - Use dev-libs/openssl as crypto engine
+app-crypt/tpm2-tss:policy - Enable policy library (requires openssl as crypto backend)
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
 app-text/mupdf:drm - Enable support for Digital rights management (DRM)
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
