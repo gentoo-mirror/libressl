@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,10 +36,8 @@ BDEPEND="sys-apps/acl
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.2.0-Dont-run-systemd-sysusers-in-Makefile.patch"
-	"${FILESDIR}/${PN}-3.2.0-slibtool.patch" # 858674
-	"${FILESDIR}/${PN}-3.2.0-test-fix-usage-of-FILE-in-unit-test-fapi-io.patch"
 	"${FILESDIR}/${PN}-3.2.0-libressl.patch"
+	"${FILESDIR}/${PN}-3.2.1-Dont-run-systemd-sysusers-in-Makefile.patch"
 )
 
 pkg_setup() {
@@ -51,14 +49,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
-
-	# See bug #833887 (and similar); eautoreconf means .pc file gets wrong version.
-	sed -i \
-	"s/m4_esyscmd_s(\[git describe --tags --always --dirty\])/${PV}/" \
-		"configure.ac" || die
-
 	eautoreconf
+	default
 }
 
 multilib_src_configure() {
@@ -89,12 +81,6 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
-
-	if [[ ${PV} != $(sed -n -e 's/^Version: //p' "${ED}/usr/$(get_libdir)/pkgconfig/tss2-sys.pc" || die) ]] ; then
-		# Safeguard for bug #833887
-		die "pkg-config file version doesn't match ${PV}! Please report a bug!"
-	fi
-
 	find "${D}" -name '*.la' -delete || die
 }
 
