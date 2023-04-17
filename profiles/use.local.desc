@@ -48,7 +48,6 @@ dev-libs/efl:efl-one - Combine multiple core libraries into one libefl.so
 dev-libs/efl:fribidi - Enable bidirectional text support
 dev-libs/efl:glib - Enable dev-libs/glib support
 dev-libs/efl:harfbuzz - Enable complex text shaping and layout support
-dev-libs/efl:heif - Enable HEIF image loader
 dev-libs/efl:hyphen - Enable text hyphenation support
 dev-libs/efl:ibus - Enable Intelligent Input Bus
 dev-libs/efl:ico - Enable Ico image loader
@@ -72,7 +71,6 @@ dev-libs/libevent:malloc-replacement - Support for replacing the memory manageme
 dev-libs/libevent:mbedtls - Support for net-libs/mbedtls encryption
 dev-libs/libevent:ssl - Support for dev-libs/openssl encryption
 dev-libs/libevent:verbose-debug - Support for verbose debug logging
-dev-libs/libp11:doc - Generate and install API documentation for the package.
 dev-libs/libressl:asm - Enables assembly
 dev-libs/openssl:asm - Enables assembly
 dev-libs/softhsm:gost - Enable gost algorithm
