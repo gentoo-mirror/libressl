@@ -45,4 +45,4 @@ sys-auth/pam_p11 0.3.1: PAM module for authenticating against PKCS#11 tokens
 sys-cluster/keepalived 2.2.7: A strong & robust keepalive facility to the Linux Virtual Server project
 www-client/netsurf 3.10-r6: A free, open source web browser
 www-servers/h2o 2.2.6-r1: H2O - the optimized HTTP/1, HTTP/2 server
-x11-misc/x11vnc 0.9.16-r7: VNC server for real X displays
+x11-misc/x11vnc 0.9.16-r8: VNC server for real X displays
