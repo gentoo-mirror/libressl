@@ -23,7 +23,7 @@ dev-util/cargo-audit 0.17.0: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-ebuild 0.5.2 0.5.4: Generates an ebuild for a package using the in-tree eclasses.
 kde-frameworks/kdelibs4support 5.102.0 5.104.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-filter/imapfilter 2.7.5 2.7.5-r1: An IMAP mail filtering utility
-mail-mta/opensmtpd 6.8.0_p2-r2: Lightweight but featured SMTP daemon from OpenBSD
+mail-mta/opensmtpd 6.8.0_p2-r2 6.8.0_p2-r3: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.5.8: A fast and secure drop-in replacement for sendmail
 net-analyzer/ettercap 0.8.3.1-r3: Suite for man in the middle attacks
 net-analyzer/nmap 7.92-r3 7.93-r3: Network exploration tool and security / port scanner
@@ -37,7 +37,6 @@ net-misc/seafile-client 8.0.9 8.0.10 9.0.0 9.0.1: Seafile desktop client
 net-misc/socat 1.7.4.4: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68: TLS/SSL - Port Wrapper
 net-nds/openldap 2.5.14 2.6.3-r7 2.6.4-r1: LDAP suite of application and development tools
-net-vpn/tor 0.4.7.13-r1: Anonymizing overlay network for TCP
 net-wireless/hostapd 2.10: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.10-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20221212: OpenPGP keys used by the libressl project
