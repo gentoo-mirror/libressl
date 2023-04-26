@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit pam systemd
+inherit autotools pam systemd
 
 DESCRIPTION="Lightweight but featured SMTP daemon from OpenBSD"
 HOMEPAGE="https://www.opensmtpd.org"
@@ -11,7 +11,7 @@ SRC_URI="https://www.opensmtpd.org/archives/${P/_}.tar.gz"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="berkdb +mta pam split-usr"
 
 # < openssl 3 for bug #881701
@@ -45,6 +45,17 @@ BDEPEND="app-alternatives/yacc"
 
 S=${WORKDIR}/${P/_}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ar.patch #720782
+	"${FILESDIR}"/${P}-implicit-function-declaration.patch #727260, 896050, 899876
+	"${FILESDIR}"/${P}-strict-prototypes.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	econf \
 		--sysconfdir=/etc/smtpd \
@@ -55,6 +66,8 @@ src_configure() {
 		--with-user-smtpd=smtpd \
 		--with-user-queue=smtpq \
 		--with-group-queue=smtpq \
+		--with-libevent="$(get_libdir)" \
+		--with-libssl="$(get_libdir)" \
 		$(use_with pam auth-pam) \
 		$(use_with berkdb table-db)
 }
