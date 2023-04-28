@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic multiprocessing
 
 MY_P="${PN}-$(ver_cut 1-3)"
 S=${WORKDIR}/${MY_P}
@@ -45,28 +45,29 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/minitest-5.14.2[ruby_targets_ruby30]
-	>=dev-ruby/power_assert-1.2.0[ruby_targets_ruby30]
-	>=dev-ruby/rake-13.0.3[ruby_targets_ruby30]
-	>=dev-ruby/rbs-1.0.0[ruby_targets_ruby30]
-	>=dev-ruby/rexml-3.2.4[ruby_targets_ruby30]
-	>=dev-ruby/rss-0.2.9[ruby_targets_ruby30]
-	>=dev-ruby/test-unit-3.3.7[ruby_targets_ruby30]
-	>=dev-ruby/typeprof-0.11.0[ruby_targets_ruby30]
+	>=dev-ruby/minitest-5.14.2[ruby_targets_ruby30(-)]
+	>=dev-ruby/power_assert-1.2.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/rake-13.0.3[ruby_targets_ruby30(-)]
+	>=dev-ruby/rbs-1.0.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/rexml-3.2.4[ruby_targets_ruby30(-)]
+	>=dev-ruby/rss-0.2.9[ruby_targets_ruby30(-)]
+	>=dev-ruby/test-unit-3.3.7[ruby_targets_ruby30(-)]
+	>=dev-ruby/typeprof-0.11.0[ruby_targets_ruby30(-)]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby30]
-	>=dev-ruby/bundler-2.2.15[ruby_targets_ruby30]
-	>=dev-ruby/did_you_mean-1.5.0[ruby_targets_ruby30]
-	>=dev-ruby/json-2.5.1[ruby_targets_ruby30]
-	rdoc? ( >=dev-ruby/rdoc-6.3.0[ruby_targets_ruby30] )
+	virtual/rubygems[ruby_targets_ruby30(-)]
+	>=dev-ruby/bundler-2.2.15[ruby_targets_ruby30(-)]
+	>=dev-ruby/did_you_mean-1.5.0[ruby_targets_ruby30(-)]
+	>=dev-ruby/json-2.5.1[ruby_targets_ruby30(-)]
+	rdoc? ( >=dev-ruby/rdoc-6.3.0[ruby_targets_ruby30(-)] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-3.0-libressl.patch
 	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
 		eapply "${FILESDIR}"/3.0/900-musl-*.patch
@@ -110,6 +111,15 @@ src_prepare() {
 
 src_configure() {
 	local modules= myconf=
+
+	# Ruby's build system does interesting things with MAKEOPTS and doesn't
+	# handle MAKEOPTS="-Oline" or similar well. Just filter it all out
+	# and use -j/-l parsed out from the original MAKEOPTS, then use that.
+	# Newer Portage sets this option by default in GNUMAKEFLAGS if nothing
+	# is set by the user in MAKEOPTS. See bug #900929 and bug #728424.
+	local makeopts_tmp="-j$(makeopts_jobs) -l$(makeopts_loadavg)"
+	unset MAKEOPTS MAKEFLAGS GNUMAKEFLAGS
+	export MAKEOPTS="${makeopts_tmp}"
 
 	# -fomit-frame-pointer makes ruby segfault, see bug #150413.
 	filter-flags -fomit-frame-pointer
@@ -157,6 +167,9 @@ src_configure() {
 		--enable-shared \
 		--enable-pthread \
 		--disable-rpath \
+		--without-baseruby \
+		--with-compress-debug-sections=no \
+		--enable-mkmf-verbose \
 		--with-out-ext="${modules}" \
 		$(use_with jemalloc jemalloc) \
 		$(use_enable jit jit-support ) \
