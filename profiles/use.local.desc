@@ -177,8 +177,6 @@ www-client/netsurf:gtk2 - Build GTK2 GUI
 www-client/netsurf:psl - Use public suffix list via media-libs/libnspsl
 www-client/netsurf:rosprite - RISC OS Sprite bitmap image support (media-libs/librosprite)
 www-client/netsurf:svgtiny - SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
-www-servers/h2o:libh2o - Build and install libh2o
-www-servers/h2o:mruby - Enable support for mruby
 x11-misc/x11vnc:xdamage - Enable support for the Xdamage library
 x11-misc/x11vnc:xfixes - Enable support for the Xfixes library
 x11-misc/x11vnc:xrandr - Enable support for the X xrandr extension
