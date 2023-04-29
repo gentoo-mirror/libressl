@@ -125,8 +125,6 @@ net-libs/ldns:ecdsa - Enable ECDSA support
 net-libs/ldns:ed25519 - Enable ED25519 support
 net-libs/ldns:ed448 - Enable ED448 support
 net-libs/ldns:gost - Enable GOST support
-net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt instead of dev-libs/openssl
-net-libs/libssh2:mbedtls - Use net-libs/mbedtls instead of dev-libs/openssl
 net-libs/neon:libproxy - Add support for net-libs/libproxy
 net-libs/neon:pkcs11 - Add support for PKCS#11 using dev-libs/pakchois
 net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
