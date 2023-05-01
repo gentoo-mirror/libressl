@@ -8,7 +8,6 @@ dev-db/mysql-connector-c++ 8.0.27 8.0.27-r1 8.0.31 8.0.32: MySQL database connec
 dev-lang/python 2.7.18_p16-r1 3.9.16_p3 3.10.10_p3 3.11.2_p2: An interpreted, interactive, object-oriented programming language
 dev-lang/ruby 3.0.6 3.0.6-r2 3.1.4-r2: An object-oriented scripting language
 dev-lang/rust 1.65.0 1.66.1 1.67.1 1.68.1 1.68.2 1.69.0-r1: Systems programming language from Mozilla
-dev-libs/efl 1.26.3-r1: Enlightenment Foundation Libraries all-in-one package
 dev-libs/libevent 2.1.12-r1: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libressl 3.5.4 3.6.2-r1 3.7.2-r1 3.7.2-r2: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
