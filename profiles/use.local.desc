@@ -86,8 +86,6 @@ net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:pcap - Build the RADIUS sniffer which requires net-libs/libpcap.
 net-dialup/freeradius:redis - Include support for Redis database
 net-dialup/freeradius:rest - Include support for sending and receiving HTTP requests
-net-ftp/lftp:convert-mozilla-cookies - Install the convert-mozilla-cookies script and its run-time dependencies
-net-ftp/lftp:verify-file - Install the verify-file script and its run-time dependencies
 net-libs/ldns:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-libs/ldns:ecdsa - Enable ECDSA support
 net-libs/ldns:ed25519 - Enable ED25519 support
