@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
 	bluetooth build +ensurepip examples gdbm hardened libedit lto
 	+ncurses pgo +readline +sqlite +ssl test tk valgrind
@@ -168,8 +168,13 @@ src_configure() {
 			-m test
 			"-j$(makeopts_jobs)"
 			--pgo-extended
-			-x test_gdb
 			-u-network
+
+			# We use a timeout because of how often we've had hang issues
+			# here. It also matches the default upstream PROFILE_TASK.
+			--timeout 1200
+
+			-x test_gdb
 
 			# All of these seem to occasionally hang for PGO inconsistently
 			# They'll even hang here but be fine in src_test sometimes.
@@ -180,6 +185,10 @@ src_configure() {
 			-x test_multiprocessing_fork
 			-x test_socket
 			-x test_xmlrpc
+
+			# Hangs (actually runs indefinitely executing itself w/ many cpython builds)
+			# bug #900429
+			-x test_tools
 		)
 
 		if has_version "app-arch/rpm" ; then
