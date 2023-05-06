@@ -36,6 +36,5 @@ net-nds/openldap 2.5.14 2.6.3-r7 2.6.4-r1: LDAP suite of application and develop
 net-wireless/hostapd 2.10: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.10-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20221212: OpenPGP keys used by the libressl project
-sys-cluster/keepalived 2.2.7: A strong & robust keepalive facility to the Linux Virtual Server project
 www-client/netsurf 3.10-r6: A free, open source web browser
 x11-misc/x11vnc 0.9.16-r8: VNC server for real X displays
