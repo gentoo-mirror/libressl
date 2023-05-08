@@ -43,6 +43,7 @@ dev-libs/libressl:asm - Enables assembly
 dev-libs/openssl:asm - Enables assembly
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
+dev-python/urllib3:brotli - Enable support for brotli compression
 dev-qt/qtbase:X - Build the XCB platform plugin and enable X11 integration
 dev-qt/qtbase:brotli - Enable support for Brotli decompression
 dev-qt/qtbase:concurrent - Build Qt6Concurrent module
