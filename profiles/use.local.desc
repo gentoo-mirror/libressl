@@ -74,7 +74,6 @@ mail-mta/postfix:eai - Add support for SMTPUTF8
 mail-mta/postfix:ldap-bind - Add support for binding to LDAP backend using dev-libs/cyrus-sasl
 mail-mta/postfix:lmdb - Add support for using dev-db/lmdb for lookup tables
 mail-mta/postfix:memcached - Add support for using net-misc/memcached for lookup tables
-net-analyzer/ettercap:plugins - Install ettercap plugins (et_*.so)
 net-analyzer/nmap:libssh2 - Enable SSH support through net-libs/libssh2
 net-analyzer/nmap:ncat - Install the ncat utility
 net-analyzer/nmap:ndiff - Install the ndiff utility
@@ -139,6 +138,3 @@ www-client/netsurf:gtk2 - Build GTK2 GUI
 www-client/netsurf:psl - Use public suffix list via media-libs/libnspsl
 www-client/netsurf:rosprite - RISC OS Sprite bitmap image support (media-libs/librosprite)
 www-client/netsurf:svgtiny - SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
-x11-misc/x11vnc:xdamage - Enable support for the Xdamage library
-x11-misc/x11vnc:xfixes - Enable support for the Xfixes library
-x11-misc/x11vnc:xrandr - Enable support for the X xrandr extension
