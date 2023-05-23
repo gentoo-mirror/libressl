@@ -61,7 +61,6 @@ dev-qt/qtbase:sql - Build Qt6Sql module
 dev-qt/qtbase:systemd - Enable native journald logging support
 dev-qt/qtbase:tslib - Enable support for touchscreen devices via x11-libs/tslib
 dev-qt/qtbase:tuio - Build plugin to receive touch events over the TUIO protocol
-dev-qt/qtbase:vulkan - Enable support for Vulkan
 dev-qt/qtbase:widgets - Build Qt6Widgets module
 dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
 dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
