@@ -16,15 +16,15 @@ dev-perl/Net-SSLeay 1.900.0 1.920.0: Perl extension for using OpenSSL
 dev-python/cryptography 40.0.1: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.38.0: A Python crypto and SSL toolkit
 dev-python/urllib3 2.0.2-r1: HTTP library with thread-safe connection pooling, file post, and more
-dev-qt/qtbase 6.5.0-r1: Cross-platform application development framework
-dev-qt/qtnetwork 5.15.9 5.15.9-r1: Network abstraction library for the Qt5 framework
+dev-qt/qtbase 6.5.0-r2: Cross-platform application development framework
+dev-qt/qtnetwork 5.15.9 5.15.9-r2: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.0: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-ebuild 0.5.2 0.5.4: Generates an ebuild for a package using the in-tree eclasses.
 kde-frameworks/kdelibs4support 5.104.0 5.106.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-filter/imapfilter 2.7.5 2.7.5-r1: An IMAP mail filtering utility
 mail-mta/opensmtpd 6.8.0_p2-r2 6.8.0_p2-r3: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.5.8: A fast and secure drop-in replacement for sendmail
-net-analyzer/nmap 7.92-r3 7.93-r3: Network exploration tool and security / port scanner
+net-analyzer/nmap 7.92-r3 7.93-r3 7.94: Network exploration tool and security / port scanner
 net-dialup/freeradius 3.2.2: Highly configurable free RADIUS server
 net-libs/ldns 1.8.0-r4 1.8.1 1.8.3 1.8.3-r1: A library with the aim to simplify DNS programming in C
 net-libs/neon 0.32.4: HTTP and WebDAV client library
