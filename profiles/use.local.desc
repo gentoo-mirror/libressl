@@ -43,6 +43,11 @@ dev-libs/libressl:asm - Enables assembly
 dev-libs/openssl:asm - Enables assembly
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
+dev-libs/xmlsec:gcrypt - Install xmlsec-gcrypt library
+dev-libs/xmlsec:gnutls - Install xmlsec-gnutls library
+dev-libs/xmlsec:http - Allow fetching over HTTP via libxml2.
+dev-libs/xmlsec:nss - Install xmlsec-nss library
+dev-libs/xmlsec:openssl - Install xmlsec-openssl library
 dev-python/urllib3:brotli - Enable support for brotli compression
 dev-qt/qtbase:X - Build the XCB platform plugin and enable X11 integration
 dev-qt/qtbase:brotli - Enable support for Brotli decompression
@@ -103,6 +108,9 @@ net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
 net-nds/openldap:pbkdf2 - Enable support for pbkdf2 passwords
 net-nds/openldap:sha2 - Enable support for pw-sha2 password hashes
 net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
+net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
+net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
+net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
 net-wireless/hostapd:crda - Add CRDA support
 net-wireless/hostapd:internal-tls - Use internal TLSv1 implementation instead of depending on OpenSSL or GnuTLS
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
