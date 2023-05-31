@@ -29,7 +29,7 @@ net-analyzer/nmap 7.92-r3 7.93-r3 7.94: Network exploration tool and security / 
 net-dialup/freeradius 3.2.2: Highly configurable free RADIUS server
 net-libs/ldns 1.8.0-r4 1.8.1 1.8.3 1.8.3-r1: A library with the aim to simplify DNS programming in C
 net-libs/neon 0.32.4: HTTP and WebDAV client library
-net-misc/seafile-client 8.0.9 8.0.10 9.0.0 9.0.1: Seafile desktop client
+net-misc/seafile-client 8.0.9 8.0.10 9.0.0 9.0.1 9.0.2 9.0.2_p1: Seafile desktop client
 net-misc/socat 1.7.4.4: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68: TLS/SSL - Port Wrapper
 net-nds/openldap 2.6.3-r7: LDAP suite of application and development tools
