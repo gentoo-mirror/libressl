@@ -18,7 +18,7 @@ dev-python/cryptography 40.0.2 40.0.2-r1: Library providing cryptographic recipe
 dev-python/m2crypto 0.38.0: A Python crypto and SSL toolkit
 dev-python/urllib3 2.0.2-r1: HTTP library with thread-safe connection pooling, file post, and more
 dev-qt/qtbase 6.5.1-r1: Cross-platform application development framework
-dev-qt/qtnetwork 5.15.9 5.15.9-r2: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.9 5.15.9-r2 5.15.9-r3: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.0: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-ebuild 0.5.2 0.5.4: Generates an ebuild for a package using the in-tree eclasses.
 kde-frameworks/kdelibs4support 5.104.0 5.106.0: Framework easing the development transition from KDELibs 4 to KF 5
