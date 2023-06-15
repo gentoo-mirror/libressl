@@ -42,6 +42,7 @@ dev-lang/rust:system-llvm - Use the system LLVM installation
 dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
 dev-libs/libressl:asm - Enables assembly
 dev-libs/openssl:asm - Enables assembly
+dev-libs/openssl:sslv3 - Support for the SSLv3 protocol
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
 dev-libs/xmlsec:gcrypt - Install xmlsec-gcrypt library
