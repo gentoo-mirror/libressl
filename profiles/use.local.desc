@@ -69,10 +69,8 @@ dev-qt/qtbase:systemd - Enable native journald logging support
 dev-qt/qtbase:tslib - Enable support for touchscreen devices via x11-libs/tslib
 dev-qt/qtbase:tuio - Build plugin to receive touch events over the TUIO protocol
 dev-qt/qtbase:widgets - Build Qt6Widgets module
-dev-qt/qtnetwork:connman - Enable net-misc/connman-based bearer plugin
 dev-qt/qtnetwork:gssapi - Enable support for GSSAPI (virtual/krb5)
 dev-qt/qtnetwork:libproxy - Use net-libs/libproxy for automatic HTTP/SOCKS proxy configuration
-dev-qt/qtnetwork:networkmanager - Enable net-misc/networkmanager-based bearer plugin
 dev-util/cargo-audit:fix - Add support for 'fix' subcommand (experimental)
 mail-mta/opensmtpd:mta - Enable this to install as system-wide MTA
 mail-mta/postfix:dovecot-sasl - Enable net-mail/dovecot protocol version 1 (server only) SASL implementation
