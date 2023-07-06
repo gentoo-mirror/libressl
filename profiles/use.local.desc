@@ -131,9 +131,10 @@ net-wireless/wpa_supplicant:uncommon-eap-types - Add support for GPSK, SAKE, GPS
 net-wireless/wpa_supplicant:wep - Add support for Wired Equivalent Privacy (deprecated due to security flaws in 2004)
 net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
-www-client/netsurf:bmp - BMP bitmap image support (media-libs/libnsbmp)
+www-client/netsurf:bmp - Bitmap (BMP and ICO) image support via media-libs/libnsbmp
 www-client/netsurf:gtk - Build GTK3 GUI
 www-client/netsurf:gtk2 - Build GTK2 GUI
-www-client/netsurf:psl - Use public suffix list via media-libs/libnspsl
-www-client/netsurf:rosprite - RISC OS Sprite bitmap image support (media-libs/librosprite)
-www-client/netsurf:svgtiny - SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
+www-client/netsurf:psl - Use public suffix list from media-libs/libnspsl to detect supercookies (recommended)
+www-client/netsurf:rosprite - RISC OS Sprite bitmap image support via media-libs/librosprite
+www-client/netsurf:svgtiny - Use media-libs/libsvgtiny instead of gnome-base/librsvg for SVG support
+www-client/netsurf:truetype - Use media-libs/freetype for text in the framebuffer frontend
