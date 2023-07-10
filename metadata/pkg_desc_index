@@ -20,6 +20,7 @@ dev-qt/qtbase 6.5.1-r1: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.9 5.15.9-r2 5.15.9-r3 5.15.10 5.15.10-r1: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.0 0.17.6: Audit Cargo.lock for crates with security vulnerabilities
 dev-util/cargo-ebuild 0.5.2 0.5.4: Generates an ebuild for a package using the in-tree eclasses.
+dev-util/maturin 1.0.1: Build and publish crates with pyo3, rust-cpython and cffi bindings
 kde-frameworks/kdelibs4support 5.106.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-filter/imapfilter 2.7.5 2.7.5-r1: An IMAP mail filtering utility
 mail-mta/opensmtpd 6.8.0_p2-r2 6.8.0_p2-r3: Lightweight but featured SMTP daemon from OpenBSD
