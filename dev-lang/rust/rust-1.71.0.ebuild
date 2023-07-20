@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing \
 	multilib multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
@@ -22,7 +22,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).1"
+RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
@@ -34,14 +34,14 @@ SRC_URI="
 "
 
 # keep in sync with llvm ebuild of the same version as bundled one.
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore )
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips MSP430
+	NVPTX PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind miri nightly parallel-compiler profiler rustfmt rust-analyzer rust-src system-bootstrap system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind +lto miri nightly parallel-compiler profiler rustfmt rust-analyzer rust-src system-bootstrap system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
 
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling more than one slot
@@ -49,7 +49,7 @@ IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind miri ni
 
 # How to use it:
 # List all the working slots in LLVM_VALID_SLOTS, newest first.
-LLVM_VALID_SLOTS=( 15 )
+LLVM_VALID_SLOTS=( 16 )
 LLVM_MAX_SLOT="${LLVM_VALID_SLOTS[0]}"
 
 # splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
@@ -162,13 +162,21 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
-	"${FILESDIR}"/1.64.0-libressl.patch
-	"${FILESDIR}"/1.68.0-ignore-broken-and-non-applicable-tests.patch
+	"${FILESDIR}"/1.71.0-fix-bashcomp-installation.patch
+	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.62.1-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
+
+eapply_crate() {
+	pushd "${1:?}" > /dev/null || die
+	local patch="${2:?}"
+	eapply "${patch}"
+	"${EPREFIX}"/bin/sh "${FILESDIR}"/rehash-crate.sh "${patch}" || die
+	popd > /dev/null || die
+}
 
 toml_usex() {
 	usex "${1}" true false
@@ -283,6 +291,9 @@ esetup_unwind_hack() {
 }
 
 src_prepare() {
+	eapply_crate vendor/openssl-sys-0.9.85 "${FILESDIR}"/1.71.0-libressl-openssl-sys.patch
+	eapply_crate vendor/openssl-sys "${FILESDIR}"/1.71.0-libressl-openssl-sys.patch
+
 	if ! use system-bootstrap; then
 		has_version sys-devel/gcc || esetup_unwind_hack
 		local rust_stage0_root="${WORKDIR}"/rust-stage0
@@ -291,13 +302,6 @@ src_prepare() {
 		"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig \
 			--without=rust-docs-json-preview,rust-docs --destdir="${rust_stage0_root}" --prefix=/ || die
 	fi
-
-	# this libressl version check is terrible
-	sed -e 's/d397af804c0b786978867528635fa9148cd2ad0e6abd591ace21b5bd3719c38d/896afea18b1072d4c715421ff2ed7e428b57aadec44d4680dcb991a6229a1edc/' \
-		-i vendor/openssl-sys/.cargo-checksum.json || die
-	# fix for libressl
-	sed -e 's/7d5ca02f34cffe51db3568c500c9a8a70cef879871a0f466e3344142644acf12/e9eef35f1c18dd9844960d1d315e84ad99a05ab1247f0f54e3c2eab244988256/' \
-		-i vendor/libssh2-sys/.cargo-checksum.json || die
 
 	default
 }
@@ -321,12 +325,13 @@ src_configure() {
 	fi
 	rust_targets="${rust_targets#,}"
 
-	local tools='"cargo"'
+	# cargo and rustdoc are mandatory and should always be included
+	local tools='"cargo","rustdoc"'
 	use clippy && tools+=',"clippy"'
 	use miri && tools+=',"miri"'
 	use profiler && tools+=',"rust-demangler"'
 	use rustfmt && tools+=',"rustfmt"'
-	use rust-analyzer && tools+=',"rust-analyzer","analysis"'
+	use rust-analyzer && tools+=',"rust-analyzer"'
 	use rust-src && tools+=',"src"'
 
 	local rust_stage0_root
@@ -369,6 +374,7 @@ src_configure() {
 			*)
 				;;
 		esac)
+		enable-warnings = false
 		[llvm.build-config]
 		CMAKE_VERBOSE_MAKEFILE = "ON"
 		CMAKE_C_FLAGS_${cm_btype} = "${CFLAGS}"
@@ -436,9 +442,11 @@ src_configure() {
 		deny-warnings = $(usex wasm $(usex doc false true) true)
 		backtrace-on-ice = true
 		jemalloc = false
+		lto = "$(usex lto fat off)"
 		[dist]
 		src-tarball = false
 		compression-formats = ["xz"]
+		compression-profile = "balanced"
 	_EOF_
 
 	for v in $(multilib_get_enabled_abi_pairs); do
