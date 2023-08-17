@@ -33,4 +33,4 @@ net-nds/openldap 2.6.3-r7: LDAP suite of application and development tools
 net-wireless/hostapd 2.10 2.10-r1: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.10-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20221212: OpenPGP keys used by the libressl project
-www-client/netsurf 3.10-r6: A free, open source web browser
+www-client/netsurf 3.10-r7: A free, open source web browser
