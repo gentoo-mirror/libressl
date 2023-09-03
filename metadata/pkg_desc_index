@@ -31,6 +31,7 @@ net-misc/seafile-client 8.0.9 8.0.10 9.0.0 9.0.1 9.0.2 9.0.2_p1 9.0.3: Seafile d
 net-misc/socat 1.7.4.4 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68: TLS/SSL - Port Wrapper
 net-nds/openldap 2.6.3-r7: LDAP suite of application and development tools
+net-vpn/openvpn 2.5.2-r3 2.5.6-r1 2.5.7-r1 2.6.4: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/tor 0.4.7.13-r1 0.4.7.14 0.4.8.4 0.4.8.5: Anonymizing overlay network for TCP
 net-wireless/hostapd 2.10-r1 2.10-r2: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.10-r1 2.10-r2 2.10-r3: IEEE 802.1X/WPA supplicant for secure wireless transfers
