@@ -144,3 +144,7 @@ www-client/netsurf:psl - Use public suffix list from media-libs/libnspsl to dete
 www-client/netsurf:rosprite - RISC OS Sprite bitmap image support via media-libs/librosprite
 www-client/netsurf:svgtiny - Use media-libs/libsvgtiny instead of gnome-base/librsvg for SVG support
 www-client/netsurf:truetype - Use media-libs/freetype for text in the framebuffer frontend
+www-servers/apache:static - Link in apache2 modules statically rather then plugins
+www-servers/apache:suexec - Install suexec with apache
+www-servers/apache:suexec-caps - Install suexec with capabilities instead of SUID
+www-servers/apache:suexec-syslog - Log suexec to syslog instead of to a separate file

@@ -36,3 +36,4 @@ net-wireless/hostapd 2.10-r1 2.10-r2: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.10-r1 2.10-r2 2.10-r3: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20221212: OpenPGP keys used by the libressl project
 www-client/netsurf 3.10-r7: A free, open source web browser
+www-servers/apache 2.4.57 2.4.57-r1 2.4.57-r2 2.4.57-r3 2.4.57-r4: The Apache Web Server
