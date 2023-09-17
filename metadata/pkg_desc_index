@@ -22,7 +22,7 @@ dev-util/cargo-audit 0.17.0 0.17.6: Audit Cargo.lock for crates with security vu
 dev-util/cargo-ebuild 0.5.2 0.5.4 0.5.4-r1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/maturin 1.1.0 1.2.2 1.2.3: Build and publish crates with pyo3, rust-cpython and cffi bindings
 mail-filter/imapfilter 2.7.5 2.7.5-r1: An IMAP mail filtering utility
-mail-mta/postfix 3.5.8: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.5.19: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.92-r3 7.93-r3 7.94: Network exploration tool and security / port scanner
 net-dialup/freeradius 3.2.2: Highly configurable free RADIUS server
 net-libs/ldns 1.8.0-r4 1.8.1 1.8.3 1.8.3-r1: A library with the aim to simplify DNS programming in C
