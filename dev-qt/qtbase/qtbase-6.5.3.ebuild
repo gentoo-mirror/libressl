@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build toolchain-funcs
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~x86"
 fi
 
 declare -A QT6_IUSE=(
@@ -137,8 +137,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-hppa-forkfd-grow-stack.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-glx.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
-	"${FILESDIR}"/${P}-CVE-2023-38197.patch
-	"${FILESDIR}"/${P}-tests-gcc13.patch
 )
 
 src_prepare() {
