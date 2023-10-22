@@ -16,7 +16,7 @@ dev-libs/xmlsec 1.2.37: Command line tool for signing, verifying, encrypting and
 dev-perl/Net-SSLeay 1.900.0 1.920.0: Perl extension for using OpenSSL
 dev-python/cryptography 41.0.3 41.0.4: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.39.0-r1: A Python crypto and SSL toolkit
-dev-qt/qtbase 6.5.2-r2 6.5.3: Cross-platform application development framework
+dev-qt/qtbase 6.5.2-r2 6.5.3-r1 6.6.0-r1: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.10 5.15.10-r3 5.15.11: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.0 0.17.6: Audit Cargo.lock for crates with security vulnerabilities
 dev-util/cargo-ebuild 0.5.2 0.5.4 0.5.4-r1: Generates an ebuild for a package using the in-tree eclasses.
