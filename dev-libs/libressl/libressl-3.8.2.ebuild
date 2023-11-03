@@ -16,8 +16,8 @@ LICENSE="ISC openssl"
 # Reflects ABI of libcrypto.so and libssl.so. Since these can differ,
 # we'll try to use the max of either. However, if either change between
 # versions, we have to change the subslot to trigger rebuild of consumers.
-SLOT="0/54"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
+SLOT="0/55"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+asm static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -28,11 +28,14 @@ VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libressl.asc
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/openssl/opensslconf.h )
 
+# LibreSSL checks for libc features during configure
+QA_CONFIG_IMPL_DECL_SKIP=(
+	__va_copy
+	b64_ntop
+)
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.3-solaris10.patch
-	# Silences a Gentoo QA notice that is a false positive
-	# https://github.com/libressl/portable/issues/825
-	"${FILESDIR}"/${PN}-3.7.2-array-bounds.patch
 	# Gentoo's ssl-cert.eclass uses 'openssl genrsa -rand'
 	# which LibreSSL doesn't support.
 	# https://github.com/libressl/portable/issues/839
