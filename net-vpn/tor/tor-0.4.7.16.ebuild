@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/torproject.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/torproject.org.asc
 inherit edo python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
@@ -28,31 +28,28 @@ else
 	S="${WORKDIR}/${MY_PF}"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
+		KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
 	fi
 
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20230727 )"
 fi
 
-# BSD in general, but for PoW, needs --enable-gpl (GPL-3 per --version)
-# We also already had GPL-2 listed here for the init script, but obviously
-# that's different from the actual binary.
-LICENSE="BSD GPL-2 GPL-3"
+LICENSE="BSD GPL-2"
 SLOT="0"
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
+	dev-libs/openssl:=[-bindist(-)]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
-	dev-libs/openssl:=[-bindist(-)]
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
-	systemd? ( sys-apps/systemd )
-	zstd? ( app-arch/zstd )
+	systemd? ( sys-apps/systemd:= )
+	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
 	acct-user/tor
@@ -71,6 +68,7 @@ DOCS=()
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+	"${FILESDIR}"/${PN}-0.4.7.13-libressl.patch
 	"${FILESDIR}"/${PN}-0.4.7.13-opensslconf.patch
 )
 
@@ -123,21 +121,6 @@ src_configure() {
 		--disable-module-dirauth
 		--enable-pic
 		--disable-restart-debugging
-
-		# Unless someone asks & has a compelling reason, just always
-		# build in GPL mode for pow, given we don't want yet another USE
-		# flag combination to have to test just for the sake of it.
-		# (PoW requires GPL.)
-		--enable-gpl
-		--enable-module-pow
-
-		# This option is enabled by default upstream w/ zstd, surprisingly.
-		# zstd upstream says this shouldn't be relied upon and it may
-		# break API & ABI at any point, so Tor tries to fake static-linking
-		# to make it work, but then requires a rebuild on any new zstd version
-		# even when its standard ABI hasn't changed.
-		# See bug #727406 and bug #905708.
-		--disable-zstd-advanced-apis
 
 		$(use_enable man asciidoc)
 		$(use_enable man manpage)

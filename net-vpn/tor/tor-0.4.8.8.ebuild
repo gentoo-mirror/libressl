@@ -5,41 +5,54 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/torproject.org.asc
-inherit autotools python-any-r1 readme.gentoo-r1 systemd verify-sig
+inherit edo python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
 DESCRIPTION="Anonymizing overlay network for TCP"
 HOMEPAGE="https://www.torproject.org/ https://gitlab.torproject.org/tpo/core/tor/"
-SRC_URI="
-	https://www.torproject.org/dist/${MY_PF}.tar.gz
-	https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz
-	verify-sig? (
-		https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum
-		https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum.asc
-	)
-"
-S="${WORKDIR}/${MY_PF}"
 
-LICENSE="BSD GPL-2"
-SLOT="0"
-if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
-	KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://gitlab.torproject.org/tpo/core/tor"
+	inherit autotools git-r3
+else
+	SRC_URI="
+		https://www.torproject.org/dist/${MY_PF}.tar.gz
+		https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz
+		verify-sig? (
+			https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum
+			https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum.asc
+		)
+	"
+
+	S="${WORKDIR}/${MY_PF}"
+
+	if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
+	fi
+
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20230727 )"
 fi
+
+# BSD in general, but for PoW, needs --enable-gpl (GPL-3 per --version)
+# We also already had GPL-2 listed here for the init script, but obviously
+# that's different from the actual binary.
+LICENSE="BSD GPL-2 GPL-3"
+SLOT="0"
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
+	dev-libs/openssl:=[-bindist(-)]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
-	dev-libs/openssl:=[-bindist(-)]
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
-	systemd? ( sys-apps/systemd )
-	zstd? ( app-arch/zstd )
+	systemd? ( sys-apps/systemd:= )
+	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
 	acct-user/tor
@@ -53,13 +66,11 @@ DEPEND+="
 		${PYTHON_DEPS}
 	)
 "
-BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20221213 )"
 
 DOCS=()
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
-	"${FILESDIR}"/${PN}-0.4.7.13-libressl.patch
 	"${FILESDIR}"/${PN}-0.4.7.13-opensslconf.patch
 )
 
@@ -68,15 +79,19 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if use verify-sig; then
-		cd "${DISTDIR}" || die
-		verify-sig_verify_detached ${MY_PF}.tar.gz.sha256sum{,.asc}
-		verify-sig_verify_unsigned_checksums \
-			${MY_PF}.tar.gz.sha256sum sha256 ${MY_PF}.tar.gz
-		cd "${WORKDIR}" || die
-	fi
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+	else
+		if use verify-sig; then
+			cd "${DISTDIR}" || die
+			verify-sig_verify_detached ${MY_PF}.tar.gz.sha256sum{,.asc}
+			verify-sig_verify_unsigned_checksums \
+				${MY_PF}.tar.gz.sha256sum sha256 ${MY_PF}.tar.gz
+			cd "${WORKDIR}" || die
+		fi
 
-	default
+		default
+	fi
 }
 
 src_prepare() {
@@ -85,8 +100,9 @@ src_prepare() {
 	# Running shellcheck automagically isn't useful for ebuild testing.
 	echo "exit 0" > scripts/maint/checkShellScripts.sh || die
 
-	# Only needed for libressl patch
-	eautoreconf
+	if [[ ${PV} == 9999 ]] ; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
@@ -108,13 +124,12 @@ src_configure() {
 		--enable-pic
 		--disable-restart-debugging
 
-		# This option is enabled by default upstream w/ zstd, surprisingly.
-		# zstd upstream says this shouldn't be relied upon and it may
-		# break API & ABI at any point, so Tor tries to fake static-linking
-		# to make it work, but then requires a rebuild on any new zstd version
-		# even when its standard ABI hasn't changed.
-		# See bug #727406 and bug #905708.
-		--disable-zstd-advanced-apis
+		# Unless someone asks & has a compelling reason, just always
+		# build in GPL mode for pow, given we don't want yet another USE
+		# flag combination to have to test just for the sake of it.
+		# (PoW requires GPL.)
+		--enable-gpl
+		--enable-module-pow
 
 		$(use_enable man asciidoc)
 		$(use_enable man manpage)
@@ -130,6 +145,19 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	local skip_tests=(
+		# Fails in sandbox
+		:sandbox/open_filename
+		:sandbox/openat_filename
+	)
+
+	# The makefile runs these by parallel by chunking them with a script
+	# but that means we lose verbosity and can't skip individual tests easily
+	# either.
+	edo ./src/test/test --verbose "${skip_tests[@]}"
 }
 
 src_install() {
