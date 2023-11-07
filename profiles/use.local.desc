@@ -50,7 +50,6 @@ dev-libs/xmlsec:http - Allow fetching over HTTP via libxml2.
 dev-libs/xmlsec:nss - Install xmlsec-nss library
 dev-libs/xmlsec:openssl - Install xmlsec-openssl library
 dev-qt/qtbase:X - Build the XCB platform plugin and enable X11 integration
-dev-qt/qtbase:brotli - Enable support for Brotli decompression
 dev-qt/qtbase:concurrent - Build Qt6Concurrent module
 dev-qt/qtbase:dbus - Build Qt6DBus module
 dev-qt/qtbase:eglfs - Build the EGL Full Screen/Single Surface platform plugin
