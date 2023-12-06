@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build toolchain-funcs
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 declare -A QT6_IUSE=(
@@ -34,7 +34,7 @@ REQUIRED_USE="
 		printf '%s? ( sql ) ' ${QT6_IUSE[sql]//+/}
 		printf '%s? ( gui widgets ) ' ${QT6_IUSE[widgets]//+/}
 	)
-	accessibility? ( X dbus )
+	accessibility? ( dbus )
 	eglfs? ( opengl )
 	gles2-only? ( opengl )
 	gui? ( || ( X eglfs wayland ) )
@@ -115,7 +115,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	<x11-libs/libxkbcommon-1.6
 	X? ( x11-base/xorg-proto )
 	gui? (
 		vulkan? ( dev-util/vulkan-headers )
@@ -134,12 +133,11 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.5.0-libressl.patch
+	"${FILESDIR}"/${PN}-6.6.0-libressl.patch
 	"${FILESDIR}"/${PN}-6.5.2-hppa-forkfd-grow-stack.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-glx.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
-	"${FILESDIR}"/${P}-CVE-2023-38197.patch
-	"${FILESDIR}"/${P}-tests-gcc13.patch
+	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
 )
 
 src_prepare() {
@@ -218,14 +216,13 @@ src_configure() {
 		$(qt_feature libproxy)
 		$(qt_feature sctp)
 		$(usev test -DQT_SKIP_DOCKER_COMPOSE=ON)
-
-		# Required for LibreSSL
-		-DQT_FEATURE_dtls=OFF
+		-DQT_FEATURE_dtls=OFF # Required for LibreSSL
 	)
 
 	use sql && mycmakeargs+=(
 		-DQT_FEATURE_sql_db2=OFF # unpackaged
 		-DQT_FEATURE_sql_ibase=OFF # unpackaged
+		-DQT_FEATURE_sql_mimer=OFF # unpackaged
 		$(qt_feature mysql sql_mysql)
 		$(qt_feature oci8 sql_oci)
 		$(usev oci8 -DOracle_ROOT="${ESYSROOT}"/usr/$(get_libdir)/oracle/client)
@@ -233,7 +230,6 @@ src_configure() {
 		$(qt_feature postgres sql_psql)
 		$(qt_feature sqlite sql_sqlite)
 		$(qt_feature sqlite system_sqlite)
-		-DQT_FEATURE_sql_tds=OFF # currently a no-op in CMakeLists.txt
 	)
 
 	if use amd64 || use x86; then
@@ -288,11 +284,16 @@ src_test() {
 		tst_qx11info
 		# fails with network sandbox
 		tst_qdnslookup
+		# fails with sandbox
+		tst_qsharedmemory
 		# typical to lack SCTP support on non-generic kernels
 		tst_qsctpsocket
+		# randomly fails without -j1, and not worth it over this (bug #916181)
+		tst_qfiledialog{,2}
 		# these can be flaky depending on the environment/toolchain
 		tst_qlogging # backtrace log test can easily vary
 		tst_q{,raw}font # affected by available fonts / settings (bug #914737)
+		tst_qprinter # checks system's printers (bug #916216)
 		tst_qstorageinfo # checks mounted filesystems
 		# flaky due to using different test framework and fails with USE=-gui
 		tst_selftests
@@ -310,14 +311,14 @@ src_test() {
 		# similarly, but on armv7 and potentially others (bug #914028)
 		tst_qlineedit
 		tst_qpainter
-		# likewise, known failing at least on BE arches (bug #914033,914371)
+		# likewise, known failing on BE arches (bug #914033,914371,918878)
 		tst_qimagereader
 		tst_qimagewriter
 		tst_qpluginloader
+		tst_quuid
 		# partially broken on llvm-musl, needs looking into but skip to have
 		# a baseline for regressions (rest of dev-qt still passes with musl)
 		$(usev elibc_musl '
-			tst_qfiledialog2
 			tst_qicoimageformat
 			tst_qimagereader
 			tst_qimage
@@ -326,6 +327,12 @@ src_test() {
 		$(usev hppa '
 			tst_qcborvalue
 			tst_qnumeric
+		')
+		# bug #914033
+		$(usev sparc '
+			tst_qbuffer
+			tst_qprocess
+			tst_qtconcurrentiteratekernel
 		')
 		# note: for linux, upstream only really runs+maintains tests for amd64
 		# https://doc.qt.io/qt-6/supported-platforms.html
