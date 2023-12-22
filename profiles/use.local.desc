@@ -19,7 +19,6 @@ dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX
 dev-lang/python:bluetooth - Build Bluetooth protocol support in socket module
 dev-lang/python:ensurepip - Install the ensurepip module that uses bundled wheels to bootstrap pip and setuptools (if disabled, it will be only possible to use venv `--without-pip`)
 dev-lang/python:libedit - Link readline extension against dev-libs/libedit instead of sys-libs/readline
-dev-lang/python:lto - Optimize the build using Link Time Optimization (LTO)
 dev-lang/python:pgo - Optimize the build using Profile Guided Optimization (PGO) by running Python's test suite and collecting statistics based on its performance. This will take longer to build.
 dev-lang/python:valgrind - Disable pymalloc when running under dev-util/valgrind is detected (may incur minor performance penalty even when valgrind is not used)
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows
@@ -27,7 +26,6 @@ dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
 dev-lang/ruby:systemtap - Enable SystemTAP/DTrace tracing
 dev-lang/rust:clippy - Install clippy, Rust code linter
 dev-lang/rust:dist - Install dist tarballs (used for bootstrapping)
-dev-lang/rust:lto - Optimize the build using Link Time Optimization (LTO)
 dev-lang/rust:miri - Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly, sometimes is broken)
 dev-lang/rust:nightly - Enable nightly (UNSTABLE) features (NOTE: it does not install nightly version, just enables features marked as nightly at time of release)
 dev-lang/rust:parallel-compiler - Build a multi-threaded rustc (experimental, not tested by upstream)
