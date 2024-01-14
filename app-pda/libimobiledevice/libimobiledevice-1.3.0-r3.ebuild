@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools python-r1
 
@@ -19,7 +19,7 @@ IUSE="doc gnutls python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=app-pda/libplist-2.2.0:=
+	>=app-pda/libplist-2.2.0:= <app-pda/libplist-2.3
 	>=app-pda/libusbmuxd-2.0.2:=
 	gnutls? (
 		dev-libs/libgcrypt:0
@@ -40,7 +40,7 @@ DEPEND="
 # <cython-3 for bug #898666
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	python? ( <dev-python/cython-3[${PYTHON_USEDEP}] )
 "
 
@@ -49,7 +49,8 @@ BUILD_DIR="${S}_build"
 PATCHES=(
 	"${FILESDIR}/${P}-slibtool.patch"
 	"${FILESDIR}/${P}-missing_libflags.patch" #787962
-	"${FILESDIR}"/${P}-libressl.patch
+	"${FILESDIR}/${P}-libressl.patch"
+	"${FILESDIR}/${P}-python.patch"
 )
 
 src_prepare() {

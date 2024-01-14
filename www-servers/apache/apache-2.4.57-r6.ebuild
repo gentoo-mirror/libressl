@@ -118,7 +118,7 @@ MODULE_DEFINES="
 	proxy_http:PROXY
 	proxy_http2:PROXY
 	proxy_scgi:PROXY
-	proxy_uswgi:PROXY
+	proxy_uwsgi:PROXY
 	proxy_wstunnel:PROXY
 	socache_shmcb:SSL
 	socache_memcache:CACHE
@@ -192,11 +192,7 @@ src_install() {
 		rm "${ED}"/${i} || die "Failed to prune apache-tools bits"
 	done
 
-	# install apxs in /usr/bin (bug #502384) and put a symlink into the
-	# old location until all ebuilds and eclasses have been modified to
-	# use the new location.
 	dobin support/apxs
-	use split-usr && dosym ../bin/apxs /usr/sbin/apxs
 
 	# Note: wait for mod_systemd to be included in some forthcoming release,
 	# Then apache2.4.service can be used and systemd support controlled
