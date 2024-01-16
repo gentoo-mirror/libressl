@@ -1,15 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake
 
+URI_DIR="Connector-C++"
 DESCRIPTION="MySQL database connector for C++ (mimics JDBC 4.0 API)"
 HOMEPAGE="https://dev.mysql.com/downloads/connector/cpp/"
-URI_DIR="Connector-C++"
 SRC_URI="https://dev.mysql.com/get/Downloads/${URI_DIR}/${P}-src.tar.gz"
+S="${WORKDIR}/${P}-src"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
@@ -18,28 +19,40 @@ KEYWORDS="amd64 arm ~arm64 -ppc ppc64 -sparc x86"
 IUSE="+legacy"
 
 RDEPEND="
-	dev-libs/protobuf:=
+	app-arch/lz4:=
+	app-arch/zstd:=
+	dev-libs/openssl:=
+	sys-libs/zlib
 	legacy? (
-		dev-libs/boost:=
 		>=dev-db/mysql-connector-c-8.0.27:=
 	)
-	dev-libs/openssl:0=
-	"
+"
 DEPEND="${RDEPEND}"
-S="${WORKDIR}/${P}-src"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-8.0.27-fix-build.patch
-	"${FILESDIR}"/${PN}-8.0.20-fix-libressl-support.patch
+	"${FILESDIR}"/${PN}-8.0.27-mysqlclient_r.patch
+	"${FILESDIR}"/${PN}-8.0.32-libressl.patch
+	"${FILESDIR}"/${P}-jdbc.patch
 )
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUNDLE_DEPENDENCIES=OFF
+		# Cannot handle protobuf >23, bug #912797
+		#-DWITH_PROTOBUF=system
+		-DWITH_LZ4=system
 		-DWITH_SSL=system
-		-DWITH_JDBC=$(usex legacy ON OFF)
-		$(usex legacy '-DMYSQLCLIENT_STATIC_BINDING=0' '')
-		$(usex legacy '-DMYSQLCLIENT_STATIC_LINKING=0' '')
+		-DWITH_ZLIB=system
+		-DWITH_ZSTD=system
+		-DWITH_JDBC=$(usex legacy)
 	)
+
+	if use legacy ; then
+		mycmakeargs+=(
+			-DMYSQLCLIENT_STATIC_BINDING=0
+			-DMYSQLCLIENT_STATIC_LINKING=0
+		)
+	fi
 
 	cmake_src_configure
 }
