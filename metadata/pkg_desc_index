@@ -26,7 +26,7 @@ net-dialup/freeradius 3.2.2 3.2.3: Highly configurable free RADIUS server
 net-libs/ldns 1.8.0-r4 1.8.1 1.8.3 1.8.3-r1: A library with the aim to simplify DNS programming in C
 net-misc/seafile-client 8.0.9 9.0.3: Seafile desktop client
 net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
-net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
 net-nds/openldap 2.6.3-r7: LDAP suite of application and development tools
 net-vpn/openvpn 2.5.2-r3 2.5.6-r1 2.5.7-r1 2.6.4: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/tor 0.4.7.13-r1 0.4.7.16 0.4.7.16-r1 0.4.8.10: Anonymizing overlay network for TCP
