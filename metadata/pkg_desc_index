@@ -19,7 +19,6 @@ dev-qt/qtnetwork 5.15.11 5.15.12 5.15.12-r1: Network abstraction library for the
 dev-util/cargo-audit 0.17.0 0.17.6: Audit Cargo.lock for crates with security vulnerabilities
 dev-util/cargo-c 0.9.14 0.9.20: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.5.2 0.5.4 0.5.4-r1: Generates an ebuild for a package using the in-tree eclasses.
-mail-filter/imapfilter 2.7.5 2.7.5-r1: An IMAP mail filtering utility
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.94: Network exploration tool and security / port scanner
 net-dialup/freeradius 3.2.2 3.2.3: Highly configurable free RADIUS server
@@ -33,5 +32,5 @@ net-vpn/tor 0.4.7.13-r1 0.4.7.16 0.4.7.16-r1 0.4.8.10: Anonymizing overlay netwo
 net-wireless/hostapd 2.10-r3: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.10-r1 2.10-r2 2.10-r3: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20221212: OpenPGP keys used by the libressl project
-www-client/netsurf 3.10-r7: A free, open source web browser
+www-client/netsurf 3.11: A free, open source web browser
 www-servers/apache 2.4.57 2.4.57-r6 2.4.58 2.4.58-r2: The Apache Web Server
