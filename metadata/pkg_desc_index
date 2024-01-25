@@ -14,7 +14,7 @@ dev-libs/softhsm 2.6.1-r2: A software PKCS#11 implementation
 dev-libs/xmlsec 1.2.37: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-perl/Net-SSLeay 1.900.0 1.920.0: Perl extension for using OpenSSL
 dev-python/m2crypto 0.40.1: A Python crypto and SSL toolkit
-dev-qt/qtbase 6.6.1-r3: Cross-platform application development framework
+dev-qt/qtbase 6.6.1-r4: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.11 5.15.12 5.15.12-r1: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.0 0.17.6: Audit Cargo.lock for crates with security vulnerabilities
 dev-util/cargo-c 0.9.14 0.9.20: Helper program to build and install c-like libraries
