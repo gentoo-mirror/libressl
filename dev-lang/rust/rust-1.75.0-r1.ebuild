@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing \
 	multilib multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
@@ -19,7 +19,7 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~mips ~ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
@@ -34,14 +34,15 @@ SRC_URI="
 "
 
 # keep in sync with llvm ebuild of the same version as bundled one.
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore )
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARC ARM AVR BPF CSKY DirectX Hexagon Lanai
+	LoongArch M68k Mips MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
+	WebAssembly X86 XCore Xtensa )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
-LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
+LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 
-IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind miri nightly parallel-compiler profiler rustfmt rust-analyzer rust-src system-bootstrap system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind +lto miri nightly parallel-compiler profiler rustfmt rust-analyzer rust-src system-bootstrap system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
 
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling more than one slot
@@ -49,7 +50,7 @@ IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind miri ni
 
 # How to use it:
 # List all the working slots in LLVM_VALID_SLOTS, newest first.
-LLVM_VALID_SLOTS=( 15 )
+LLVM_VALID_SLOTS=( 17 )
 LLVM_MAX_SLOT="${LLVM_VALID_SLOTS[0]}"
 
 # splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
@@ -121,12 +122,10 @@ RDEPEND="${DEPEND}
 	sys-apps/lsb-release
 "
 
-# FIXME: https://bugs.gentoo.org/874885
-# rust-analyzer should work with wasm, but currently does not
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 	miri? ( nightly )
 	parallel-compiler? ( nightly )
-	rust-analyzer? ( !wasm rust-src )
+	rust-analyzer? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
 	wasm? ( llvm_targets_WebAssembly )
 	x86? ( cpu_flags_x86_sse2 )
@@ -164,13 +163,29 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
-	"${FILESDIR}"/1.64.0-libressl.patch
-	"${FILESDIR}"/1.65.0-ignore-broken-and-non-applicable-tests.patch
-	"${FILESDIR}"/1.62.1-musl-dynamic-linking.patch
-	"${FILESDIR}"/1.64.0-vendor-rustix-sparc-has-no-SIGSTKFLT.patch
+	"${FILESDIR}"/1.75.0-musl-dynamic-linking.patch
+	"${FILESDIR}"/1.74.1-cross-compile-libz.patch
+	#"${FILESDIR}"/1.72.0-bump-libc-deps-to-0.2.146.patch  # pending refresh
+	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
+	"${FILESDIR}"/1.67.0-doc-wasm.patch
+	# This patch shouldn't be necessary for later versions of Rust because its
+	# code was backported from master.
+	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
+
+clear_vendor_checksums() {
+	sed -i 's/\("files":{\)[^}]*/\1/' "vendor/${1}/.cargo-checksum.json" || die
+}
+
+eapply_crate() {
+	pushd "${1:?}" > /dev/null || die
+	local patch="${2:?}"
+	eapply "${patch}"
+	"${EPREFIX}"/bin/sh "${FILESDIR}"/rehash-crate.sh "${patch}" || die
+	popd > /dev/null || die
+}
 
 toml_usex() {
 	usex "${1}" true false
@@ -181,7 +196,7 @@ bootstrap_rust_version_check() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 	local rustc_wanted="$(ver_cut 1).$(($(ver_cut 2) - 1))"
 	local rustc_toonew="$(ver_cut 1).$(($(ver_cut 2) + 1))"
-	local rustc_version=( $(eselect --brief rust show 2>/dev/null) )
+	local rustc_version=( $(eselect --brief --root="${BROOT}" rust show 2>/dev/null) )
 	rustc_version=${rustc_version[0]#rust-bin-}
 	rustc_version=${rustc_version#rust-}
 
@@ -253,6 +268,18 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 
 	export LIBGIT2_NO_PKG_CONFIG=1 #749381
+	if tc-is-cross-compiler; then
+		export PKG_CONFIG_ALLOW_CROSS=1
+		export PKG_CONFIG_PATH="${ROOT}/usr/$(get_libdir)/pkgconfig"
+		export OPENSSL_INCLUDE_DIR="${ROOT}/usr/include"
+		export OPENSSL_LIB_DIR="${ROOT}/usr/$(get_libdir)"
+
+		use system-bootstrap || die "USE=system-bootstrap is required when cross-compiling"
+		use system-llvm && die "USE=system-llvm not allowed when cross-compiling"
+		local cross_llvm_target="$(llvm_tuple_to_target "${CBUILD}")"
+		use "llvm_targets_${cross_llvm_target}" || \
+			die "Must enable LLVM_TARGETS=${cross_llvm_target} matching CBUILD=${CBUILD} when cross-compiling"
+	fi
 
 	use system-bootstrap && bootstrap_rust_version_check
 
@@ -285,31 +312,23 @@ esetup_unwind_hack() {
 }
 
 src_prepare() {
-	# this supidity is needed because patch is too large to be in filesdir
-	# and if we move it to devspace - it lacks checksum for sig verification
-	if [[ "${PV}" == 1.65.0 ]]; then
-			sed -i \
-			-e 's/516ba32a547b46a8e80ad20d4a17bf24a00bff0b69b74f56df119f770f3dfff6/fc7eb88c2f5104865379128b76767d36ce5b5fdb9f3483e683d150e514ebc3a3/' \
-			-e 's/fba10dc8ca9eaf4d481cb82bd1540cf5c05620533c44f917c09a22ea55ef408c/9cc4d1b4511a1f0d91231eb0f11c67ae5e8e38e4becd0bf5eb9e26d043796056/' \
-			vendor/rustix/.cargo-checksum.json || die
-	else
-		die "remove sed mr forgetful maintainer"
-	fi
+	eapply_crate vendor/openssl-sys "${FILESDIR}"/1.72.0-libressl-openssl-sys.patch
+
+	# Clear vendor checksums for crates that we patched to bump libc.
+	# NOTE: refresh this on each bump.
+	#for i in addr2line-0.20.0 bstr cranelift-jit crossbeam-channel elasticlunr-rs handlebars icu_locid libffi \
+	#	terminal_size tracing-tree; do
+	#	clear_vendor_checksums "${i}"
+	#done
+
 	if ! use system-bootstrap; then
 		has_version sys-devel/gcc || esetup_unwind_hack
 		local rust_stage0_root="${WORKDIR}"/rust-stage0
-		local rust_stage0="rust-${RUST_STAGE0_VERSION}-$(rust_abi)"
+		local rust_stage0="rust-${RUST_STAGE0_VERSION}-$(rust_abi "${CBUILD}")"
 
 		"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig \
-			--without=rust-docs --destdir="${rust_stage0_root}" --prefix=/ || die
+			--without=rust-docs-json-preview,rust-docs --destdir="${rust_stage0_root}" --prefix=/ || die
 	fi
-
-	# this libressl version check is terrible
-	sed -e 's/d397af804c0b786978867528635fa9148cd2ad0e6abd591ace21b5bd3719c38d/896afea18b1072d4c715421ff2ed7e428b57aadec44d4680dcb991a6229a1edc/' \
-		-i vendor/openssl-sys/.cargo-checksum.json || die
-	# fix for libressl
-	sed -e 's/7d5ca02f34cffe51db3568c500c9a8a70cef879871a0f466e3344142644acf12/e9eef35f1c18dd9844960d1d315e84ad99a05ab1247f0f54e3c2eab244988256/' \
-		-i vendor/libssh2-sys/.cargo-checksum.json || die
 
 	default
 }
@@ -328,17 +347,18 @@ src_configure() {
 		if use system-llvm; then
 			# un-hardcode rust-lld linker for this target
 			# https://bugs.gentoo.org/715348
-			sed -i '/linker:/ s/rust-lld/wasm-ld/' compiler/rustc_target/src/spec/wasm_base.rs || die
+			sed -i '/linker:/ s/rust-lld/wasm-ld/' compiler/rustc_target/src/spec/base/wasm.rs || die
 		fi
 	fi
 	rust_targets="${rust_targets#,}"
 
-	local tools='"cargo"'
+	# cargo and rustdoc are mandatory and should always be included
+	local tools='"cargo","rustdoc"'
 	use clippy && tools+=',"clippy"'
 	use miri && tools+=',"miri"'
 	use profiler && tools+=',"rust-demangler"'
 	use rustfmt && tools+=',"rustfmt"'
-	use rust-analyzer && tools+=',"rust-analyzer","analysis"'
+	use rust-analyzer && tools+=',"rust-analyzer"'
 	use rust-src && tools+=',"src"'
 
 	local rust_stage0_root
@@ -353,6 +373,8 @@ src_configure() {
 	[[ -d ${rust_stage0_root} ]] || die "${rust_stage0_root} is not a directory"
 
 	rust_target="$(rust_abi)"
+	rust_build="$(rust_abi "${CBUILD}")"
+	rust_host="$(rust_abi "${CHOST}")"
 
 	local cm_btype="$(usex debug DEBUG RELEASE)"
 	cat <<- _EOF_ > "${S}"/config.toml
@@ -381,19 +403,27 @@ src_configure() {
 			*)
 				;;
 		esac)
+		enable-warnings = false
 		[llvm.build-config]
 		CMAKE_VERBOSE_MAKEFILE = "ON"
-		CMAKE_C_FLAGS_${cm_btype} = "${CFLAGS}"
-		CMAKE_CXX_FLAGS_${cm_btype} = "${CXXFLAGS}"
-		CMAKE_EXE_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}"
-		CMAKE_MODULE_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}"
-		CMAKE_SHARED_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}"
-		CMAKE_STATIC_LINKER_FLAGS_${cm_btype} = "${ARFLAGS}"
+		$(if ! tc-is-cross-compiler; then
+			# When cross-compiling, LLVM is compiled twice, once for host and
+			# once for target.  Unfortunately, this build configuration applies
+			# to both, which means any flags applicable to one target but not
+			# the other will break.  Conditionally disable respecting user
+			# flags when cross-compiling.
+			echo "CMAKE_C_FLAGS_${cm_btype} = \"${CFLAGS}\""
+			echo "CMAKE_CXX_FLAGS_${cm_btype} = \"${CXXFLAGS}\""
+			echo "CMAKE_EXE_LINKER_FLAGS_${cm_btype} = \"${LDFLAGS}\""
+			echo "CMAKE_MODULE_LINKER_FLAGS_${cm_btype} = \"${LDFLAGS}\""
+			echo "CMAKE_SHARED_LINKER_FLAGS_${cm_btype} = \"${LDFLAGS}\""
+			echo "CMAKE_STATIC_LINKER_FLAGS_${cm_btype} = \"${ARFLAGS}\""
+		fi)
 		[build]
 		build-stage = 2
 		test-stage = 2
-		build = "${rust_target}"
-		host = ["${rust_target}"]
+		build = "${rust_build}"
+		host = ["${rust_host}"]
 		target = [${rust_targets}]
 		cargo = "${rust_stage0_root}/bin/cargo"
 		rustc = "${rust_stage0_root}/bin/rustc"
@@ -431,7 +461,9 @@ src_configure() {
 		debuginfo-level-tests = 0
 		backtrace = true
 		incremental = false
-		default-linker = "$(tc-getCC)"
+		$(if ! tc-is-cross-compiler; then
+			echo "default-linker = \"$(tc-getCC)\""
+		fi)
 		parallel-compiler = $(toml_usex parallel-compiler)
 		channel = "$(usex nightly nightly stable)"
 		description = "gentoo"
@@ -448,9 +480,11 @@ src_configure() {
 		deny-warnings = $(usex wasm $(usex doc false true) true)
 		backtrace-on-ice = true
 		jemalloc = false
+		lto = "$(usex lto fat off)"
 		[dist]
 		src-tarball = false
 		compression-formats = ["xz"]
+		compression-profile = "balanced"
 	_EOF_
 
 	for v in $(multilib_get_enabled_abi_pairs); do
@@ -696,6 +730,7 @@ src_install() {
 	_EOF_
 
 	rm -rf "${ED}/usr/lib/${PN}/${PV}"/*.old || die
+	rm -rf "${ED}/usr/lib/${PN}/${PV}/bin"/*.old || die
 	rm -rf "${ED}/usr/lib/${PN}/${PV}/doc"/*.old || die
 
 	# note: eselect-rust adds EROOT to all paths below
