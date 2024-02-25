@@ -81,11 +81,6 @@ net-analyzer/nmap:zenmap - Install the GTK+ based nmap GUI, zenmap
 net-dialup/freeradius:memcached - Include dev-libs/libmemcached in caching drivers
 net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:redis - Include support for Redis database
-net-libs/ldns:dane - Enable DNS-based Authentication of Named Entities (DANE) support
-net-libs/ldns:ecdsa - Enable ECDSA support
-net-libs/ldns:ed25519 - Enable ED25519 support
-net-libs/ldns:ed448 - Enable ED448 support
-net-libs/ldns:gost - Enable GOST support
 net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
 net-nds/openldap:argon2 - Enable password hashing algorithm from app-crypt/argon2
@@ -115,7 +110,6 @@ net-wireless/hostapd:suiteb - Adding support for NSA Suite B Cryptography
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
 net-wireless/wpa_supplicant:ap - Add support for access point mode
 net-wireless/wpa_supplicant:broadcom-sta - Flag to help users disable features not supported by broadcom-sta driver
-net-wireless/wpa_supplicant:crda - Use net-wireless/crda for regulatory domain loading instead of in-kernel (4.15+) support
 net-wireless/wpa_supplicant:eap-sim - Add support for EAP-SIM authentication algorithm
 net-wireless/wpa_supplicant:eapol-test - Build and install eapol_test binary
 net-wireless/wpa_supplicant:fasteap - Add support for FAST-EAP authentication algorithm
