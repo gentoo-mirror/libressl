@@ -19,7 +19,7 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
@@ -163,25 +163,19 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
+	"${FILESDIR}"/1.75.0-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.74.1-cross-compile-libz.patch
 	#"${FILESDIR}"/1.72.0-bump-libc-deps-to-0.2.146.patch  # pending refresh
 	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
-	"${FILESDIR}"/1.62.1-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
+	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch  # remove for >=1.77.0
+	"${FILESDIR}"/1.76.0-loong-code-model.patch  # remove for >=1.78.0
 )
 
 S="${WORKDIR}/${MY_P}-src"
 
 clear_vendor_checksums() {
 	sed -i 's/\("files":{\)[^}]*/\1/' "vendor/${1}/.cargo-checksum.json" || die
-}
-
-eapply_crate() {
-	pushd "${1:?}" > /dev/null || die
-	local patch="${2:?}"
-	eapply "${patch}"
-	"${EPREFIX}"/bin/sh "${FILESDIR}"/rehash-crate.sh "${patch}" || die
-	popd > /dev/null || die
 }
 
 toml_usex() {
@@ -309,8 +303,6 @@ esetup_unwind_hack() {
 }
 
 src_prepare() {
-	eapply_crate vendor/openssl-sys "${FILESDIR}"/1.72.0-libressl-openssl-sys.patch
-
 	# Clear vendor checksums for crates that we patched to bump libc.
 	# NOTE: refresh this on each bump.
 	#for i in addr2line-0.20.0 bstr cranelift-jit crossbeam-channel elasticlunr-rs handlebars icu_locid libffi \
@@ -344,7 +336,7 @@ src_configure() {
 		if use system-llvm; then
 			# un-hardcode rust-lld linker for this target
 			# https://bugs.gentoo.org/715348
-			sed -i '/linker:/ s/rust-lld/wasm-ld/' compiler/rustc_target/src/spec/wasm_base.rs || die
+			sed -i '/linker:/ s/rust-lld/wasm-ld/' compiler/rustc_target/src/spec/base/wasm.rs || die
 		fi
 	fi
 	rust_targets="${rust_targets#,}"
