@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 WANT_LIBTOOL="none"
 
 inherit autotools check-reqs flag-o-matic multiprocessing pax-utils
@@ -10,7 +10,7 @@ inherit prefix python-utils-r1 toolchain-funcs verify-sig
 MY_PV=${PV/_rc/rc}
 MY_P="Python-${MY_PV%_p*}"
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-${MY_PV}_p2"
+PATCHSET="python-gentoo-patches-${MY_PV}"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="
@@ -31,7 +31,7 @@ SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
 	bluetooth build debug +ensurepip examples gdbm libedit
-	+ncurses pgo +readline +sqlite +ssl test tk valgrind +xml
+	+ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
 RESTRICT="!test? ( test )"
 
@@ -40,11 +40,10 @@ RESTRICT="!test? ( test )"
 # run the bootstrap code on your dev box and include the results in the
 # patchset. See bug 447752.
 
-# <expat-2.6: https://github.com/python/cpython/issues/115133
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
-	dev-lang/python-exec[python_targets_python3_10(-)]
+	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-python/gentoo-common
 	>=sys-libs/zlib-1.1.3:=
@@ -66,7 +65,6 @@ RDEPEND="
 		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
-	xml? ( <dev-libs/expat-2.6:= )
 "
 # bluetooth requires headers from bluez
 DEPEND="
@@ -85,6 +83,11 @@ BDEPEND="
 RDEPEND+="
 	!build? ( app-misc/mime-types )
 "
+if [[ ${PV} != *_alpha* ]]; then
+	RDEPEND+="
+		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
+	"
+fi
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc
 
@@ -209,14 +212,7 @@ src_configure() {
 	use sqlite    || disable+=" _sqlite3"
 	use ssl       || export PYTHON_DISABLE_SSL="1"
 	use tk        || disable+=" _tkinter"
-	use xml       || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
 	export PYTHON_DISABLE_MODULES="${disable}"
-
-	if ! use xml; then
-		ewarn "You have configured Python without XML support."
-		ewarn "This is NOT a recommended configuration as you"
-		ewarn "may face problems parsing any XML documents."
-	fi
 
 	if [[ -n "${PYTHON_DISABLE_MODULES}" ]]; then
 		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
@@ -411,7 +407,7 @@ src_test() {
 	# workaround https://bugs.gentoo.org/775416
 	addwrite "/usr/lib/python${PYVER}/site-packages"
 
-	nonfatal emake test EXTRATESTOPTS="${test_opts[*]}" \
+	nonfatal emake -Onone test EXTRATESTOPTS="${test_opts[*]}" \
 		CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
 	local ret=${?}
 
