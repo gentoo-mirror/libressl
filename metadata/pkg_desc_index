@@ -7,7 +7,7 @@ app-text/mupdf 1.22.0-r1 1.23.3-r1 1.23.7-r1: A lightweight PDF viewer and toolk
 dev-db/mysql-connector-c++ 8.0.31 8.0.32 8.0.33 8.0.33-r1: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-lang/python 2.7.18_p16-r2 3.9.18_p2 3.10.13_p3 3.11.8_p1 3.12.2_p1: An interpreted, interactive, object-oriented programming language
 dev-lang/ruby 3.1.4-r3 3.1.4-r5: An object-oriented scripting language
-dev-lang/rust 1.71.0 1.71.1 1.73.0 1.74.1 1.75.0-r1 1.76.0-r1: Language empowering everyone to build reliable and efficient software
+dev-lang/rust 1.71.0 1.71.1 1.73.0 1.74.1 1.75.0-r1 1.76.0-r1 1.77.1: Systems programming language from Mozilla
 dev-libs/libressl 3.6.3 3.7.3-r1 3.8.3 3.8.4 3.9.0 3.9.1: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
 dev-libs/libtpms 0.9.6: Library providing software emultion of a TPM
