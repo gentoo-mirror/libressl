@@ -28,13 +28,16 @@ else
 	S="${WORKDIR}/${MY_PF}"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
-		KEYWORDS="~amd64 ~arm arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
 	fi
 
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20230727 )"
 fi
 
-LICENSE="BSD GPL-2"
+# BSD in general, but for PoW, needs --enable-gpl (GPL-3 per --version)
+# We also already had GPL-2 listed here for the init script, but obviously
+# that's different from the actual binary.
+LICENSE="BSD GPL-2 GPL-3"
 SLOT="0"
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 RESTRICT="!test? ( test )"
@@ -68,9 +71,7 @@ DOCS=()
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
-	"${FILESDIR}"/${PN}-0.4.7.13-libressl.patch
 	"${FILESDIR}"/${PN}-0.4.7.13-opensslconf.patch
-	"${FILESDIR}"/${P}-arm64-sandbox.patch
 )
 
 pkg_setup() {
@@ -122,6 +123,13 @@ src_configure() {
 		--disable-module-dirauth
 		--enable-pic
 		--disable-restart-debugging
+
+		# Unless someone asks & has a compelling reason, just always
+		# build in GPL mode for pow, given we don't want yet another USE
+		# flag combination to have to test just for the sake of it.
+		# (PoW requires GPL.)
+		--enable-gpl
+		--enable-module-pow
 
 		$(use_enable man asciidoc)
 		$(use_enable man manpage)
