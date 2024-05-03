@@ -24,7 +24,7 @@ dev-util/cargo-c 0.9.14 0.9.20: Helper program to build and install c-like libra
 dev-util/cargo-ebuild 0.5.4-r1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/maturin 1.4.0 1.5.1-r1: Build and publish crates with pyo3, rust-cpython and cffi bindings
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
-net-analyzer/nmap 7.94 7.94-r1: Network exploration tool and security / port scanner
+net-analyzer/nmap 7.94 7.94-r1 7.95: Network exploration tool and security / port scanner
 net-dialup/freeradius 3.2.2 3.2.3: Highly configurable free RADIUS server
 net-libs/ldns 1.8.3-r1 1.8.3-r2: A library with the aim to simplify DNS programming in C
 net-misc/seafile-client 8.0.9 9.0.3: Seafile desktop client
