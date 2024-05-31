@@ -18,7 +18,7 @@ dev-perl/Net-SSLeay 1.920.0-r1 1.940.0: Perl extension for using OpenSSL
 dev-python/cryptography 41.0.7 42.0.0 42.0.1 42.0.2 42.0.3 42.0.4 42.0.5: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.41.0: A Python crypto and SSL toolkit
 dev-qt/qtbase 6.7.0-r2 6.7.1: Cross-platform application development framework
-dev-qt/qtnetwork 5.15.13: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.13 5.15.14: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.6: Audit Cargo.lock for crates with security vulnerabilities
 dev-util/cargo-c 0.9.14 0.9.20: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.5.4-r1: Generates an ebuild for a package using the in-tree eclasses.
