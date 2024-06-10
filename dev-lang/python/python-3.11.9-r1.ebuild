@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
 	bluetooth build debug +ensurepip examples gdbm libedit
 	+ncurses pgo +readline +sqlite +ssl test tk valgrind
@@ -46,6 +46,7 @@ RDEPEND="
 	app-crypt/libb2
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
+	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
@@ -122,6 +123,7 @@ src_prepare() {
 	local PATCHES=(
 		"${WORKDIR}/${PATCHSET}"
 		"${FILESDIR}"/${PN}-3.10.3-libressl.patch
+		"${FILESDIR}"/${PN}-3.10.14-libressl.patch
 	)
 
 	default
@@ -250,6 +252,22 @@ src_configure() {
 			-x test_tools
 		)
 
+		# musl-specific skips
+		use elibc_musl && profile_task_flags+=(
+			# various musl locale deficiencies
+			-x test__locale
+			-x test_c_locale_coercion
+			-x test_locale
+			-x test_re
+
+			# known issues with find_library on musl
+			# https://bugs.python.org/issue21622
+			-x test_ctypes
+
+			# fpathconf, ttyname errno values
+			-x test_os
+		)
+
 		if has_version "app-arch/rpm" ; then
 			# Avoid sandbox failure (attempts to write to /var/lib/rpm)
 			profile_task_flags+=(
@@ -281,6 +299,7 @@ src_configure() {
 		--without-lto
 		--with-system-expat
 		--with-system-ffi
+		--with-system-libmpdec
 		--with-platlibdir=lib
 		--with-pkg-config=yes
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
@@ -414,6 +433,22 @@ src_test() {
 			-x test_multiprocessing_forkserver
 		)
 	fi
+
+	# musl-specific skips
+	use elibc_musl && test_opts+=(
+		# various musl locale deficiencies
+		-x test__locale
+		-x test_c_locale_coercion
+		-x test_locale
+		-x test_re
+
+		# known issues with find_library on musl
+		# https://bugs.python.org/issue21622
+		-x test_ctypes
+
+		# fpathconf, ttyname errno values
+		-x test_os
+	)
 
 	# workaround docutils breaking tests
 	cat > Lib/docutils.py <<-EOF || die
