@@ -34,7 +34,7 @@ net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
 net-nds/openldap 2.6.3-r7: LDAP suite of application and development tools
 net-vpn/openvpn 2.5.2-r3 2.5.6-r1 2.5.7-r1 2.6.4: Robust and highly flexible tunneling application compatible with many OSes
-net-vpn/tor 0.4.7.13-r1 0.4.7.16 0.4.7.16-r1 0.4.8.10 0.4.8.11: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.8.11 0.4.8.12: Anonymizing overlay network for TCP
 net-wireless/hostapd 2.10-r3: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.10-r4: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20240309: OpenPGP keys used by the libressl project
