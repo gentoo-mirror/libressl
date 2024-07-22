@@ -16,14 +16,14 @@ dev-libs/softhsm 2.6.1-r2: A software PKCS#11 implementation
 dev-libs/xmlsec 1.2.37: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-perl/Net-SSLeay 1.920.0-r1 1.940.0: Perl extension for using OpenSSL
 dev-python/PyQt6 6.6.1 6.7.0: Python bindings for the Qt framework
-dev-python/cryptography 41.0.7 42.0.0 42.0.1 42.0.2 42.0.3 42.0.4 42.0.5: Library providing cryptographic recipes and primitives
+dev-python/cryptography 42.0.8 43.0.0: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.41.0: A Python crypto and SSL toolkit
 dev-qt/qtbase 6.7.2-r1: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.14-r1: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.6: Audit Cargo.lock for crates with security vulnerabilities
 dev-util/cargo-c 0.9.14 0.9.20: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.5.4-r1: Generates an ebuild for a package using the in-tree eclasses.
-dev-util/maturin 1.4.0 1.5.1-r1: Build and publish crates with pyo3, rust-cpython and cffi bindings
+dev-util/maturin 1.6.0 1.7.0: Build and publish crates with pyo3, rust-cpython and cffi bindings
 kde-frameworks/kdelibs4support 5.116.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.94 7.94-r1 7.95: Network exploration tool and security / port scanner
