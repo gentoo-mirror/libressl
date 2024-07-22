@@ -6,7 +6,7 @@ EAPI=8
 CARGO_OPTIONAL=yes
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 CRATES="
@@ -27,18 +27,19 @@ CRATES="
 	memoffset@0.9.0
 	once_cell@1.19.0
 	openssl-macros@0.1.1
-	openssl-sys@0.9.99
-	openssl@0.10.63
+	openssl-sys@0.9.102
+	openssl@0.10.64
 	parking_lot@0.12.1
 	parking_lot_core@0.9.9
 	pem@3.0.3
 	pkg-config@0.3.29
+	portable-atomic@1.6.0
 	proc-macro2@1.0.78
-	pyo3-build-config@0.20.2
-	pyo3-ffi@0.20.2
-	pyo3-macros-backend@0.20.2
-	pyo3-macros@0.20.2
-	pyo3@0.20.2
+	pyo3-build-config@0.20.3
+	pyo3-ffi@0.20.3
+	pyo3-macros-backend@0.20.3
+	pyo3-macros@0.20.3
+	pyo3@0.20.3
 	quote@1.0.35
 	redox_syscall@0.4.1
 	scopeguard@1.2.0
@@ -80,7 +81,7 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2o-r6:0=
@@ -118,11 +119,16 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	local PATCHES=(
+		# https://github.com/pyca/cryptography/pull/10366
+		"${FILESDIR}/${PN}-42.0.7-32bit.patch"
+	)
 
-	pushd "${ECARGO_HOME}"/gentoo/openssl-sys-0.9.99 > /dev/null || die
-	eapply "${FILESDIR}/${PN}-42.0.5-libressl-openssl-sys.patch"
+	pushd "${ECARGO_HOME}"/gentoo/openssl-sys-0.9.102 > /dev/null || die
+	eapply "${FILESDIR}/${PN}-42.0.8-libressl-openssl-sys.patch"
 	popd > /dev/null || die
+
+	default
 
 	sed -i -e 's:--benchmark-disable::' pyproject.toml || die
 
@@ -139,6 +145,8 @@ src_prepare() {
 
 python_configure_all() {
 	filter-lto # bug #903908
+
+	export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
 }
 
 python_test() {
