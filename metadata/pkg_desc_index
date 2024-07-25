@@ -18,6 +18,8 @@ dev-perl/Net-SSLeay 1.920.0-r1 1.940.0: Perl extension for using OpenSSL
 dev-python/PyQt6 6.6.1 6.7.0: Python bindings for the Qt framework
 dev-python/cryptography 42.0.8 43.0.0: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.41.0: A Python crypto and SSL toolkit
+dev-python/pypy 7.3.16: A fast, compliant alternative implementation of the Python language
+dev-python/pypy3_10 7.3.16: A fast, compliant alternative implementation of the Python (3.10) language
 dev-qt/qtbase 6.7.2-r1: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.14-r1: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.6: Audit Cargo.lock for crates with security vulnerabilities

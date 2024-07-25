@@ -76,6 +76,8 @@ dev-python/PyQt6:webchannel - Build bindings for the QtWebChannel module
 dev-python/PyQt6:websockets - Build bindings for the QtWebSockets module
 dev-python/PyQt6:widgets - Build bindings for the QtWidgets module
 dev-python/PyQt6:xml - Build bindings for the QtXml module
+dev-python/pypy:full-stdlib - Install complete stdlib as necessary to use PyPy for general purpose programs. By default, only a limited subset that is used when building PyPy3 executables is installed. Note that PyPy2.7's stdlib contains multiple known vulnerabilities.
+dev-python/pypy3_10:ensurepip - Install the ensurepip module that uses bundled wheels to bootstrap pip and setuptools (if disabled, it will be only possible to use venv `--without-pip`)
 dev-qt/qtbase:X - Build the XCB platform plugin and enable X11 integration
 dev-qt/qtbase:concurrent - Build Qt6Concurrent module
 dev-qt/qtbase:dbus - Build Qt6DBus module
