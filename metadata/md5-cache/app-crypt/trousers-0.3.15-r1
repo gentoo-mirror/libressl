@@ -10,6 +10,6 @@ KEYWORDS=amd64 arm arm64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 x86
 LICENSE=CPL-1.0 GPL-2
 RDEPEND=acct-group/tss acct-user/tss >=dev-libs/glib-2 >=dev-libs/openssl-0.9.7:0= selinux? ( sec-policy/selinux-tcsd )
 SLOT=0
-SRC_URI=mirror://sourceforge/trousers/trousers/trousers-0.3.15.tar.gz
+SRC_URI=https://downloads.sourceforge.net/trousers/trousers/trousers-0.3.15.tar.gz
 _eclasses_=gnuconfig	a397adda6984a4c423e28ac274c1ba98	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	5f49a16f67f81bdf873e3d1f10b10001	autotools	d12ccbad07b44642a75ac97a3334d8e0	linux-info	ea4122ba1d8791a12b78e53f9510a2e3	readme.gentoo-r1	b8c7a61664027641d79dcfc04bd366f4	systemd	c8b03e8df84486aa991d4396686e8942	udev	eec0bbab06977f1cfc5597269c1fa152
-_md5_=e30ddea83212d2f6607c8034c69fec69
+_md5_=a199a6eac104b6d6c53c294f493129c6
