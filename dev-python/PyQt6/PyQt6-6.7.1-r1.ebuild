@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
 # 'can' work with older Qt depending on features, but keeping it simple
@@ -17,7 +17,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 # defaults match what is provided with qtbase by default (except testlib),
 # reduces the need to set flags but does increase build time a fair amount
 IUSE="
@@ -47,8 +47,10 @@ REQUIRED_USE="
 "
 
 # may use qt private symbols wrt qtbase's :=
+# non-trivially broken with Qt6.8 wrt upper bound, waiting for PyQt6-6.8.0
 DEPEND="
 	>=dev-qt/qtbase-${QT_PV}=[dbus?,gles2-only=,gui?,network?,opengl?,sql?,ssl=,widgets?,xml?]
+	<dev-qt/qtbase-6.8
 	bluetooth? ( >=dev-qt/qtconnectivity-${QT_PV}[bluetooth] )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
@@ -78,18 +80,14 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	>=dev-python/PyQt6-sip-13.6[${PYTHON_USEDEP}]
+	>=dev-python/PyQt6-sip-13.8[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/PyQt-builder-1.15[${PYTHON_USEDEP}]
-	>=dev-python/sip-6.7.12[${PYTHON_USEDEP}]
+	>=dev-python/sip-6.8.6[${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}
 	dbus? ( virtual/pkgconfig )
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-6.6.1-qt670.patch
-)
 
 src_prepare() {
 	default
