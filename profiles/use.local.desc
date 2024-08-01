@@ -15,7 +15,7 @@ app-crypt/tpm2-tss:mbedtls - Use net-libs/mbedtls as crypto engine
 app-crypt/tpm2-tss:openssl - Use dev-libs/openssl as crypto engine
 app-crypt/tpm2-tss:policy - Enable policy library (requires openssl as crypto backend)
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
-app-text/mupdf:drm - Enable support for Digital rights management (DRM)
+app-text/mupdf:archive - Enable support for CBR and other archive formats using libarchive
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
 dev-lang/python:bluetooth - Build Bluetooth protocol support in socket module
 dev-lang/python:ensurepip - Install the ensurepip module that uses bundled wheels to bootstrap pip and setuptools (if disabled, it will be only possible to use venv `--without-pip`)
@@ -166,7 +166,3 @@ www-client/netsurf:psl - Use public suffix list from media-libs/libnspsl to dete
 www-client/netsurf:rosprite - RISC OS Sprite bitmap image support via media-libs/librosprite
 www-client/netsurf:svgtiny - Use media-libs/libsvgtiny instead of gnome-base/librsvg for SVG support
 www-client/netsurf:truetype - Use media-libs/freetype for text in the framebuffer frontend
-www-servers/apache:static - Link in apache2 modules statically rather then plugins
-www-servers/apache:suexec - Install suexec with apache
-www-servers/apache:suexec-caps - Install suexec with capabilities instead of SUID
-www-servers/apache:suexec-syslog - Log suexec to syslog instead of to a separate file
