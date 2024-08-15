@@ -42,6 +42,7 @@ dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
 dev-libs/libressl:asm - Enables assembly
 dev-libs/libressl:netcat - Enable installing TLS-enabled nc(1)
 dev-libs/openssl:asm - Enables assembly
+dev-libs/openssl:quic - Enable support for QUIC (RFC 9000); a UDP-based protocol intended to replace TCP
 dev-libs/openssl:sslv3 - Support for the SSLv3 protocol
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
