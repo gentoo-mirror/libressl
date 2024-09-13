@@ -15,7 +15,6 @@ app-crypt/tpm2-tss:mbedtls - Use net-libs/mbedtls as crypto engine
 app-crypt/tpm2-tss:openssl - Use dev-libs/openssl as crypto engine
 app-crypt/tpm2-tss:policy - Enable policy library (requires openssl as crypto backend)
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
-app-text/mupdf:archive - Enable support for CBR and other archive formats using libarchive
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
 dev-lang/python:bluetooth - Build Bluetooth protocol support in socket module
 dev-lang/python:ensurepip - Install the ensurepip module that uses bundled wheels to bootstrap pip and setuptools (if disabled, it will be only possible to use venv `--without-pip`)
@@ -116,17 +115,6 @@ net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:redis - Include support for Redis database
 net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
-net-nds/openldap:argon2 - Enable password hashing algorithm from app-crypt/argon2
-net-nds/openldap:autoca - Automatic Certificate Authority overlay
-net-nds/openldap:cleartext - Enable use of cleartext passwords
-net-nds/openldap:experimental - Enable experimental backend options
-net-nds/openldap:kinit - Enable support for kerberos init
-net-nds/openldap:minimal - Build libraries & userspace tools only. Does not install any server code
-net-nds/openldap:odbc - Enable ODBC and SQL backend options
-net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
-net-nds/openldap:pbkdf2 - Enable support for pbkdf2 passwords
-net-nds/openldap:sha2 - Enable support for pw-sha2 password hashes
-net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
 net-vpn/openvpn:dco - Enable support for kernel data channel offload
 net-vpn/openvpn:down-root - Enable the down-root plugin
 net-vpn/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
