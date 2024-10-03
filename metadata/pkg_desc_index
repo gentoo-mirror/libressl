@@ -34,6 +34,7 @@ net-libs/ldns 1.8.3-r1 1.8.3-r2 1.8.3-r3: A library with the aim to simplify DNS
 net-misc/seafile-client 8.0.9 9.0.3: Seafile desktop client
 net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
+net-p2p/qbittorrent 5.0.0: BitTorrent client in C++ and Qt
 net-vpn/openvpn 2.5.2-r3 2.5.6-r1 2.5.7-r1 2.6.4: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/tor 0.4.8.11 0.4.8.12: Anonymizing overlay network for TCP
 net-wireless/hostapd 2.10-r3: IEEE 802.11 wireless LAN Host AP daemon

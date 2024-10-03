@@ -115,6 +115,7 @@ net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:redis - Include support for Redis database
 net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
+net-p2p/qbittorrent:webui - Install qBittorrent Web UI (qbittorrent-nox) and systemd/OpenRC service
 net-vpn/openvpn:dco - Enable support for kernel data channel offload
 net-vpn/openvpn:down-root - Enable the down-root plugin
 net-vpn/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
