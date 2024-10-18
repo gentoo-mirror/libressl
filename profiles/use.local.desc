@@ -25,7 +25,7 @@ dev-lang/python:pgo - Optimize the build using Profile Guided Optimization (PGO)
 dev-lang/python:valgrind - Disable pymalloc when running under dev-debug/valgrind is detected (may incur minor performance penalty even when valgrind is not used)
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows
 dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
-dev-lang/ruby:systemtap - Enable SystemTAP/DTrace tracing
+dev-lang/ruby:systemtap - Enable SystemTap/DTrace tracing
 dev-lang/rust:clippy - Install clippy, Rust code linter
 dev-lang/rust:dist - Install dist tarballs (used for bootstrapping)
 dev-lang/rust:miri - Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly, sometimes is broken)
