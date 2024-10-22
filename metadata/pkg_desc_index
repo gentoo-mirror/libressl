@@ -30,7 +30,7 @@ kde-frameworks/kdelibs4support 5.116.0: Framework easing the development transit
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.94 7.94-r1 7.95: Network exploration tool and security / port scanner
 net-dialup/freeradius 3.2.2 3.2.3: Highly configurable free RADIUS server
-net-dialup/ppp 2.5.0-r7 2.5.1: Point-to-Point Protocol (PPP)
+net-dialup/ppp 2.5.0-r7 2.5.1-r1: Point-to-Point Protocol (PPP)
 net-libs/ldns 1.8.3-r1 1.8.3-r2 1.8.3-r3: A library with the aim to simplify DNS programming in C
 net-misc/curl 8.9.1-r1 8.10.1: A Client that groks URLs
 net-misc/seafile-client 8.0.9 9.0.3: Seafile desktop client
