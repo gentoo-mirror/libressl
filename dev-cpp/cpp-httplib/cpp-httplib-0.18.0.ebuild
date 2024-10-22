@@ -18,11 +18,11 @@ else
 	SRC_URI="https://github.com/yhirose/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
-SLOT="0/$(ver_cut 1-2)"  # soversion
+SLOT="0/${PV}"  # soversion / /usr/include/httplib.h: CPPHTTPLIB_VERSION
 
 IUSE="brotli ssl test zlib"
 REQUIRED_USE="test? ( brotli ssl zlib )"
@@ -46,7 +46,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.18.0-libressl.patch )
 
 src_configure() {
 	local -a mycmakeargs=(

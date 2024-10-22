@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake-multilib python-any-r1 toolchain-funcs
 
@@ -18,20 +18,26 @@ else
 	SRC_URI="https://github.com/yhirose/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
-SLOT="0/$(ver_cut 1-2)"  # soversion
+SLOT="0/${PV}"  # soversion / /usr/include/httplib.h: CPPHTTPLIB_VERSION
 
 IUSE="brotli ssl test zlib"
 REQUIRED_USE="test? ( brotli ssl zlib )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
-	ssl? ( >=dev-libs/openssl-3.0.13:=[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	brotli? (
+		app-arch/brotli:=[${MULTILIB_USEDEP}]
+	)
+	ssl? (
+		>=dev-libs/openssl-3.0.13:=[${MULTILIB_USEDEP}]
+	)
+	zlib? (
+		sys-libs/zlib[${MULTILIB_USEDEP}]
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -40,7 +46,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.16.0-libressl.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.18.0-libressl.patch )
 
 src_configure() {
 	local -a mycmakeargs=(
@@ -82,6 +88,7 @@ multilib_src_test() {
 	failing_tests_str="${failing_tests[@]}"
 	failing_tests_filter="${failing_tests_str// /:}"
 
+	# PREFIX is . to avoid calling "brew" and relying on stuff in /opt
 	GTEST_FILTER="-${failing_tests_filter}" emake -C test \
-		CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} -I."
+		CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} -I." PREFIX=.
 }
