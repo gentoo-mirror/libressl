@@ -44,11 +44,6 @@ dev-libs/openssl:quic - Enable support for QUIC (RFC 9000); a UDP-based protocol
 dev-libs/openssl:sslv3 - Support for the SSLv3 protocol
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
-dev-libs/xmlsec:gcrypt - Install xmlsec-gcrypt library
-dev-libs/xmlsec:gnutls - Install xmlsec-gnutls library
-dev-libs/xmlsec:http - Allow fetching over HTTP via libxml2.
-dev-libs/xmlsec:nss - Install xmlsec-nss library
-dev-libs/xmlsec:openssl - Install xmlsec-openssl library
 dev-python/PyQt6:bluetooth - Build bindings for the QtBluetooth module
 dev-python/PyQt6:dbus - Build bindings for the QtDBus module
 dev-python/PyQt6:designer - Build bindings for the QtDesigner module and enable the designer plugin
@@ -64,6 +59,7 @@ dev-python/PyQt6:printsupport - Build bindings for the QtPrintSupport module
 dev-python/PyQt6:qml - Build bindings for the QtQml module and enable the qml plugin
 dev-python/PyQt6:quick - Build bindings for the QtQuick module
 dev-python/PyQt6:quick3d - Build bindings for the QtQuick3D module
+dev-python/PyQt6:remoteobjects - Build bindings for the QtRemoteObjects module
 dev-python/PyQt6:sensors - Build bindings for the QtSensors module
 dev-python/PyQt6:serialport - Build bindings for the QtSerialPort module
 dev-python/PyQt6:spatialaudio - Build bindings for the QtSpatialAudio module
@@ -77,6 +73,7 @@ dev-python/PyQt6:widgets - Build bindings for the QtWidgets module
 dev-python/PyQt6:xml - Build bindings for the QtXml module
 dev-python/pypy:full-stdlib - Install complete stdlib as necessary to use PyPy for general purpose programs. By default, only a limited subset that is used when building PyPy3 executables is installed. Note that PyPy2.7's stdlib contains multiple known vulnerabilities.
 dev-python/pypy3_10:ensurepip - Install the ensurepip module that uses bundled wheels to bootstrap pip and setuptools (if disabled, it will be only possible to use venv `--without-pip`)
+dev-python/pypy3_10:test-install - Install the test suite packages, that are required to run tests in a few reverse dependencies.
 dev-qt/qtbase:X - Build the XCB platform plugin and enable X11 integration
 dev-qt/qtbase:concurrent - Build Qt6Concurrent module
 dev-qt/qtbase:dbus - Build Qt6DBus module
