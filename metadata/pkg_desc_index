@@ -23,15 +23,15 @@ dev-qt/qtbase 6.7.2-r5 6.7.3-r2: Cross-platform application development framewor
 dev-qt/qtnetwork 5.15.14-r1: Network abstraction library for the Qt5 framework
 dev-util/cargo-audit 0.17.6: Audit Cargo.lock for crates with security vulnerabilities
 dev-util/cargo-c 0.9.14 0.9.20: Helper program to build and install c-like libraries
-dev-util/cargo-ebuild 0.5.4-r1: Generates an ebuild for a package using the in-tree eclasses.
-dev-util/maturin 1.6.0 1.7.1 1.7.4: Build and publish crates with pyo3, rust-cpython and cffi bindings
+dev-util/cargo-ebuild 0.5.4-r2: Generates an ebuild for a package using the in-tree eclasses.
+dev-util/maturin 1.7.4-r1: Build and publish crates with pyo3, rust-cpython and cffi bindings
 kde-frameworks/kdelibs4support 5.116.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.94 7.94-r1 7.95: Network exploration tool and security / port scanner
 net-dialup/freeradius 3.2.2 3.2.3: Highly configurable free RADIUS server
 net-dialup/ppp 2.5.0-r7 2.5.1-r1: Point-to-Point Protocol (PPP)
 net-libs/ldns 1.8.3-r1 1.8.3-r2 1.8.3-r3: A library with the aim to simplify DNS programming in C
-net-misc/curl 8.9.1-r1 8.10.1-r1: A Client that groks URLs
+net-misc/curl 8.9.1-r1 8.10.1-r1 8.11.0: A Client that groks URLs
 net-misc/seafile-client 8.0.9 9.0.3: Seafile desktop client
 net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
