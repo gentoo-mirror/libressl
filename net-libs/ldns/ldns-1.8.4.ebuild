@@ -3,22 +3,26 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-inherit autotools python-single-r1 multilib-minimal
+PYTHON_COMPAT=( python3_{10..13} )
+inherit python-single-r1 multilib-minimal
 
 DESCRIPTION="A library with the aim to simplify DNS programming in C"
-HOMEPAGE="https://www.nlnetlabs.nl/projects/ldns/"
+HOMEPAGE="https://www.nlnetlabs.nl/projects/ldns/about/"
 SRC_URI="https://www.nlnetlabs.nl/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test" # missing test directory
 
 BDEPEND="
-	python? ( dev-lang/swig )
+	python? (
+		${PYTHON_DEPS}
+		dev-lang/swig
+		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
+	)
 	doc? ( app-text/doxygen )
 "
 DEPEND="
@@ -28,8 +32,12 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!<net-dns/ldns-utils-1.8.0-r2
 "
+
+# False positive, always fails, bug #898658
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	ioctlsocket
+)
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/ldns-config
@@ -37,19 +45,10 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}/ldns-1.8.1-pkgconfig.patch"
-	"${FILESDIR}/${P}-docs.patch"
-	"${FILESDIR}/${P}-configure-strict.patch"
 )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	default
-
-	# Drop after 1.8.3
-	eautoreconf
 }
 
 multilib_src_configure() {
