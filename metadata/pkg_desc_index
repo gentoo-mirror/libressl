@@ -21,7 +21,7 @@ dev-python/m2crypto 0.42.0 0.43.0: A Python crypto and SSL toolkit
 dev-python/pypy 7.3.17: A fast, compliant alternative implementation of the Python language
 dev-python/pypy3_10 7.3.17_p1: A fast, compliant alternative implementation of the Python (3.10) language
 dev-qt/qtbase 6.7.2-r5 6.7.3-r2: Cross-platform application development framework
-dev-qt/qtnetwork 5.15.14-r1: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.14-r1 5.15.16: Network abstraction library for the Qt5 framework
 dev-util/cargo-c 0.9.14-r1 0.9.30-r1 0.9.31-r1 0.9.32-r1 0.10.0-r1 0.10.4-r1 0.10.5-r1: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.5.4-r2: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/maturin 1.7.4-r1: Build and publish crates with pyo3, rust-cpython and cffi bindings
