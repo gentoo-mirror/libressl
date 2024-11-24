@@ -44,36 +44,36 @@ dev-libs/openssl:quic - Enable support for QUIC (RFC 9000); a UDP-based protocol
 dev-libs/openssl:sslv3 - Support for the SSLv3 protocol
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
-dev-python/PyQt6:bluetooth - Build bindings for the QtBluetooth module
-dev-python/PyQt6:dbus - Build bindings for the QtDBus module
-dev-python/PyQt6:designer - Build bindings for the QtDesigner module and enable the designer plugin
-dev-python/PyQt6:gui - Build bindings for the QtGui module
-dev-python/PyQt6:help - Build bindings for the QtHelp module
-dev-python/PyQt6:multimedia - Build bindings for the QtMultimedia module
-dev-python/PyQt6:network - Build bindings for the QtNetwork module
-dev-python/PyQt6:nfc - Build bindings for the QtNfc module
-dev-python/PyQt6:opengl - Build bindings for the QtOpenGL module
-dev-python/PyQt6:pdfium - Build bindings for the QtPdf module (uses pdfium from dev-qt/qtwebengine)
-dev-python/PyQt6:positioning - Build bindings for the QtPositioning module
-dev-python/PyQt6:printsupport - Build bindings for the QtPrintSupport module
-dev-python/PyQt6:qml - Build bindings for the QtQml module and enable the qml plugin
-dev-python/PyQt6:quick - Build bindings for the QtQuick module
-dev-python/PyQt6:quick3d - Build bindings for the QtQuick3D module
-dev-python/PyQt6:remoteobjects - Build bindings for the QtRemoteObjects module
-dev-python/PyQt6:sensors - Build bindings for the QtSensors module
-dev-python/PyQt6:serialport - Build bindings for the QtSerialPort module
-dev-python/PyQt6:spatialaudio - Build bindings for the QtSpatialAudio module
-dev-python/PyQt6:speech - Build bindings for the QtTextToSpeech module
-dev-python/PyQt6:sql - Build bindings for the QtSql module
-dev-python/PyQt6:svg - Build bindings for the QtSvg module
-dev-python/PyQt6:testlib - Build bindings for the QtTest module
-dev-python/PyQt6:webchannel - Build bindings for the QtWebChannel module
-dev-python/PyQt6:websockets - Build bindings for the QtWebSockets module
-dev-python/PyQt6:widgets - Build bindings for the QtWidgets module
-dev-python/PyQt6:xml - Build bindings for the QtXml module
 dev-python/pypy:full-stdlib - Install complete stdlib as necessary to use PyPy for general purpose programs. By default, only a limited subset that is used when building PyPy3 executables is installed. Note that PyPy2.7's stdlib contains multiple known vulnerabilities.
 dev-python/pypy3_10:ensurepip - Install the ensurepip module that uses bundled wheels to bootstrap pip and setuptools (if disabled, it will be only possible to use venv `--without-pip`)
 dev-python/pypy3_10:test-install - Install the test suite packages, that are required to run tests in a few reverse dependencies.
+dev-python/pyqt6:bluetooth - Build bindings for the QtBluetooth module
+dev-python/pyqt6:dbus - Build bindings for the QtDBus module
+dev-python/pyqt6:designer - Build bindings for the QtDesigner module and enable the designer plugin
+dev-python/pyqt6:gui - Build bindings for the QtGui module
+dev-python/pyqt6:help - Build bindings for the QtHelp module
+dev-python/pyqt6:multimedia - Build bindings for the QtMultimedia module
+dev-python/pyqt6:network - Build bindings for the QtNetwork module
+dev-python/pyqt6:nfc - Build bindings for the QtNfc module
+dev-python/pyqt6:opengl - Build bindings for the QtOpenGL module
+dev-python/pyqt6:pdfium - Build bindings for the QtPdf module (uses pdfium from dev-qt/qtwebengine)
+dev-python/pyqt6:positioning - Build bindings for the QtPositioning module
+dev-python/pyqt6:printsupport - Build bindings for the QtPrintSupport module
+dev-python/pyqt6:qml - Build bindings for the QtQml module and enable the qml plugin
+dev-python/pyqt6:quick - Build bindings for the QtQuick module
+dev-python/pyqt6:quick3d - Build bindings for the QtQuick3D module
+dev-python/pyqt6:remoteobjects - Build bindings for the QtRemoteObjects module
+dev-python/pyqt6:sensors - Build bindings for the QtSensors module
+dev-python/pyqt6:serialport - Build bindings for the QtSerialPort module
+dev-python/pyqt6:spatialaudio - Build bindings for the QtSpatialAudio module
+dev-python/pyqt6:speech - Build bindings for the QtTextToSpeech module
+dev-python/pyqt6:sql - Build bindings for the QtSql module
+dev-python/pyqt6:svg - Build bindings for the QtSvg module
+dev-python/pyqt6:testlib - Build bindings for the QtTest module
+dev-python/pyqt6:webchannel - Build bindings for the QtWebChannel module
+dev-python/pyqt6:websockets - Build bindings for the QtWebSockets module
+dev-python/pyqt6:widgets - Build bindings for the QtWidgets module
+dev-python/pyqt6:xml - Build bindings for the QtXml module
 dev-qt/qtbase:X - Build the XCB platform plugin and enable X11 integration
 dev-qt/qtbase:concurrent - Build Qt6Concurrent module
 dev-qt/qtbase:dbus - Build Qt6DBus module
