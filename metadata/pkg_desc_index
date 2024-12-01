@@ -15,7 +15,7 @@ dev-libs/libtpms 0.9.6: Library providing software emultion of a TPM
 dev-libs/openssl 3.9.0 4.0.0: dummy package for dev-libs/libressl
 dev-libs/softhsm 2.6.1-r3: A software PKCS#11 implementation
 dev-perl/Net-SSLeay 1.920.0-r1 1.940.0: Perl extension for using OpenSSL
-dev-python/cryptography 43.0.3-r1: Library providing cryptographic recipes and primitives
+dev-python/cryptography 43.0.3-r1 44.0.0: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.43.0: A Python crypto and SSL toolkit
 dev-python/pypy 7.3.17: A fast, compliant alternative implementation of the Python language
 dev-python/pypy3_10 7.3.17_p1: A fast, compliant alternative implementation of the Python (3.10) language
@@ -24,7 +24,7 @@ dev-qt/qtbase 6.7.2-r5 6.7.3-r2: Cross-platform application development framewor
 dev-qt/qtnetwork 5.15.14-r1 5.15.16: Network abstraction library for the Qt5 framework
 dev-util/cargo-c 0.9.14-r1 0.9.30-r1 0.9.31-r1 0.9.32-r1 0.10.0-r1 0.10.4-r1 0.10.5-r1: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.5.4-r2: Generates an ebuild for a package using the in-tree eclasses.
-dev-util/maturin 1.7.4-r1: Build and publish crates with pyo3, rust-cpython and cffi bindings
+dev-util/maturin 1.7.4-r1 1.7.5 1.7.6: Build and publish crates with pyo3, rust-cpython and cffi bindings
 kde-frameworks/kdelibs4support 5.116.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.95: Network exploration tool and security / port scanner
