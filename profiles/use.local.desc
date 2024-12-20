@@ -47,8 +47,6 @@ dev-libs/openssl:sslv3 - Support for the SSLv3 protocol
 dev-libs/softhsm:gost - Enable gost algorithm
 dev-libs/softhsm:migration-tool - Build db migration tool
 dev-python/pypy:full-stdlib - Install complete stdlib as necessary to use PyPy for general purpose programs. By default, only a limited subset that is used when building PyPy3 executables is installed. Note that PyPy2.7's stdlib contains multiple known vulnerabilities.
-dev-python/pypy3_10:ensurepip - Install the ensurepip module that uses bundled wheels to bootstrap pip and setuptools (if disabled, it will be only possible to use venv `--without-pip`)
-dev-python/pypy3_10:test-install - Install the test suite packages, that are required to run tests in a few reverse dependencies.
 dev-python/pyqt6:bluetooth - Build bindings for the QtBluetooth module
 dev-python/pyqt6:dbus - Build bindings for the QtDBus module
 dev-python/pyqt6:designer - Build bindings for the QtDesigner module and enable the designer plugin
