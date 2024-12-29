@@ -13,51 +13,57 @@ CRATES="
 	adler2@2.0.0
 	ahash@0.8.11
 	aho-corasick@1.1.3
-	allocator-api2@0.2.18
+	allocator-api2@0.2.21
 	annotate-snippets@0.11.4
-	anstream@0.6.15
-	anstyle-parse@0.2.5
-	anstyle-query@1.1.1
-	anstyle-wincon@3.0.4
-	anstyle@1.0.8
-	anyhow@1.0.91
+	anstream@0.6.18
+	anstyle-parse@0.2.6
+	anstyle-query@1.1.2
+	anstyle-wincon@3.0.6
+	anstyle@1.0.10
+	anyhow@1.0.94
 	arc-swap@1.7.1
+	arrayref@0.3.9
+	arrayvec@0.7.6
 	autocfg@1.4.0
 	base16ct@0.2.0
 	base64@0.22.1
 	base64ct@1.6.0
 	bitflags@2.6.0
 	bitmaps@2.1.0
+	blake3@1.5.5
 	block-buffer@0.10.4
-	bstr@1.10.0
+	bstr@1.11.0
 	bumpalo@3.16.0
 	byteorder@1.5.0
-	bytes@1.8.0
+	bytes@1.9.0
 	bytesize@1.3.0
-	cargo-credential-libsecret@0.4.8
-	cargo-credential-macos-keychain@0.4.8
-	cargo-credential-wincred@0.4.8
-	cargo-credential@0.4.6
-	cargo-platform@0.1.8
-	cargo-util-schemas@0.6.0
-	cargo-util@0.2.15
-	cargo@0.83.0
+	cargo-credential-libsecret@0.4.9
+	cargo-credential-macos-keychain@0.4.9
+	cargo-credential-wincred@0.4.9
+	cargo-credential@0.4.7
+	cargo-platform@0.1.9
+	cargo-util-schemas@0.7.0
+	cargo-util@0.2.16
+	cargo@0.84.0
 	cbindgen@0.27.0
-	cc@1.1.31
+	cc@1.2.3
 	cfg-if@1.0.0
-	clap@4.5.20
-	clap_builder@4.5.20
+	clap@4.5.23
+	clap_builder@4.5.23
+	clap_complete@4.5.38
 	clap_derive@4.5.18
-	clap_lex@0.7.2
+	clap_lex@0.7.4
 	clru@0.6.2
-	color-print-proc-macro@0.3.6
-	color-print@0.3.6
-	colorchoice@1.0.2
+	color-print-proc-macro@0.3.7
+	color-print@0.3.7
+	colorchoice@1.0.3
 	const-oid@0.9.6
+	constant_time_eq@0.3.1
 	core-foundation-sys@0.8.7
+	core-foundation@0.10.0
 	core-foundation@0.9.4
-	cpufeatures@0.2.14
-	crates-io@0.40.5
+	cpufeatures@0.2.16
+	crates-io@0.40.6
 	crc32fast@1.4.2
 	crossbeam-channel@0.5.13
 	crossbeam-deque@0.8.5
@@ -66,29 +72,30 @@ CRATES="
 	crypto-bigint@0.5.5
 	crypto-common@0.1.6
 	ct-codecs@1.1.2
-	curl-sys@0.4.77+curl-8.10.1
+	curl-sys@0.4.78+curl-8.11.0
 	curl@0.4.47
 	dbus@0.9.7
 	der@0.7.9
 	deranged@0.3.11
 	digest@0.10.7
+	displaydoc@0.2.5
 	dunce@1.0.5
 	ecdsa@0.16.9
 	ed25519-compact@2.1.1
 	either@1.13.0
 	elliptic-curve@0.13.8
-	encoding_rs@0.8.34
+	encoding_rs@0.8.35
 	equivalent@1.0.1
 	erased-serde@0.4.5
-	errno@0.3.9
+	errno@0.3.10
 	fallible-iterator@0.3.0
 	fallible-streaming-iterator@0.1.9
 	faster-hex@0.9.0
-	fastrand@2.1.1
+	fastrand@2.2.0
 	ff@0.13.0
 	fiat-crypto@0.2.9
 	filetime@0.2.25
-	flate2@1.0.34
+	flate2@1.0.35
 	fnv@1.0.7
 	foldhash@0.1.3
 	foreign-types-shared@0.1.1
@@ -100,15 +107,15 @@ CRATES="
 	git2@0.19.0
 	gix-actor@0.31.5
 	gix-attributes@0.22.5
-	gix-bitmap@0.2.12
-	gix-chunk@0.4.9
-	gix-command@0.3.10
+	gix-bitmap@0.2.13
+	gix-chunk@0.4.10
+	gix-command@0.3.11
 	gix-commitgraph@0.24.3
-	gix-config-value@0.14.9
+	gix-config-value@0.14.10
 	gix-config@0.38.0
 	gix-credentials@0.24.5
 	gix-date@0.8.7
-	gix-date@0.9.1
+	gix-date@0.9.2
 	gix-diff@0.44.1
 	gix-dir@0.6.0
 	gix-discover@0.33.0
@@ -128,16 +135,16 @@ CRATES="
 	gix-pack@0.51.1
 	gix-packetline-blocking@0.17.5
 	gix-packetline@0.17.6
-	gix-path@0.10.12
+	gix-path@0.10.13
 	gix-pathspec@0.7.7
-	gix-prompt@0.8.8
+	gix-prompt@0.8.9
 	gix-protocol@0.45.3
-	gix-quote@0.4.13
+	gix-quote@0.4.14
 	gix-ref@0.45.0
 	gix-refspec@0.23.1
 	gix-revision@0.27.2
 	gix-revwalk@0.13.2
-	gix-sec@0.10.9
+	gix-sec@0.10.10
 	gix-submodule@0.12.0
 	gix-tempfile@14.0.2
 	gix-trace@0.1.11
@@ -152,7 +159,7 @@ CRATES="
 	globset@0.4.15
 	group@0.13.0
 	hashbrown@0.14.5
-	hashbrown@0.15.0
+	hashbrown@0.15.2
 	hashlink@0.9.1
 	heck@0.4.1
 	heck@0.5.0
@@ -162,32 +169,45 @@ CRATES="
 	home@0.5.9
 	http-auth@0.1.10
 	humantime@2.1.0
-	idna@0.5.0
+	icu_collections@1.5.0
+	icu_locid@1.5.0
+	icu_locid_transform@1.5.0
+	icu_locid_transform_data@1.5.0
+	icu_normalizer@1.5.0
+	icu_normalizer_data@1.5.0
+	icu_properties@1.5.1
+	icu_properties_data@1.5.0
+	icu_provider@1.5.0
+	icu_provider_macros@1.5.0
+	idna@1.0.3
+	idna_adapter@1.2.0
 	ignore@0.4.23
 	im-rc@15.1.0
 	implib@0.3.3
-	indexmap@2.6.0
+	indexmap@2.7.0
+	is_executable@1.0.4
 	is_terminal_polyfill@1.70.1
 	itertools@0.13.0
-	itoa@1.0.11
+	itoa@1.0.14
 	jiff-tzdb-platform@0.1.1
 	jiff-tzdb@0.1.1
-	jiff@0.1.13
+	jiff@0.1.15
 	jobserver@0.1.32
-	js-sys@0.3.72
+	js-sys@0.3.76
 	kstring@2.0.2
 	lazy_static@1.5.0
 	lazycell@1.3.0
-	libc@0.2.161
+	libc@0.2.167
 	libdbus-sys@0.2.5
 	libgit2-sys@0.17.0+1.8.1
-	libloading@0.8.5
+	libloading@0.8.6
 	libnghttp2-sys@0.1.10+1.61.0
 	libredox@0.1.3
 	libsqlite3-sys@0.30.1
 	libssh2-sys@0.3.0
 	libz-sys@1.1.20
 	linux-raw-sys@0.4.14
+	litemap@0.7.4
 	lock_api@0.4.12
 	log@0.4.22
 	matchers@0.1.0
@@ -209,27 +229,27 @@ CRATES="
 	opener@0.7.2
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
-	openssl-src@300.4.0+3.4.0
+	openssl-src@300.4.1+3.4.0
 	openssl-sys@0.9.104
 	openssl@0.10.57
 	ordered-float@2.10.1
 	orion@0.17.7
-	os_info@3.8.2
+	os_info@3.9.0
 	overload@0.1.1
 	p384@0.13.0
 	parking_lot@0.12.3
 	parking_lot_core@0.9.10
-	pasetors@0.6.8
-	pathdiff@0.2.2
+	pasetors@0.7.0
+	pathdiff@0.2.3
 	pem-rfc7468@0.7.0
 	percent-encoding@2.3.1
-	pin-project-lite@0.2.14
+	pin-project-lite@0.2.15
 	pkcs8@0.10.2
 	pkg-config@0.3.31
 	powerfmt@0.2.0
 	ppv-lite86@0.2.20
 	primeorder@0.13.6
-	proc-macro2@1.0.89
+	proc-macro2@1.0.92
 	prodash@28.0.0
 	quote@1.0.37
 	rand@0.8.5
@@ -238,28 +258,28 @@ CRATES="
 	rand_xoshiro@0.6.0
 	redox_syscall@0.5.7
 	regex-automata@0.1.10
-	regex-automata@0.4.8
+	regex-automata@0.4.9
 	regex-syntax@0.6.29
 	regex-syntax@0.8.5
-	regex@1.11.0
+	regex@1.11.1
 	rfc6979@0.4.0
 	rusqlite@0.32.1
-	rustfix@0.8.6
-	rustix@0.38.37
+	rustfix@0.8.7
+	rustix@0.38.41
 	ryu@1.0.18
 	same-file@1.0.6
-	schannel@0.1.26
+	schannel@0.1.27
 	scopeguard@1.2.0
 	sec1@0.7.3
-	security-framework-sys@2.12.0
+	security-framework-sys@2.12.1
 	security-framework@2.11.1
 	semver@1.0.23
 	serde-untagged@0.1.6
 	serde-value@0.7.0
-	serde@1.0.213
-	serde_derive@1.0.213
+	serde@1.0.215
+	serde_derive@1.0.215
 	serde_ignored@0.1.10
-	serde_json@1.0.132
+	serde_json@1.0.133
 	serde_spanned@0.6.8
 	sha1@0.10.6
 	sha1_smol@1.0.1
@@ -271,55 +291,62 @@ CRATES="
 	signature@2.2.0
 	sized-chunks@0.6.5
 	smallvec@1.13.2
-	socket2@0.5.7
+	socket2@0.5.8
 	spki@0.7.3
+	stable_deref_trait@1.2.0
 	static_assertions@1.1.0
 	strsim@0.11.1
 	subtle@2.6.1
-	supports-hyperlinks@3.0.0
+	supports-hyperlinks@3.1.0
 	supports-unicode@3.0.0
-	syn@2.0.82
-	tar@0.4.42
-	tempfile@3.13.0
-	terminal_size@0.4.0
-	thiserror-impl@1.0.65
-	thiserror@1.0.65
+	syn@2.0.90
+	synstructure@0.13.1
+	tar@0.4.43
+	tempfile@3.14.0
+	terminal_size@0.4.1
+	thiserror-impl@1.0.69
+	thiserror-impl@2.0.4
+	thiserror@1.0.69
+	thiserror@2.0.4
 	thread_local@1.1.8
 	time-core@0.1.2
-	time-macros@0.2.18
-	time@0.3.36
+	time-macros@0.2.19
+	time@0.3.37
+	tinystr@0.7.6
 	tinyvec@1.8.0
 	tinyvec_macros@0.1.1
 	toml@0.8.19
 	toml_datetime@0.6.8
 	toml_edit@0.22.22
-	tracing-attributes@0.1.27
+	tracing-attributes@0.1.28
 	tracing-chrome@0.7.2
-	tracing-core@0.1.32
+	tracing-core@0.1.33
 	tracing-log@0.2.0
-	tracing-subscriber@0.3.18
-	tracing@0.1.40
+	tracing-subscriber@0.3.19
+	tracing@0.1.41
 	typeid@1.0.2
 	typenum@1.17.0
 	unicase@2.8.0
-	unicode-bidi@0.3.17
 	unicode-bom@2.0.3
-	unicode-ident@1.0.13
+	unicode-ident@1.0.14
 	unicode-normalization@0.1.24
 	unicode-width@0.1.14
+	unicode-width@0.2.0
 	unicode-xid@0.2.6
-	url@2.5.2
+	url@2.5.4
+	utf16_iter@1.0.5
+	utf8_iter@1.0.4
 	utf8parse@0.2.2
 	valuable@0.1.0
 	vcpkg@0.2.15
 	version_check@0.9.5
 	walkdir@2.5.0
 	wasi@0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-backend@0.2.95
-	wasm-bindgen-macro-support@0.2.95
-	wasm-bindgen-macro@0.2.95
-	wasm-bindgen-shared@0.2.95
-	wasm-bindgen@0.2.95
+	wasm-bindgen-backend@0.2.99
+	wasm-bindgen-macro-support@0.2.99
+	wasm-bindgen-macro@0.2.99
+	wasm-bindgen-shared@0.2.99
+	wasm-bindgen@0.2.99
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.9
 	winapi-x86_64-pc-windows-gnu@0.4.0
@@ -345,12 +372,20 @@ CRATES="
 	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.6
 	winnow@0.6.20
+	write16@1.0.0
+	writeable@0.5.5
+	yoke-derive@0.7.5
+	yoke@0.7.5
 	zerocopy-derive@0.7.35
 	zerocopy@0.7.35
+	zerofrom-derive@0.1.5
+	zerofrom@0.1.5
 	zeroize@1.8.1
+	zerovec-derive@0.10.3
+	zerovec@0.10.4
 "
 
-RUST_MIN_VER="1.80.1"
+RUST_MIN_VER="1.81.0"
 
 inherit cargo
 
@@ -366,15 +401,19 @@ SRC_URI+=" ${CARGO_CRATE_URIS}"
 
 LICENSE="MIT"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 MPL-2.0 Unicode-DFS-2016 ZLIB"
+LICENSE+="
+	Apache-2.0 BSD-2 BSD ISC MIT MPL-2.0 MPL-2.0 Unicode-3.0 ZLIB
+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-RDEPEND=">=dev-libs/libgit2-1.8.1:=
+RDEPEND="
+	=dev-libs/libgit2-1.8*:=
 	dev-libs/openssl:=
 	net-libs/libssh2:=
 	net-misc/curl[ssl]
-	sys-libs/zlib"
+	sys-libs/zlib
+"
 DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/cargo-capi usr/bin/cargo-cbuild usr/bin/cargo-ctest usr/bin/cargo-cinstall"
