@@ -15,10 +15,9 @@ dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
 dev-libs/libtpms 0.9.6: Library providing software emultion of a TPM
 dev-libs/openssl 3.9.0 4.0.0: dummy package for dev-libs/libressl
 dev-libs/softhsm 2.6.1-r3: A software PKCS#11 implementation
-dev-perl/Net-SSLeay 1.920.0-r1 1.940.0: Perl extension for using OpenSSL
+dev-perl/Net-SSLeay 1.940.0: Perl extension for using OpenSSL
 dev-python/cryptography 43.0.3-r1 44.0.0: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.43.0: A Python crypto and SSL toolkit
-dev-python/pypy 7.3.17: A fast, compliant alternative implementation of the Python language
 dev-python/pyqt6 6.7.1-r1 6.8.0: Python bindings for the Qt framework
 dev-qt/qtbase 6.7.2-r5 6.7.3-r2 6.8.1: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.16: Network abstraction library for the Qt5 framework
@@ -27,7 +26,7 @@ dev-util/maturin 1.7.4-r1 1.7.8 1.8.1: Build and publish crates with pyo3, rust-
 kde-frameworks/kdelibs4support 5.116.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.95: Network exploration tool and security / port scanner
-net-dialup/freeradius 3.2.2 3.2.3: Highly configurable free RADIUS server
+net-dialup/freeradius 3.2.3 3.2.6: Highly configurable free RADIUS server
 net-dialup/ppp 2.5.0-r7 2.5.1-r1: Point-to-Point Protocol (PPP)
 net-libs/ldns 1.8.3-r3 1.8.4: A library with the aim to simplify DNS programming in C
 net-misc/curl 8.9.1-r1 8.10.1-r1 8.11.0 8.11.1-r1: A Client that groks URLs
