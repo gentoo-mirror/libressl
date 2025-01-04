@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ else
 	S="${WORKDIR}/${MY_PF}"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
-		KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
 	fi
 
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20230727 )"
@@ -42,7 +42,7 @@ SLOT="0"
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
 	dev-libs/openssl:=[-bindist(-)]
 	sys-libs/zlib
@@ -54,17 +54,21 @@ DEPEND="
 	systemd? ( sys-apps/systemd:= )
 	zstd? ( app-arch/zstd:= )
 "
-RDEPEND="
-	acct-user/tor
-	acct-group/tor
-	${DEPEND}
-	selinux? ( sec-policy/selinux-tor )
-"
-DEPEND+="
+DEPEND="
+	${RDEPEND}
 	test? (
 		${DEPEND}
 		${PYTHON_DEPS}
 	)
+"
+RDEPEND+="
+	acct-user/tor
+	acct-group/tor
+	selinux? ( sec-policy/selinux-tor )
+"
+BDEPEND+="
+	acct-user/tor
+	acct-group/tor
 "
 
 DOCS=()
@@ -72,6 +76,12 @@ DOCS=()
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
 	"${FILESDIR}"/${PN}-0.4.7.13-opensslconf.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# test correctly fails because -lnacl fails if not available
+	# https://bugs.gentoo.org/900092
+	crypto_scalarmult_curve25519
 )
 
 pkg_setup() {
