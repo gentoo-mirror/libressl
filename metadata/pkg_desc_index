@@ -23,7 +23,7 @@ dev-python/pyqt6 6.7.1-r1 6.8.0: Python bindings for the Qt framework
 dev-qt/qtbase 6.7.2-r5 6.7.3-r2 6.8.1: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.16: Network abstraction library for the Qt5 framework
 dev-util/cargo-c 0.10.4-r1 0.10.7: Helper program to build and install c-like libraries
-dev-util/maturin 1.7.4-r1 1.7.8 1.8.0: Build and publish crates with pyo3, rust-cpython and cffi bindings
+dev-util/maturin 1.7.4-r1 1.7.8 1.8.1: Build and publish crates with pyo3, rust-cpython and cffi bindings
 kde-frameworks/kdelibs4support 5.116.0: Framework easing the development transition from KDELibs 4 to KF 5
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.95: Network exploration tool and security / port scanner
@@ -36,7 +36,7 @@ net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
 net-p2p/qbittorrent 5.0.1 5.0.2: BitTorrent client in C++ and Qt
 net-vpn/openvpn 2.5.2-r3 2.5.6-r1 2.5.7-r1 2.6.4: Robust and highly flexible tunneling application compatible with many OSes
-net-vpn/tor 0.4.8.11 0.4.8.12-r1 0.4.8.13: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.8.12-r1 0.4.8.13 0.4.8.13-r1: Anonymizing overlay network for TCP
 net-wireless/hostapd 2.10-r3: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wpa_supplicant 2.10-r5: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20240309: OpenPGP keys used by the libressl project
