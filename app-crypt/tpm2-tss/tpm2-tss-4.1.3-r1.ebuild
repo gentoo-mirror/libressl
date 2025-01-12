@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ RDEPEND="
 		dev-libs/json-c:=[${MULTILIB_USEDEP}]
 		>=net-misc/curl-7.80.0[${MULTILIB_USEDEP}]
 	)
-	mbedtls? ( net-libs/mbedtls:=[${MULTILIB_USEDEP}] )
+	mbedtls? ( net-libs/mbedtls:0=[${MULTILIB_USEDEP}] )
 	openssl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
 "
 
