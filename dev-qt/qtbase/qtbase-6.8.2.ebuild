@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build toolchain-funcs
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 declare -A QT6_IUSE=(
@@ -146,12 +146,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
 	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
-	"${FILESDIR}"/${PN}-6.7.2-CVE-2024-39936.patch
-	"${FILESDIR}"/${PN}-6.7.2-gcc15-odr.patch
-	"${FILESDIR}"/${PN}-6.7.2-float16-sse2.patch
-	"${FILESDIR}"/${PN}-6.7.2-qwindowprivate-crash.patch
-	"${FILESDIR}"/${PN}-6.7.2-qcontiguouscache.patch
-	"${FILESDIR}"/${PN}-6.7.2-haswell-no-rdrnd.patch
+	"${FILESDIR}"/${PN}-6.8.0-qcontiguouscache.patch
+	"${FILESDIR}"/${PN}-6.8.2-pyqt6.patch
 )
 
 src_prepare() {
@@ -172,11 +168,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# The only component that uses gdk backends is the qgtk3 platformtheme plugin
 	if use gtk; then
-		# defang automagic dependencies
-		use wayland || append-cxxflags -DGENTOO_GTK_HIDE_WAYLAND
+		# defang automagic dependencies (bug #624960)
 		use X || append-cxxflags -DGENTOO_GTK_HIDE_X11
+		use wayland || append-cxxflags -DGENTOO_GTK_HIDE_WAYLAND
 	fi
 
 	local mycmakeargs=(
@@ -221,6 +216,18 @@ src_configure() {
 		# trivial, and is often needed (sometimes even when not building tests)
 		-DQT_FEATURE_testlib=ON
 		$(qt_feature xml)
+
+		# let gentoo's defaults and/or users control security *FLAGS
+		-DQT_FEATURE_glibc_fortify_source=OFF
+		-DQT_FEATURE_intelcet=OFF
+		-DQT_FEATURE_libcpp_hardening=OFF
+		-DQT_FEATURE_libstdcpp_assertions=OFF
+		-DQT_FEATURE_relro_now_linker=OFF
+		-DQT_FEATURE_stack_clash_protection=OFF
+		-DQT_FEATURE_stack_protector=OFF
+		-DQT_FEATURE_trivial_auto_var_init_pattern=OFF
+
+		-DQT_INTERNAL_AVOID_OVERRIDING_SYNCQT_CONFIG=ON # would force -O3
 	)
 
 	use gui && mycmakeargs+=(
@@ -299,6 +306,8 @@ src_test() {
 		# may randomly hang+timeout, perhaps related to -j as well
 		tst_qprocess #936484
 		tst_qtimer
+		# haystacksWithMoreThan4GiBWork can easily OOM (16GB ram not enough)
+		tst_qlatin1stringmatcher
 		# these can be flaky depending on the environment/toolchain
 		tst_qlogging # backtrace log test can easily vary
 		tst_q{,raw}font # affected by available fonts / settings (bug #914737)
