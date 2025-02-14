@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,11 +32,11 @@ CRATES="
 	pkg-config@0.3.31
 	portable-atomic@1.10.0
 	proc-macro2@1.0.92
-	pyo3-build-config@0.23.2
-	pyo3-ffi@0.23.2
-	pyo3-macros-backend@0.23.2
-	pyo3-macros@0.23.2
-	pyo3@0.23.2
+	pyo3-build-config@0.23.4
+	pyo3-ffi@0.23.4
+	pyo3-macros-backend@0.23.4
+	pyo3-macros@0.23.4
+	pyo3@0.23.4
 	quote@1.0.37
 	self_cell@1.0.4
 	shlex@1.3.0
@@ -68,7 +68,7 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT Unicode-3.0
 "
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2o-r6:0=
