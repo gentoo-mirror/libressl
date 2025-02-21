@@ -38,7 +38,8 @@ ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips MSP43
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY DirectX M68k SPIRV Xtensa )
+_ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY DirectX M68k SPIRV Xtensa )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( )
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="${PV}"
@@ -49,6 +50,12 @@ LLVM_DEPEND=()
 # splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
 for _x in "${ALL_LLVM_TARGETS[@]}"; do
 	LLVM_DEPEND+=( "	${_x}? ( $(llvm_gen_dep "llvm-core/llvm:\${LLVM_SLOT}[${_x}]") )" )
+	for _xx in "${_ALL_LLVM_EXPERIMENTAL_TARGETS[@]}"; do
+		if [[ "${_xx}" == "${_x}" ]] ; then
+			ALL_LLVM_EXPERIMENTAL_TARGETS+=( ${_x} )
+			break
+		fi
+	done
 done
 LLVM_DEPEND+=( "	wasm? ( $(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}') )" )
 LLVM_DEPEND+=( "	$(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}')" )
@@ -56,7 +63,7 @@ LLVM_DEPEND+=( "	$(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}')" )
 BDEPEND="${PYTHON_DEPS}
 	app-eselect/eselect-rust
 	|| (
-		>=sys-devel/gcc-4.7
+		>=sys-devel/gcc-4.7[cxx]
 		>=llvm-core/clang-3.5
 	)
 	!system-llvm? (
@@ -139,11 +146,10 @@ PATCHES=(
 )
 
 eapply_crate() {
-	pushd "${1:?}" > /dev/null || die
-	local patch="${2:?}"
-	eapply "${patch}"
-	"${EPREFIX}"/bin/sh "${FILESDIR}"/rehash-crate.sh "${patch}" || die
+	pushd "vendor/${1:?}" > /dev/null || die
+	eapply "${2:?}"
 	popd > /dev/null || die
+	sed -i 's/\("files":{\)[^}]*/\1/' "vendor/${1}/.cargo-checksum.json" || die
 }
 
 toml_usex() {
@@ -215,8 +221,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_crate vendor/openssl-sys-0.9.85 "${FILESDIR}"/1.71.0-libressl-openssl-sys.patch
-	eapply_crate vendor/openssl-sys "${FILESDIR}"/1.71.0-libressl-openssl-sys.patch
+	eapply_crate openssl-sys-0.9.85 "${FILESDIR}"/1.71.0-libressl-openssl-sys.patch
+	eapply_crate openssl-sys "${FILESDIR}"/1.71.0-libressl-openssl-sys.patch
 	default
 }
 
