@@ -38,8 +38,8 @@ net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
 net-p2p/qbittorrent 5.0.1 5.0.2: BitTorrent client in C++ and Qt
 net-vpn/openvpn 2.5.2-r3 2.5.6-r1 2.5.7-r1 2.6.4: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/tor 0.4.8.12-r1 0.4.8.13 0.4.8.13-r1 0.4.8.14: Anonymizing overlay network for TCP
-net-wireless/hostapd 2.10-r3: IEEE 802.11 wireless LAN Host AP daemon
-net-wireless/wpa_supplicant 2.10-r5: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/hostapd 2.10-r3 2.11: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/wpa_supplicant 2.10-r6 2.11 2.11-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20240309: OpenPGP keys used by the libressl project
 sys-fs/encfs 1.9.5-r2: An implementation of encrypted filesystem in user-space using FUSE
 www-client/netsurf 3.11: A free, open source web browser
