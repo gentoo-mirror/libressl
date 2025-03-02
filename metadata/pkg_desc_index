@@ -15,7 +15,7 @@ dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
 dev-libs/libtpms 0.9.6: Library providing software emultion of a TPM
 dev-libs/openssl 3.9.0 4.0.0: dummy package for dev-libs/libressl
 dev-libs/softhsm 2.6.1-r3: A software PKCS#11 implementation
-dev-perl/Net-SSLeay 1.940.0: Perl extension for using OpenSSL
+dev-perl/Net-SSLeay 1.940.0-r1: Perl extension for using OpenSSL
 dev-python/aioquic 1.2.0: An implementation of QUIC and HTTP/3
 dev-python/cryptography 43.0.3-r1 44.0.0 44.0.1: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.43.0: A Python crypto and SSL toolkit
