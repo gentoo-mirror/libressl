@@ -110,6 +110,7 @@ net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:redis - Include support for Redis database
 net-dialup/ppp:activefilter - Enables active filter support
 net-dialup/ppp:gtk - Installs GTK+ password prompting program that can be used by passprompt.so PPP plugin for reading the password from a X11 input terminal
+net-im/prosody:libevent - Use libevent for event handling
 net-libs/libssh:gssapi - Enable gssapi support
 net-libs/libssh:mbedtls - Use net-libs/mbedtls as TLS provider
 net-libs/libssh:pcap - Build with PCAP output support
