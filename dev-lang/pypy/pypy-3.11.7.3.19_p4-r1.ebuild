@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,17 +27,17 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
-SLOT="${PYVER}/pypy310-pp73-384"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="+ensurepip gdbm +jit ncurses sqlite +symlink +test-install tk"
+SLOT="${PYVER}/pypy311-pp73-416"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+IUSE="+ensurepip gdbm +jit ncurses sqlite symlink +test-install tk"
 # many tests are failing upstream
 # see https://buildbot.pypy.org/summary?branch=py${PYVER}
 RESTRICT="test"
 
 RDEPEND="
 	|| (
-		>=dev-python/pypy3_10-exe-${PYPY_PV}:${PYPY_PV}[bzip2(+),ncurses?]
-		>=dev-python/pypy3_10-exe-bin-${PYPY_PV}:${PYPY_PV}
+		dev-lang/pypy3-exe:${PV%_p*}[bzip2(+),ncurses?]
+		dev-lang/pypy3-exe-bin:${PV%_p*}
 	)
 	dev-lang/python-exec[python_targets_pypy3(-)]
 	dev-libs/openssl:0=
@@ -49,8 +49,8 @@ RDEPEND="
 		dev-lang/tk:0=
 		dev-tcltk/tix:0=
 	)
-	!dev-python/pypy3_10
 	symlink? (
+		!dev-lang/pypy:3.10[symlink]
 		!<dev-python/pypy3-7.3.17-r100
 	)
 "
@@ -97,23 +97,9 @@ src_compile() {
 	[[ ${soabi} == ${SLOT#*/} ]] || die "update subslot to ${soabi}"
 
 	# Add epython.py to the distribution
-	echo 'EPYTHON="pypy3"' > lib-python/3/epython.py || die
+	echo "EPYTHON=\"pypy${PYVER}\"" > lib-python/3/epython.py || die
 
 	einfo "Generating caches and CFFI modules ..."
-
-	# Generate sysconfig data
-	local host_gnu_type=$(sh pypy/tool/release/config.guess)
-	local overrides=(
-		HOST_GNU_TYPE "${host_gnu_type:-unknown}"
-		INCLUDEPY "${EPREFIX}/usr/include/pypy${PYVER}"
-		LIBDIR "${EPREFIX}/usr/$(get_libdir)"
-		TZPATH "${EPREFIX}/usr/share/zoneinfo"
-		WHEEL_PKG_DIR "${EPREFIX}/usr/lib/python/ensurepip"
-	)
-	"./pypy${PYVER}-c" -m sysconfig --generate-posix-vars "${overrides[@]}" || die
-	local outdir
-	outdir=$(<pybuilddir.txt) || die
-	cp "${outdir}"/_sysconfigdata__*.py lib-python/3/ || die
 
 	# Generate Grammar and PatternGrammar pickles.
 	"./pypy${PYVER}-c" - <<-EOF || die "Generation of Grammar and PatternGrammar pickles failed"
@@ -164,6 +150,21 @@ src_compile() {
 	# Cleanup temporary objects
 	find \( -name "*_cffi.c" -o -name '*.o' \) -delete || die
 	find -type d -empty -delete || die
+	cd .. || die
+
+	# Generate sysconfig data
+	local host_gnu_type=$(sh pypy/tool/release/config.guess)
+	local overrides=(
+		HOST_GNU_TYPE "${host_gnu_type:-unknown}"
+		INCLUDEPY "${EPREFIX}/usr/include/pypy${PYVER}"
+		LIBDIR "${EPREFIX}/usr/$(get_libdir)"
+		TZPATH "${EPREFIX}/usr/share/zoneinfo"
+		WHEEL_PKG_DIR "${EPREFIX}/usr/lib/python/ensurepip"
+	)
+	"./pypy${PYVER}-c" -m sysconfig --generate-posix-vars "${overrides[@]}" || die
+	local outdir
+	outdir=$(<pybuilddir.txt) || die
+	cp "${outdir}"/_sysconfigdata__*.py lib-python/3/ || die
 }
 
 src_install() {
@@ -193,14 +194,14 @@ src_install() {
 		rm -r "${ED}${dest}"/_gdbm* || die
 	fi
 	if ! use test-install; then
-		rm -r "${ED}${dest}"/{ctypes,sqlite3,tkinter,unittest}/test \
+		rm -r "${ED}${dest}"/{ctypes,tkinter,unittest}/test \
 			"${ED}${dest}"/{distutils,lib2to3}/tests \
 			"${ED}${dest}"/idlelib/idle_test || die
 	fi
 	if ! use sqlite; then
 		rm -r "${ED}${dest}"/sqlite3 \
 			"${ED}${dest}"/_sqlite3* \
-			"${ED}${dest}"/test/test_sqlite.py || die
+			"${ED}${dest}"/test/test_sqlite3 || die
 	fi
 	if ! use tk; then
 		rm -r "${ED}${dest}"/{idlelib,tkinter} \
@@ -230,7 +231,7 @@ src_install() {
 		dosym pypy${PYVER} /usr/bin/pypy3
 
 		# install symlinks for python-exec
-		local EPYTHON=pypy3
+		local EPYTHON=pypy${PYVER}
 		local scriptdir=${D}$(python_get_scriptdir)
 		mkdir -p "${scriptdir}" || die
 		ln -s "../../../bin/pypy3" "${scriptdir}/python3" || die
