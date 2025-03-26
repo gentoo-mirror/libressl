@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build toolchain-funcs
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 declare -A QT6_IUSE=(
@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
 	"${FILESDIR}"/${PN}-6.8.0-qcontiguouscache.patch
+	"${FILESDIR}"/${PN}-6.8.2-cross.patch
 )
 
 src_prepare() {
@@ -274,6 +275,12 @@ src_configure() {
 		$(qt_feature sqlite system_sqlite)
 	)
 
+	tc-is-cross-compiler && mycmakeargs+=(
+		-DQT_HOST_PATH="${BROOT}"/usr
+		-DQT_FORCE_BUILD_TOOLS=ON
+		-DQT_NO_GENERATE_QMAKE_WRAPPER_FOR_TARGET=ON
+	)
+
 	qt6-build_src_configure
 }
 
@@ -366,6 +373,7 @@ src_install() {
 		)
 		local delete=( # sigh
 			"${D}${QT6_BINDIR}"/test*
+			"${D}${QT6_LIBDIR}/objects-${CMAKE_BUILD_TYPE}"/*test*
 			"${delete_bins[@]/#/${D}${QT6_BINDIR}/}"
 		)
 		# using -f given not tracking which tests may be skipped or not
