@@ -31,7 +31,7 @@ net-dialup/ppp 2.5.0-r7 2.5.1-r1: Point-to-Point Protocol (PPP)
 net-im/prosody 13.0.0: Prosody is a modern XMPP communication server
 net-libs/ldns 1.8.3-r3 1.8.4: A library with the aim to simplify DNS programming in C
 net-libs/libssh 0.11.1-r1: Access a working SSH implementation by means of a library
-net-misc/curl 8.11.1-r2 8.12.1: A Client that groks URLs
+net-misc/curl 8.12.1 8.13.0: A Client that groks URLs
 net-misc/seafile-client 8.0.9 9.0.3: Seafile desktop client
 net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
