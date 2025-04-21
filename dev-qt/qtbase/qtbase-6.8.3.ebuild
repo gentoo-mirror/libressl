@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build toolchain-funcs
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 declare -A QT6_IUSE=(
@@ -68,7 +68,7 @@ COMMON_DEPEND="
 	dbus? ( sys-apps/dbus )
 	gui? (
 		media-libs/fontconfig
-		media-libs/freetype:2
+		>=media-libs/freetype-2.13.1:2
 		media-libs/harfbuzz:=
 		media-libs/libjpeg-turbo:=
 		media-libs/libpng:=
