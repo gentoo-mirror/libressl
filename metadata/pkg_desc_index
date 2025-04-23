@@ -20,7 +20,7 @@ dev-python/aioquic 1.2.0: An implementation of QUIC and HTTP/3
 dev-python/cryptography 43.0.3-r1 44.0.0 44.0.1: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.43.0: A Python crypto and SSL toolkit
 dev-python/pyqt6 6.8.0 6.8.1: Python bindings for the Qt framework
-dev-qt/qtbase 6.8.2-r2 6.8.3: Cross-platform application development framework
+dev-qt/qtbase 6.8.2-r2 6.8.3-r1: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.16: Network abstraction library for the Qt5 framework
 dev-util/cargo-c 0.10.4-r1 0.10.7 0.10.8: Helper program to build and install c-like libraries
 dev-util/maturin 1.7.4-r1 1.7.8 1.8.1 1.8.2: Build and publish crates with pyo3, rust-cpython and cffi bindings
