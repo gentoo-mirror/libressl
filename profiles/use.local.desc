@@ -142,6 +142,12 @@ net-misc/curl:sslv3 - Support for the old/insecure SSLv3 protocol
 net-misc/curl:telnet - Enable Telnet protocol support
 net-misc/curl:tftp - Enable TFTP support
 net-misc/curl:websockets - Enable websockets support
+net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
+net-misc/openssh:legacy-ciphers - Enable support for deprecated, soon-to-be-dropped DSA keys. See https://marc.info/?l=openssh-unix-dev>m=170494903207436>w=2.
+net-misc/openssh:livecd - Enable root password logins for live-cd environment.
+net-misc/openssh:security-key - Include builtin U2F/FIDO support
+net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
+net-misc/openssh:xmss - Enable XMSS post-quantum authentication algorithm
 net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
 net-p2p/qbittorrent:webui - Install qBittorrent Web UI (qbittorrent-nox) and systemd/OpenRC service

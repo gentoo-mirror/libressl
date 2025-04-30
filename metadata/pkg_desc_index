@@ -10,20 +10,20 @@ dev-lang/pypy 3.10.7.3.19_p1 3.11.7.3.19_p4-r1: A fast, compliant alternative im
 dev-lang/python 2.7.18_p16-r2 3.9.22 3.10.17 3.11.12 3.12.10 3.13.3: An interpreted, interactive, object-oriented programming language
 dev-lang/ruby 3.1.4-r3 3.1.5: An object-oriented scripting language
 dev-lang/rust 1.71.1-r101 1.74.1-r101 1.75.0-r101 1.76.0-r101 1.77.1-r101 1.78.0-r101 1.79.0-r101 1.80.1-r101 1.81.0-r101 1.82.0-r102 1.83.0-r2 1.84.0-r1 1.84.1-r1 1.85.0 1.85.0-r1 1.85.1 1.86.0-r1: Systems programming language originally developed by Mozilla
-dev-libs/libressl 3.9.2 4.0.0: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 3.9.2 4.0.0 4.1.0: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
 dev-libs/libtpms 0.9.6: Library providing software emultion of a TPM
-dev-libs/openssl 3.9.0 4.0.0: dummy package for dev-libs/libressl
+dev-libs/openssl 3.9.0 4.0.0 4.1.0: dummy package for dev-libs/libressl
 dev-libs/softhsm 2.6.1-r3: A software PKCS#11 implementation
 dev-perl/Net-SSLeay 1.940.0-r1: Perl extension for using OpenSSL
 dev-python/aioquic 1.2.0: An implementation of QUIC and HTTP/3
-dev-python/cryptography 43.0.3-r1 44.0.0 44.0.1: Library providing cryptographic recipes and primitives
+dev-python/cryptography 44.0.2: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.43.0: A Python crypto and SSL toolkit
 dev-python/pyqt6 6.8.0 6.8.1: Python bindings for the Qt framework
 dev-qt/qtbase 6.8.2-r2 6.8.3-r1: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.16: Network abstraction library for the Qt5 framework
-dev-util/cargo-c 0.10.4-r1 0.10.7 0.10.8: Helper program to build and install c-like libraries
-dev-util/maturin 1.7.4-r1 1.7.8 1.8.1 1.8.2: Build and publish crates with pyo3, rust-cpython and cffi bindings
+dev-util/cargo-c 0.10.4-r1 0.10.7 0.10.8 0.10.11 0.10.12: Helper program to build and install c-like libraries
+dev-util/maturin 1.8.3: Build and publish crates with pyo3, rust-cpython and cffi bindings
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
 net-analyzer/nmap 7.95: Network exploration tool and security / port scanner
 net-dialup/freeradius 3.2.3 3.2.6: Highly configurable free RADIUS server
@@ -32,6 +32,7 @@ net-im/prosody 13.0.0 13.0.1: Prosody is a modern XMPP communication server
 net-libs/ldns 1.8.3-r3 1.8.4: A library with the aim to simplify DNS programming in C
 net-libs/libssh 0.11.1-r1: Access a working SSH implementation by means of a library
 net-misc/curl 8.12.1 8.13.0 8.13.0-r1: A Client that groks URLs
+net-misc/openssh 9.8_p1-r3 9.9_p2 9.9_p2-r3: Port of OpenBSD's free SSH release
 net-misc/seafile-client 8.0.9 9.0.3: Seafile desktop client
 net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.64-r2 5.65-r2 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
