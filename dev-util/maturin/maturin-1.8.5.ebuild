@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+DISTUTILS_UPSTREAM_PEP517=standalone
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 RUST_MIN_VER=1.75.0
 inherit cargo distutils-r1 flag-o-matic shell-completion toolchain-funcs
 
@@ -24,7 +25,7 @@ LICENSE+="
 	MPL-2.0 Unicode-3.0 Unicode-DFS-2016
 " # crates
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc +ssl test"
 RESTRICT="!test? ( test )"
 
@@ -55,7 +56,7 @@ eapply_crate() {
 }
 
 src_prepare() {
-	eapply_crate openssl-sys-0.9.105 "${FILESDIR}/${PN}-1.8.2-libressl-openssl-sys-0.9.105.patch"
+	eapply_crate openssl-sys-0.9.107 "${FILESDIR}/${PN}-1.8.2-libressl-openssl-sys-0.9.105.patch"
 
 	distutils-r1_src_prepare
 
