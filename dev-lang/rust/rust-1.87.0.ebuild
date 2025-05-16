@@ -3,8 +3,8 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 19 )
-PYTHON_COMPAT=( python3_{10..13} )
+LLVM_COMPAT=( 20 )
+PYTHON_COMPAT=( python3_{11..14} )
 
 RUST_MAX_VER=${PV%%_*}
 if [[ ${PV} == *9999* ]]; then
@@ -129,7 +129,6 @@ RDEPEND="${DEPEND}
 	dev-lang/rust-common
 	sys-apps/lsb-release
 	!dev-lang/rust:stable
-	!dev-lang/rust:1.86
 	!dev-lang/rust-bin:stable
 "
 
@@ -175,7 +174,6 @@ PATCHES=(
 	"${FILESDIR}"/1.85.0-cross-compile-libz.patch
 	"${FILESDIR}"/1.85.0-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
-	"${FILESDIR}"/1.86.0-znver.patch
 )
 
 clear_vendor_checksums() {
@@ -309,9 +307,9 @@ pkg_setup() {
 
 src_prepare() {
 	eapply_crate openssl-sys-0.9.72 "${FILESDIR}"/1.83.0-libressl-openssl-sys-0.9.72.patch
-	eapply_crate openssl-sys-0.9.92 "${FILESDIR}"/1.72.0-libressl-openssl-sys.patch
 	eapply_crate openssl-sys-0.9.102 "${FILESDIR}"/1.79.0-libressl-openssl-sys.patch
 	eapply_crate openssl-sys-0.9.104 "${FILESDIR}"/1.84.0-libressl-openssl-sys-0.9.104.patch
+	eapply_crate openssl-sys-0.9.106 "${FILESDIR}"/1.84.0-libressl-openssl-sys-0.9.104.patch
 
 	if [[ ${PV} = *9999* ]]; then
 		# We need to update / generate lockfiles for the workspace
