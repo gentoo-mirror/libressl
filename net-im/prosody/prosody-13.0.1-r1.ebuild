@@ -99,7 +99,7 @@ src_install() {
 	keepdir /var/lib/prosody
 
 	newinitd "${FILESDIR}"/prosody.initd-r6 prosody
-	systemd_newunit "${FILESDIR}"/prosody.service-r3 prosody.service
+	systemd_newunit "${FILESDIR}"/prosody.service-r4 prosody.service
 
 	newtmpfiles "${FILESDIR}"/prosody.tmpfilesd-r2 prosody.conf
 }

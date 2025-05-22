@@ -1,4 +1,4 @@
-# Copyright 2018-2024 Gentoo Authors
+# Copyright 2018-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,9 +33,7 @@ BDEPEND="
 	>=dev-lang/swig-2.0.9
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-libressl-0.43.0.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-libressl-0.43.0.patch )
 
 swig_define() {
 	local x
