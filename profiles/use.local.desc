@@ -27,8 +27,6 @@ dev-lang/python:libedit - Link readline extension against dev-libs/libedit inste
 dev-lang/python:pgo - Optimize the build using Profile Guided Optimization (PGO) by running Python's test suite and collecting statistics based on its performance. This will take longer to build.
 dev-lang/python:valgrind - Disable pymalloc when running under dev-debug/valgrind is detected (may incur minor performance penalty even when valgrind is not used)
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows
-dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
-dev-lang/ruby:systemtap - Enable SystemTap/DTrace tracing
 dev-lang/rust:clippy - Install clippy, Rust code linter
 dev-lang/rust:dist - Install dist tarballs (used for bootstrapping)
 dev-lang/rust:miri - Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly, sometimes is broken)
@@ -148,19 +146,10 @@ net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:security-key - Include builtin U2F/FIDO support
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
 net-misc/openssh:xmss - Enable XMSS post-quantum authentication algorithm
-net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
 net-p2p/qbittorrent:webui - Install qBittorrent Web UI (qbittorrent-nox) and systemd/OpenRC service
-net-vpn/openvpn:dco - Enable support for kernel data channel offload
-net-vpn/openvpn:down-root - Enable the down-root plugin
-net-vpn/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
-net-vpn/openvpn:mbedtls - Use mbed TLS as the backend crypto library
-net-vpn/openvpn:openssl - Use OpenSSL as the backend crypto library
-net-vpn/openvpn:pkcs11 - Enable PKCS#11 smartcard support
-net-vpn/openvpn:plugins - Enable the OpenVPN plugin system
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
-net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
 net-wireless/hostapd:internal-tls - Use internal TLSv1 implementation instead of depending on OpenSSL or GnuTLS
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
 net-wireless/hostapd:suiteb - Adding support for NSA Suite B Cryptography
