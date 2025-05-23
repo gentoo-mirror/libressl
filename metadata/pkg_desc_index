@@ -20,7 +20,7 @@ dev-python/cryptography 44.0.2 44.0.3 45.0.1 45.0.2: Library providing cryptogra
 dev-python/m2crypto 0.44.0 0.45.1: A Python crypto and SSL toolkit
 dev-python/pyqt6 6.8.1: Python bindings for the Qt framework
 dev-qt/qtbase 6.8.2-r2 6.8.3-r1: Cross-platform application development framework
-dev-qt/qtnetwork 5.15.16: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.16 5.15.17: Network abstraction library for the Qt5 framework
 dev-util/cargo-c 0.10.4-r1 0.10.7 0.10.8 0.10.11 0.10.12: Helper program to build and install c-like libraries
 dev-util/maturin 1.8.3 1.8.5 1.8.6: Build and publish crates with pyo3, rust-cpython and cffi bindings
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
