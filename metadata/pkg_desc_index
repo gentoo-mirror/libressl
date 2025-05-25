@@ -11,7 +11,7 @@ dev-lang/python 2.7.18_p16-r2 3.9.22 3.10.17-r1 3.11.12 3.12.10 3.13.3: An inter
 dev-lang/rust 1.74.1-r101 1.75.0-r101 1.76.0-r101 1.77.1-r101 1.78.0-r101 1.79.0-r101 1.80.1-r101 1.81.0-r101 1.82.0-r102 1.83.0-r2 1.84.0-r1 1.84.1-r1 1.85.0 1.85.0-r1 1.85.1 1.86.0-r1 1.87.0: Systems programming language originally developed by Mozilla
 dev-libs/libressl 3.9.2 4.0.0 4.1.0: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
-dev-libs/libtpms 0.9.6: Library providing software emulation of a TPM
+dev-libs/libtpms 0.9.6 0.10.0 0.10.0-r1: Library providing software emulation of a TPM
 dev-libs/openssl 3.9.0 4.0.0 4.1.0: dummy package for dev-libs/libressl
 dev-libs/softhsm 2.6.1-r3: A software PKCS#11 implementation
 dev-perl/Net-SSLeay 1.940.0-r1: Perl extension for using OpenSSL
