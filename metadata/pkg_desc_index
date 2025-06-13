@@ -24,7 +24,7 @@ dev-qt/qtnetwork 5.15.16 5.15.17: Network abstraction library for the Qt5 framew
 dev-util/cargo-c 0.10.4-r1 0.10.7 0.10.8 0.10.11 0.10.12: Helper program to build and install c-like libraries
 dev-util/maturin 1.8.3 1.8.5 1.8.6: Build and publish crates with pyo3, rust-cpython and cffi bindings
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
-net-analyzer/nmap 7.95: Network exploration tool and security / port scanner
+net-analyzer/nmap 7.95 7.97: Network exploration tool and security / port scanner
 net-dialup/freeradius 3.2.3 3.2.6: Highly configurable free RADIUS server
 net-dialup/ppp 2.5.0-r7 2.5.1-r1: Point-to-Point Protocol (PPP)
 net-im/prosody 13.0.1 13.0.1-r1: Prosody is a modern XMPP communication server
