@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ LUA_REQ_USE="deprecated"
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PLOCALES="de es fr hi hr hu id it ja pl pt_BR pt_PR ro ru sk zh"
 PLOCALE_BACKUP="en"
 inherit autotools distutils-r1 lua-single plocale toolchain-funcs
@@ -27,10 +27,10 @@ else
 	SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
 	SRC_URI+=" verify-sig? ( https://nmap.org/dist/sigs/${P}.tar.bz2.asc )"
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-7.95-patches-2.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-7.97-patches-1.tar.xz"
 
 # https://github.com/nmap/nmap/issues/2199
 LICENSE="NPSL-0.95"
@@ -85,7 +85,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.95-libressl.patch
-	"${WORKDIR}"/${PN}-7.95-patches-2
+	"${WORKDIR}"/${PN}-7.97-patches-2
 )
 
 pkg_setup() {
@@ -155,7 +155,7 @@ src_configure() {
 		# The bundled libdnet is incompatible with the version available in the
 		# tree, so we cannot use the system library here.
 		--with-libdnet=included
-		--with-pcre="${ESYSROOT}"/usr
+		--with-libpcre="${ESYSROOT}"/usr
 		--without-dpdk
 	)
 
@@ -172,9 +172,20 @@ src_compile() {
 		AR="$(tc-getAR)" \
 		RANLIB="$(tc-getRANLIB)"
 
-	if use zenmap ; then
-		cd zenmap || die
+	if use ndiff || use zenmap ; then
 		distutils-r1_src_compile
+	fi
+}
+
+python_compile() {
+	if use ndiff ; then
+		cd "${S}"/ndiff || die
+		distutils-r1_python_compile
+	fi
+
+	if use zenmap ; then
+		cd "${S}"/zenmap || die
+		distutils-r1_python_compile
 	fi
 }
 
@@ -197,11 +208,8 @@ src_install() {
 
 	use symlink && dosym /usr/bin/ncat /usr/bin/nc
 
-	if use ndiff ; then
-		python_optimize
-	fi
-
-	if use zenmap ; then
+	if use ndiff || use zenmap ; then
 		distutils-r1_src_install
+		python_optimize
 	fi
 }
