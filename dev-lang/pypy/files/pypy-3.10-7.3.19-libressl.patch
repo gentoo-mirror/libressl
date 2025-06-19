@@ -42,6 +42,33 @@
  #ifndef DH_CHECK_Q_NOT_PRIME
  #define DH_CHECK_Q_NOT_PRIME            0x10
  #endif
+--- a/lib_pypy/_cffi_ssl/_cffi_src/openssl/ec.py
++++ b/lib_pypy/_cffi_ssl/_cffi_src/openssl/ec.py
+@@ -18,7 +18,6 @@ static const int OPENSSL_EC_NAMED_CURVE;
+ typedef ... EC_KEY;
+ typedef ... EC_GROUP;
+ typedef ... EC_POINT;
+-typedef ... EC_METHOD;
+ typedef struct {
+     int nid;
+     const char *comment;
+@@ -37,7 +36,6 @@ EC_GROUP *EC_GROUP_new_by_curve_name(int);
+ 
+ int EC_GROUP_get_degree(const EC_GROUP *);
+ 
+-const EC_METHOD *EC_GROUP_method_of(const EC_GROUP *);
+ const EC_POINT *EC_GROUP_get0_generator(const EC_GROUP *);
+ int EC_GROUP_get_curve_name(const EC_GROUP *);
+ 
+@@ -102,8 +100,6 @@ int EC_POINT_cmp(
+ int EC_POINT_mul(const EC_GROUP *, EC_POINT *, const BIGNUM *,
+     const EC_POINT *, const BIGNUM *, BN_CTX *);
+ 
+-int EC_METHOD_get_field_type(const EC_METHOD *);
+-
+ const char *EC_curve_nid2nist(int);
+ """
+ 
 --- a/lib_pypy/_cffi_ssl/_cffi_src/openssl/engine.py
 +++ b/lib_pypy/_cffi_ssl/_cffi_src/openssl/engine.py
 @@ -31,18 +31,22 @@ CUSTOMIZATIONS = """
@@ -142,7 +169,7 @@
  typedef ... SSL_METHOD;
  typedef ... SSL_CTX;
  
-@@ -593,13 +588,13 @@ void SSL_set_msg_callback(SSL *ssl,
+@@ -596,13 +591,13 @@ void SSL_set_msg_callback(SSL *ssl,
  """
  
  CUSTOMIZATIONS = """
@@ -158,7 +185,7 @@
  /* from ssl/ssl_lib.c */
  const SSL_METHOD *SSL_CTX_get_ssl_method(SSL_CTX *ctx) {
      return ctx->method;
-@@ -726,7 +721,12 @@ static const long Cryptography_HAS_SET_CERT_CB = 0;
+@@ -729,7 +724,12 @@ static const long Cryptography_HAS_SET_CERT_CB = 0;
  static const long Cryptography_HAS_SET_CERT_CB = 1;
  #endif
  
@@ -171,7 +198,7 @@
  
  /* The setter functions were added in OpenSSL 1.1.0. The getter functions were
     added in OpenSSL 1.1.1. */
-@@ -739,7 +739,7 @@ int (*SSL_CTX_get_max_proto_version)(SSL_CTX *ctx) = NULL;
+@@ -742,7 +742,7 @@ int (*SSL_CTX_get_max_proto_version)(SSL_CTX *ctx) = NULL;
  int (*SSL_get_min_proto_version)(SSL *ssl) = NULL;
  int (*SSL_get_max_proto_version)(SSL *ssl) = NULL;
  #endif
@@ -180,7 +207,7 @@
  int (*SSL_CTX_set_min_proto_version)(SSL_CTX *ctx, int version) = NULL;
  int (*SSL_CTX_set_max_proto_version)(SSL_CTX *ctx, int version) = NULL;
  int (*SSL_set_min_proto_version)(SSL *ssl, int version) = NULL;
-@@ -788,8 +788,6 @@ const SSL_METHOD *(*DTLS_client_method)(void) = NULL;
+@@ -791,8 +791,6 @@ const SSL_METHOD *(*DTLS_client_method)(void) = NULL;
  static const long Cryptography_HAS_GENERIC_DTLS_METHOD = 1;
  #endif
  #if CRYPTOGRAPHY_OPENSSL_LESS_THAN_102
@@ -189,7 +216,7 @@
  long (*DTLS_set_link_mtu)(SSL *, long) = NULL;
  long (*DTLS_get_link_min_mtu)(SSL *) = NULL;
  #endif
-@@ -895,7 +893,7 @@ static const long Cryptography_HAS_CIPHER_DETAILS = 0;
+@@ -898,7 +896,7 @@ static const long Cryptography_HAS_CIPHER_DETAILS = 0;
  static const long Cryptography_HAS_CIPHER_DETAILS = 1;
  #endif
  
