@@ -13,5 +13,5 @@ RDEPEND=acct-user/stunnel acct-group/stunnel dev-libs/openssl:0= tcpd? ( sys-app
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.stunnel.org/downloads/stunnel-5.68.tar.gz https://www.stunnel.org/stunnel/archive/5.x/stunnel-5.68.tar.gz
-_eclasses_=edo	a5e294016aa84979fcb2459749eb80b2	ssl-cert	89fbacafccd672dde4fd51b8e313bf02	toolchain-funcs	a6df79c1e9bc84369dbf3d44206ac772	systemd	a964c0cbe818b5729da1dbfcee5be861	tmpfiles	9a9814db5a3fbd4f1e921c05297e7735
+_eclasses_=edo	a5e294016aa84979fcb2459749eb80b2	ssl-cert	89fbacafccd672dde4fd51b8e313bf02	toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0	systemd	a964c0cbe818b5729da1dbfcee5be861	tmpfiles	9a9814db5a3fbd4f1e921c05297e7735
 _md5_=b10f1fb169d8c586c925d7f0e19061e5
