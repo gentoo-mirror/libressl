@@ -19,8 +19,8 @@ dev-python/aioquic 1.2.0: An implementation of QUIC and HTTP/3
 dev-python/cryptography 44.0.2 44.0.3 45.0.1 45.0.2: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.44.0 0.45.1: A Python crypto and SSL toolkit
 dev-python/pyqt6 6.8.1: Python bindings for the Qt framework
-dev-qt/qtbase 6.8.3-r1 6.9.1-r1: Cross-platform application development framework
-dev-qt/qtnetwork 5.15.16 5.15.17: Network abstraction library for the Qt5 framework
+dev-qt/qtbase 6.9.1-r2: Cross-platform application development framework
+dev-qt/qtnetwork 5.15.17: Network abstraction library for the Qt5 framework
 dev-util/cargo-c 0.10.4-r1 0.10.7 0.10.8 0.10.11 0.10.12: Helper program to build and install c-like libraries
 dev-util/maturin 1.8.3 1.8.5 1.8.6: Build and publish crates with pyo3, rust-cpython and cffi bindings
 mail-mta/postfix 3.5.22: A fast and secure drop-in replacement for sendmail
@@ -30,14 +30,14 @@ net-dialup/ppp 2.5.0-r7 2.5.1-r1: Point-to-Point Protocol (PPP)
 net-im/prosody 13.0.1 13.0.1-r1: Prosody is a modern XMPP communication server
 net-libs/ldns 1.8.3-r3 1.8.4 1.8.4-r1: A library with the aim to simplify DNS programming in C
 net-libs/libssh 0.11.1-r1: Access a working SSH implementation by means of a library
-net-misc/curl 8.12.1 8.13.0-r1 8.14.0 8.14.1: A Client that groks URLs
+net-misc/curl 8.12.1 8.13.0-r1 8.14.1: A Client that groks URLs
 net-misc/openssh 9.8_p1-r3 9.9_p2 9.9_p2-r3: Port of OpenBSD's free SSH release
 net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
 net-misc/stunnel 5.68 5.71 5.71-r1: TLS/SSL - Port Wrapper
 net-p2p/qbittorrent 5.0.1 5.0.2 5.0.3 5.0.4: BitTorrent client in C++ and Qt
 net-vpn/tor 0.4.8.16: Anonymizing overlay network for TCP
 net-wireless/hostapd 2.10-r3 2.11: IEEE 802.11 wireless LAN Host AP daemon
-net-wireless/wpa_supplicant 2.10-r6 2.11 2.11-r3: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.10-r6 2.11 2.11-r3 2.11-r4: IEEE 802.1X/WPA supplicant for secure wireless transfers
 sec-keys/openpgp-keys-libressl 20240309: OpenPGP keys used by the libressl project
 sys-fs/encfs 1.9.5-r2: An implementation of encrypted filesystem in user-space using FUSE
 www-client/netsurf 3.11: A free, open source web browser
