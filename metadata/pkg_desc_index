@@ -33,7 +33,7 @@ net-libs/libssh 0.11.1-r1: Access a working SSH implementation by means of a lib
 net-misc/curl 8.12.1 8.13.0-r1 8.14.1 8.15.0: A Client that groks URLs
 net-misc/openssh 9.8_p1-r3 9.9_p2 9.9_p2-r3: Port of OpenBSD's free SSH release
 net-misc/socat 1.7.4.4-r1: Multipurpose relay (SOcket CAT)
-net-misc/stunnel 5.71-r1: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.71-r1 5.74 5.75: TLS/SSL - Port Wrapper
 net-p2p/qbittorrent 5.0.1 5.0.2 5.0.3 5.0.4: BitTorrent client in C++ and Qt
 net-vpn/tor 0.4.8.16: Anonymizing overlay network for TCP
 net-wireless/hostapd 2.10-r3 2.11: IEEE 802.11 wireless LAN Host AP daemon
