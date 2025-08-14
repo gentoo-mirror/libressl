@@ -42,7 +42,7 @@ else
 		verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
 	"
 	S="${WORKDIR}/${MY_P}-src"
-	KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Systems programming language originally developed by Mozilla"
@@ -322,10 +322,10 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply_crate openssl-sys-0.9.72 "${FILESDIR}"/1.83.0-libressl-openssl-sys-0.9.72.patch
+	eapply_crate openssl-sys-0.9.92 "${FILESDIR}"/1.72.0-libressl-openssl-sys.patch
 	eapply_crate openssl-sys-0.9.104 "${FILESDIR}"/1.84.0-libressl-openssl-sys-0.9.104.patch
 	eapply_crate openssl-sys-0.9.107 "${FILESDIR}"/1.84.0-libressl-openssl-sys-0.9.104.patch
-	eapply_crate openssl-sys-0.9.108 "${FILESDIR}"/1.88.0-libressl-openssl-sys-0.9.108.patch
+	eapply_crate openssl-sys-0.9.109 "${FILESDIR}"/1.88.0-libressl-openssl-sys-0.9.108.patch
 
 	if [[ ${PV} = *9999* ]]; then
 		# We need to update / generate lockfiles for the workspace
