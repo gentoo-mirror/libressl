@@ -7,7 +7,7 @@ dev-cpp/cpp-httplib 0.18.0 0.18.1 0.18.3: C++ HTTP/HTTPS server and client libra
 dev-db/mysql-connector-c 8.0.36 8.0.41: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 8.0.33-r1: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-lang/pypy 3.10.7.3.19_p5 3.11.7.3.19_p10 3.11.7.3.19_p11: A fast, compliant alternative implementation of the Python (3.11) language
-dev-lang/python 2.7.18_p16-r2 3.9.23-r1 3.10.18-r1 3.11.13-r1 3.12.11 3.12.11_p1 3.13.5 3.13.5_p1: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18_p16-r2 3.9.23_p2 3.10.18_p2 3.11.13_p1 3.12.11_p1 3.13.5_p1 3.14.0: An interpreted, interactive, object-oriented programming language
 dev-lang/rust 1.74.1-r101 1.75.0-r101 1.76.0-r101 1.77.1-r101 1.78.0-r101 1.79.0-r101 1.80.1-r101 1.81.0-r101 1.82.0-r103 1.83.0-r3 1.84.0-r2 1.84.1-r2 1.85.0-r2 1.85.1-r1 1.86.0-r2 1.87.0-r1 1.88.0 1.89.0 1.90.0 1.90.0-r1: Systems programming language originally developed by Mozilla
 dev-libs/libressl 4.0.0 4.0.1 4.1.0 4.1.1: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.2: dummy package for dev-libs/libressl
@@ -19,6 +19,7 @@ dev-python/aioquic 1.2.0: An implementation of QUIC and HTTP/3
 dev-python/cryptography 44.0.2 44.0.3 45.0.1 45.0.2: Library providing cryptographic recipes and primitives
 dev-python/m2crypto 0.44.0 0.45.1: A Python crypto and SSL toolkit
 dev-python/pyqt6 6.8.1 6.9.1: Python bindings for the Qt framework
+dev-python/rfc3161-client 1.0.3 1.0.4 1.0.5: An Opinionated Python RFC3161 Client
 dev-qt/qtbase 6.9.2 6.9.3: Cross-platform application development framework
 dev-qt/qtnetwork 5.15.17: Network abstraction library for the Qt5 framework
 dev-util/cargo-c 0.10.4-r1 0.10.7 0.10.8 0.10.11 0.10.12: Helper program to build and install c-like libraries
