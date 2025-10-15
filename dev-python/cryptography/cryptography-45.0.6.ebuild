@@ -10,44 +10,44 @@ PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 CRATES="
-	asn1@0.20.0
-	asn1_derive@0.20.0
+	asn1@0.21.3
+	asn1_derive@0.21.3
 	autocfg@1.4.0
 	base64@0.22.1
-	bitflags@2.6.0
-	cc@1.2.1
+	bitflags@2.9.1
+	cc@1.2.23
 	cfg-if@1.0.0
 	foreign-types-shared@0.1.1
 	foreign-types@0.3.2
 	heck@0.5.0
-	indoc@2.0.5
-	itoa@1.0.14
-	libc@0.2.166
+	indoc@2.0.6
+	itoa@1.0.15
+	libc@0.2.172
 	memoffset@0.9.1
-	once_cell@1.20.2
+	once_cell@1.21.3
 	openssl-macros@0.1.1
 	openssl-sys@0.9.108
-	openssl@0.10.68
-	pem@3.0.4
-	pkg-config@0.3.31
-	portable-atomic@1.10.0
-	proc-macro2@1.0.92
-	pyo3-build-config@0.23.5
-	pyo3-ffi@0.23.5
-	pyo3-macros-backend@0.23.5
-	pyo3-macros@0.23.5
-	pyo3@0.23.5
-	quote@1.0.37
-	self_cell@1.0.4
+	openssl@0.10.72
+	pem@3.0.5
+	pkg-config@0.3.32
+	portable-atomic@1.11.0
+	proc-macro2@1.0.95
+	pyo3-build-config@0.25.0
+	pyo3-ffi@0.25.0
+	pyo3-macros-backend@0.25.0
+	pyo3-macros@0.25.0
+	pyo3@0.25.0
+	quote@1.0.40
+	self_cell@1.2.0
 	shlex@1.3.0
-	syn@2.0.89
-	target-lexicon@0.12.16
-	unicode-ident@1.0.14
-	unindent@0.2.3
+	syn@2.0.101
+	target-lexicon@0.13.2
+	unicode-ident@1.0.18
+	unindent@0.2.4
 	vcpkg@0.2.15
 "
 
-inherit cargo distutils-r1 flag-o-matic multiprocessing pypi
+inherit cargo distutils-r1 flag-o-matic pypi
 
 VEC_P=cryptography_vectors-$(ver_cut 1-3)
 DESCRIPTION="Library providing cryptographic recipes and primitives"
@@ -68,7 +68,7 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT Unicode-3.0
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2o-r6:0=
@@ -82,15 +82,13 @@ DEPEND="
 
 BDEPEND="
 	${RUST_DEPEND}
+	>=dev-util/maturin-1.8.6[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/certifi[${PYTHON_USEDEP}]
-		>=dev-python/hypothesis-1.11.4[${PYTHON_USEDEP}]
 		dev-python/iso8601[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
 		dev-python/pyasn1-modules[${PYTHON_USEDEP}]
-		dev-python/pytest-subtests[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
@@ -98,6 +96,8 @@ BDEPEND="
 # Files built without CFLAGS/LDFLAGS, acceptable for rust
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/cryptography/hazmat/bindings/_rust.*.so"
 
+EPYTEST_PLUGINS=( hypothesis pytest-subtests )
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_unpack() {
@@ -133,5 +133,5 @@ python_test() {
 	local EPYTEST_IGNORE=(
 		tests/bench
 	)
-	epytest -n "$(makeopts_jobs)"
+	epytest
 }
